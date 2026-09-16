@@ -13,6 +13,8 @@
     "test:login": "cross-env ENV=uat playwright test tests/login",
     "test:api": "cross-env ENV=uat playwright test tests/api",
     "test:ddt": "cross-env ENV=uat playwright test tests/login/login-ddt.spec.js",
+    "test:smoke": "cross-env ENV=uat playwright test --grep @smoke",
+    "test:regression": "cross-env ENV=uat playwright test --grep @regression",
     "report:html": "playwright show-report",
     "report:allure": "npx allure generate allure-results --clean -o allure-report && npx allure open allure-report"
   },

@@ -1,0 +1,10 @@
+description,email,password,expectedOutcome,expectedMessage,tags
+empty email is rejected,,SomePass123,fieldError,Please Enter Your Email,@regression
+empty password is rejected,{{SUPER_ADMIN_EMAIL}},,fieldError,Please Enter Your Password,@regression
+non-existent account is rejected,does.not.exist@example.com,WrongPass123,alertError,User Not Found,@regression
+Super Admin can log in,{{SUPER_ADMIN_EMAIL}},{{SUPER_ADMIN_PASSWORD}},success,,@smoke @regression
+Admin can log in,{{ADMIN_EMAIL}},{{ADMIN_PASSWORD}},success,,@regression
+Customer can log in,{{CUSTOMER_EMAIL}},{{CUSTOMER_PASSWORD}},success,,@smoke @regression
+Supplier can log in,{{SUPPLIER_EMAIL}},{{SUPPLIER_PASSWORD}},success,,@regression
+Logistic can log in,{{LOGISTIC_EMAIL}},{{LOGISTIC_PASSWORD}},success,,@regression
+Transporter can log in,{{TRANSPORTER_EMAIL}},{{TRANSPORTER_PASSWORD}},success,,@regression

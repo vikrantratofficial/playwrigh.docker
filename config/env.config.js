@@ -1,13 +1,18 @@
 const path = require('path');
 const dotenv = require('dotenv');
-
+//dotenv .env file se variables load karne ke liye — dono Node.js/npm packages hain
+//Ye check karta hai ki system ya command line se ENV naam ka koi environment variable pass kiya gaya hai ya nahi
 const environment = process.env.ENV || 'uat';
 
+//Sahi .env file load karna
+//environment value ke hisaab se sahi file (.env.uat, .env.qa, etc.) uthata hai aur uske andar likhi values process.env me daal deta hai.
 dotenv.config({
   path: path.resolve(__dirname, 'environments', `.env.${environment}`),
   quiet: true,
 });
-
+//required() helper function — sabse important part
+//ye function check krta hai ki enverment variable wali file exist krti hai kya agr missing hai to error through kre
+//Ye ek validation function hai. Kaam: process.env se koi specific variable (jaise BASE_URL) nikalo. Agar wo variable exist nahi karta ya empty hai, to turant ek clear error throw kar do
 function required(name) {
   const value = process.env[name];
   if (!value) {
@@ -19,6 +24,7 @@ function required(name) {
   return value;
 }
 
+//Config object banate hain
 const config = {
   environment,
   baseUrl: required('BASE_URL'),
@@ -26,32 +32,6 @@ const config = {
   credentials: {
     email: process.env.LOGIN_EMAIL || '',
     password: process.env.LOGIN_PASSWORD || '',
-    byRole: {
-      SUPER_ADMIN: {
-        email: process.env.SUPER_ADMIN_EMAIL || '',
-        password: process.env.SUPER_ADMIN_PASSWORD || '',
-      },
-      ADMIN: {
-        email: process.env.ADMIN_EMAIL || '',
-        password: process.env.ADMIN_PASSWORD || '',
-      },
-      CUSTOMER: {
-        email: process.env.CUSTOMER_EMAIL || '',
-        password: process.env.CUSTOMER_PASSWORD || '',
-      },
-      SUPPLIER: {
-        email: process.env.SUPPLIER_EMAIL || '',
-        password: process.env.SUPPLIER_PASSWORD || '',
-      },
-      LOGISTIC: {
-        email: process.env.LOGISTIC_EMAIL || '',
-        password: process.env.LOGISTIC_PASSWORD || '',
-      },
-      TRANSPORTER: {
-        email: process.env.TRANSPORTER_EMAIL || '',
-        password: process.env.TRANSPORTER_PASSWORD || '',
-      },
-    },
   },
   apiBasicAuth: {
     user: required('API_BASIC_AUTH_USER'),
@@ -59,4 +39,5 @@ const config = {
   },
 };
 
+//Ye poora config object doosri files me use karne ke liye export ho raha hai. Kisi bhi test file me aap aise import karoge:
 module.exports = { config };
