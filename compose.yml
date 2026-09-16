@@ -2,7 +2,9 @@ services:
  img:
   build: .
   container_name: basic-container
+  environment:
+   - ENV=${ENV:-uat}
   env_file:
-   - .env_uat
+   - config/environments/.env.${ENV:-uat}
   ports:
     - 5500:5500

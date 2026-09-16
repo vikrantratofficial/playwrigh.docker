@@ -1,0 +1,5 @@
+description,email,password,expectedOutcome,expectedMessage
+valid login with correct credentials,{{ENV_EMAIL}},{{ENV_PASSWORD}},success,
+empty email is rejected,,SomePass123,fieldError,Please Enter Your Email
+empty password is rejected,{{ENV_EMAIL}},,fieldError,Please Enter Your Password
+non-existent account is rejected,does.not.exist@example.com,WrongPass123,alertError,User Not Found

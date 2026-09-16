@@ -1,3 +1,11 @@
-dummy.txt
 node_modules
-*.txt
+.git
+.gitignore
+playwright-report
+test-results
+allure-results
+allure-report
+Dockerfile
+README.md
+config/environments/.env.*
+!config/environments/.env.example
