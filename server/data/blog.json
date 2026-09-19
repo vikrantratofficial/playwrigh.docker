@@ -1,0 +1,34 @@
+[
+  {
+    "id": "playwright-vs-selenium-2026",
+    "title": "Playwright vs Selenium in 2026: What I'd Choose for a New Project",
+    "excerpt": "A practical comparison based on real client projects — speed, flakiness, auto-waiting, and ecosystem maturity.",
+    "date": "2026-08-12",
+    "tags": ["Playwright", "Selenium", "Automation"],
+    "content": "After running both frameworks across multiple client engagements, Playwright's auto-waiting and built-in tracing consistently cut down flaky test rates compared to Selenium-based suites. Selenium still wins on raw ecosystem maturity and browser support in legacy environments, but for any greenfield project in 2026, Playwright is the default recommendation unless there's a specific legacy constraint."
+  },
+  {
+    "id": "designing-test-data-strategy",
+    "title": "Designing a Test Data Strategy That Doesn't Break Every Sprint",
+    "excerpt": "How to structure fixtures, seed data and API mocks so your automation suite survives schema changes.",
+    "date": "2026-07-03",
+    "tags": ["Test Data", "Best Practices"],
+    "content": "One of the most common reasons automation suites rot is brittle, hardcoded test data. This post covers a layered approach: factory functions for entity creation, API-based seeding instead of UI-based seeding, and contract-aware mocks that fail loudly when the underlying schema changes."
+  },
+  {
+    "id": "ci-cd-flaky-tests",
+    "title": "Killing Flaky Tests in CI/CD: A Root-Cause Checklist",
+    "excerpt": "The five most common causes of flaky E2E tests in CI, and how to systematically eliminate each one.",
+    "date": "2026-05-20",
+    "tags": ["CI/CD", "Flaky Tests"],
+    "content": "Flaky tests are rarely random — they usually trace back to one of five causes: unhandled async waits, shared test state, environment/network variance, timing-dependent assertions, or test order dependency. This checklist walks through diagnosing each with concrete examples from production pipelines."
+  },
+  {
+    "id": "api-testing-beyond-status-codes",
+    "title": "API Testing Beyond Status Codes: Schema, Contracts and Load",
+    "excerpt": "Why checking for a 200 response isn't enough, and what a mature API test suite actually covers.",
+    "date": "2026-03-15",
+    "tags": ["API Testing", "Contracts"],
+    "content": "A response code of 200 tells you almost nothing about correctness. This post breaks down the four layers a mature API test suite should cover: schema validation, contract testing between services, functional edge cases, and load/performance benchmarks — with examples using Postman, Pact and k6."
+  }
+]

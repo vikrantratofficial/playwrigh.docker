@@ -1,0 +1,118 @@
+import { useState } from 'react';
+import { Container, Row, Col, Form, Button, Alert, Spinner } from 'react-bootstrap';
+import { FaEnvelope, FaLinkedin, FaMapMarkerAlt, FaCircle } from 'react-icons/fa';
+import { api } from '../services/api';
+
+const PROJECT_TYPES = [
+  'Test Automation Setup',
+  'CI/CD Integration',
+  'Manual QA',
+  'Test Documentation',
+  'General Inquiry',
+];
+
+const INITIAL_FORM = { name: '', email: '', projectType: PROJECT_TYPES[4], message: '' };
+
+export default function Contact() {
+  const [form, setForm] = useState(INITIAL_FORM);
+  const [status, setStatus] = useState({ state: 'idle', message: '' });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ state: 'loading', message: '' });
+    try {
+      const res = await api.submitContact(form);
+      setStatus({ state: 'success', message: res.message });
+      setForm(INITIAL_FORM);
+    } catch (err) {
+      setStatus({ state: 'error', message: err.message || 'Something went wrong. Please try again.' });
+    }
+  };
+
+  return (
+    <Container className="page-section">
+      <div className="section-heading">
+        <h1>Contact</h1>
+        <p className="text-muted">Have a project in mind? Send a message and I'll get back within 24 hours.</p>
+      </div>
+
+      <Row className="g-5">
+        <Col lg={5}>
+          <div className="sidebar-box mb-4">
+            <h5 className="sidebar-heading">Get in Touch</h5>
+            <ul className="contact-info-list list-unstyled">
+              <li><FaEnvelope className="me-2 text-accent" /> <a href="mailto:vikrant.rathore.career@gmail.com">vikrant.rathore.career@gmail.com</a></li>
+              <li><FaLinkedin className="me-2 text-accent" /> <a href="https://www.linkedin.com/in/vikrantrathore/" target="_blank" rel="noreferrer">linkedin.com/in/vikrantrathore</a></li>
+              <li><FaMapMarkerAlt className="me-2 text-accent" /> Remote — available worldwide</li>
+            </ul>
+            <div className="availability-badge">
+              <FaCircle className="me-2 available-dot" /> Available for new projects
+            </div>
+          </div>
+        </Col>
+
+        <Col lg={7}>
+          <Form onSubmit={handleSubmit} className="contact-form">
+            <Form.Group className="mb-3" controlId="contactName">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                placeholder="Your full name"
+                required
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="contactEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="you@example.com"
+                required
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="contactProjectType">
+              <Form.Label>Project Type</Form.Label>
+              <Form.Select name="projectType" value={form.projectType} onChange={handleChange}>
+                {PROJECT_TYPES.map((type) => (
+                  <option key={type} value={type}>{type}</option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+
+            <Form.Group className="mb-4" controlId="contactMessage">
+              <Form.Label>Message</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={5}
+                name="message"
+                value={form.message}
+                onChange={handleChange}
+                placeholder="Tell me a bit about your project..."
+                required
+              />
+            </Form.Group>
+
+            {status.state === 'success' && <Alert variant="success">{status.message}</Alert>}
+            {status.state === 'error' && <Alert variant="danger">{status.message}</Alert>}
+
+            <Button type="submit" variant="accent" size="lg" disabled={status.state === 'loading'}>
+              {status.state === 'loading' ? <Spinner animation="border" size="sm" /> : 'Send Message'}
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
+  );
+}

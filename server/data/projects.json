@@ -1,0 +1,118 @@
+[
+  {
+    "id": "ecommerce-checkout-automation",
+    "title": "E-Commerce Checkout Automation Suite",
+    "summary": "End-to-end Playwright automation framework covering the full checkout journey across 3 payment gateways.",
+    "category": "Playwright",
+    "tags": ["Playwright", "TypeScript", "CI/CD"],
+    "role": "Lead QA Automation Engineer",
+    "duration": "4 months",
+    "client": "Retail SaaS Platform (NDA)",
+    "cover": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
+    "overview": "The client's checkout flow spanned guest checkout, saved cards, wallets and 3 payment gateways. Manual regression before every release took 2 full QA days and still missed edge cases in coupon stacking and currency conversion.",
+    "approach": [
+      "Built a Page Object Model framework in Playwright + TypeScript with fixtures for auth, cart seeding and mock payment responses.",
+      "Designed a data-driven test matrix covering 45 checkout scenarios across currencies, coupons and payment methods.",
+      "Wired the suite into GitHub Actions with parallel sharding (6 workers) and Allure HTML reporting on every PR.",
+      "Added visual regression checks on the payment summary screen using Playwright's screenshot assertions."
+    ],
+    "findings": [
+      "Found a race condition where double-clicking 'Place Order' created duplicate charges under slow network throttling.",
+      "Caught a currency rounding bug that under-charged EUR customers by up to 0.02 per order.",
+      "Identified that coupon stacking silently failed when two percentage-based coupons were applied together."
+    ],
+    "stack": ["Playwright", "TypeScript", "GitHub Actions", "Allure Report", "Docker"],
+    "metrics": [
+      { "label": "Regression time", "value": "2 days → 35 min" },
+      { "label": "Test cases automated", "value": "180+" },
+      { "label": "Critical bugs caught pre-release", "value": "12" }
+    ]
+  },
+  {
+    "id": "rest-api-contract-testing",
+    "title": "REST API Contract & Load Testing Framework",
+    "summary": "API test suite with schema validation, contract testing and load benchmarks for a fintech microservices backend.",
+    "category": "API Testing",
+    "tags": ["API Testing", "Postman", "CI/CD"],
+    "role": "QA Automation Consultant",
+    "duration": "3 months",
+    "client": "Fintech Startup",
+    "cover": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    "overview": "A fintech client's 14 microservices had no contract tests, causing breaking changes to slip into staging repeatedly. Needed a suite that could run in under 5 minutes as part of the deploy pipeline.",
+    "approach": [
+      "Authored 200+ Postman/Newman collections with JSON schema validation for every response.",
+      "Introduced contract tests using Pact between the payments and ledger services.",
+      "Built a lightweight load test harness with k6 to benchmark p95 latency under 500 concurrent users.",
+      "Integrated Newman + k6 runs into GitLab CI with Slack alerts on failure."
+    ],
+    "findings": [
+      "Discovered the ledger service silently dropped the 'idempotency-key' header, risking duplicate transactions.",
+      "Found p95 latency spiked to 3.2s under load on the balance endpoint due to a missing DB index.",
+      "Caught 3 breaking schema changes before they reached staging in the first month alone."
+    ],
+    "stack": ["Postman", "Newman", "Pact", "k6", "GitLab CI"],
+    "metrics": [
+      { "label": "API endpoints covered", "value": "60+" },
+      { "label": "Pipeline runtime", "value": "4.5 min" },
+      { "label": "Breaking changes caught pre-merge", "value": "9" }
+    ]
+  },
+  {
+    "id": "ci-cd-quality-gates",
+    "title": "CI/CD Quality Gates for Multi-Team Monorepo",
+    "summary": "Designed automated quality gates (lint, unit, E2E, coverage thresholds) for a 30-engineer monorepo.",
+    "category": "CI/CD",
+    "tags": ["CI/CD", "Playwright", "Jenkins"],
+    "role": "QA/DevOps Engineer",
+    "duration": "5 months",
+    "client": "B2B Logistics Platform",
+    "cover": "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=800&q=80",
+    "overview": "With 30 engineers pushing to a single monorepo, release quality was inconsistent — some PRs merged with failing tests silently ignored. The team needed enforced quality gates without slowing everyone down.",
+    "approach": [
+      "Set up Jenkins multibranch pipelines with staged gates: lint → unit → integration → E2E smoke.",
+      "Configured branch protection so merges require green E2E smoke suite (Playwright) on a preview environment.",
+      "Introduced coverage thresholds (80% lines) enforced via Jest with a merge-blocking check.",
+      "Built a dashboard (Grafana) tracking flaky test rate and pipeline duration over time."
+    ],
+    "findings": [
+      "Identified 14 flaky tests responsible for 60% of false-positive pipeline failures; stabilized with proper waits.",
+      "Reduced average PR pipeline time from 22 minutes to 9 minutes via parallelization and caching.",
+      "Prevented 5 production incidents in the first quarter by blocking merges on failing smoke tests."
+    ],
+    "stack": ["Jenkins", "Playwright", "Jest", "Docker", "Grafana"],
+    "metrics": [
+      { "label": "Pipeline time", "value": "22 min → 9 min" },
+      { "label": "Flaky tests fixed", "value": "14" },
+      { "label": "Incidents prevented", "value": "5+" }
+    ]
+  },
+  {
+    "id": "excel-test-reporting-dashboard",
+    "title": "Automated Excel Test Reporting Dashboard",
+    "summary": "A VBA + Python powered reporting pipeline that turns raw test run logs into stakeholder-ready Excel dashboards.",
+    "category": "Excel Reporting",
+    "tags": ["Excel Reporting", "Python", "Automation"],
+    "role": "QA Analyst",
+    "duration": "6 weeks",
+    "client": "Insurance Claims Platform",
+    "cover": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
+    "overview": "Stakeholders wanted a readable weekly QA status report, but the team was manually copy-pasting test results into Excel every Friday — taking 3+ hours and prone to errors.",
+    "approach": [
+      "Wrote a Python script to parse JUnit/Allure XML output and normalize results into a structured dataset.",
+      "Built an Excel template with pivot tables, conditional formatting and a pass/fail trend chart, auto-refreshed via openpyxl.",
+      "Automated the whole pipeline with a scheduled task that emails the report every Friday at 5 PM.",
+      "Added a 'QA status convention' color legend (Green/Amber/Red) tied to defect severity and pass rate thresholds."
+    ],
+    "findings": [
+      "Eliminated 3+ hours of manual reporting work per week for the QA team.",
+      "Surfaced a recurring module (claims-upload) with a consistently declining pass rate, prompting a focused test sprint.",
+      "Standardized how 'release readiness' was communicated to non-technical stakeholders."
+    ],
+    "stack": ["Python", "openpyxl", "Pandas", "VBA", "Task Scheduler"],
+    "metrics": [
+      { "label": "Manual effort saved", "value": "3+ hrs/week" },
+      { "label": "Reports automated", "value": "100%" },
+      { "label": "Stakeholders onboarded", "value": "12" }
+    ]
+  }
+]
