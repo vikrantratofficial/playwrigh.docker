@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { FaRobot, FaCogs, FaClipboardCheck, FaFileAlt } from 'react-icons/fa';
+import BookCallButton from '../components/BookCallButton';
 
 const SERVICES = [
   {
@@ -75,9 +76,12 @@ export default function Services() {
       <div className="cta-banner-inline text-center">
         <h3 className="mb-3">Ready to start?</h3>
         <p className="text-muted mb-4">Tell me about your project and let's figure out the right scope together.</p>
-        <Button as={Link} to="/contact" variant="accent" size="lg">
-          Get in Touch
-        </Button>
+        <div className="d-flex flex-wrap justify-content-center gap-3">
+          <Button as={Link} to="/contact" variant="accent" size="lg">
+            Get in Touch
+          </Button>
+          <BookCallButton variant="outline-light" size="lg" />
+        </div>
       </div>
     </Container>
   );

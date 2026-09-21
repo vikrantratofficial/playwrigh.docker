@@ -17,21 +17,21 @@ const translations = {
     footer_rights: 'All rights reserved.',
     footer_tagline: 'Building reliable software, one test at a time.',
   },
-  hi: {
-    nav_home: 'होम',
-    nav_projects: 'प्रोजेक्ट्स',
-    nav_about: 'मेरे बारे में',
-    nav_services: 'सेवाएं',
-    nav_blog: 'ब्लॉग',
-    nav_contact: 'संपर्क करें',
-    hire_me: 'मुझे हायर करें',
-    hero_title: 'QA ऑटोमेशन इंजीनियर — कमजोर रिलीज़ को भरोसेमंद बनाने वाला।',
+  de: {
+    nav_home: 'Startseite',
+    nav_projects: 'Projekte',
+    nav_about: 'Über mich',
+    nav_services: 'Leistungen',
+    nav_blog: 'Blog',
+    nav_contact: 'Kontakt',
+    hire_me: 'Kontaktieren',
+    hero_title: 'QA-Automatisierungsingenieur — instabile Releases werden zuverlässig.',
     hero_subtitle:
-      'मैं टेस्ट ऑटोमेशन फ्रेमवर्क, CI/CD क्वालिटी गेट्स और API टेस्ट सूट डिज़ाइन करता हूं जो ग्राहकों तक पहुंचने से पहले बग पकड़ लेते हैं।',
-    hero_cta_primary: 'प्रोजेक्ट्स देखें',
-    hero_cta_secondary: 'संपर्क करें',
-    footer_rights: 'सर्वाधिकार सुरक्षित।',
-    footer_tagline: 'हर बार एक भरोसेमंद टेस्ट के साथ, भरोसेमंद सॉफ्टवेयर बनाना।',
+      'Ich entwickle Testautomatisierungs-Frameworks, CI/CD-Qualitäts-Gates und API-Testsuiten, die Fehler erkennen, bevor Ihre Kunden es tun.',
+    hero_cta_primary: 'Projekte ansehen',
+    hero_cta_secondary: 'Kontakt aufnehmen',
+    footer_rights: 'Alle Rechte vorbehalten.',
+    footer_tagline: 'Zuverlässige Software entwickeln, ein Test nach dem anderen.',
   },
 };
 
@@ -43,7 +43,7 @@ export function LanguageProvider({ children }) {
   const value = useMemo(() => {
     const toggleLang = () => {
       setLang((prev) => {
-        const next = prev === 'en' ? 'hi' : 'en';
+        const next = prev === 'en' ? 'de' : 'en';
         localStorage.setItem('site_lang', next);
         return next;
       });

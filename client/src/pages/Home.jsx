@@ -5,6 +5,7 @@ import { FaArrowRight, FaCheckCircle, FaFolderOpen, FaVial, FaTools, FaUsers } f
 import TerminalPreview from '../components/TerminalPreview';
 import StatCard from '../components/StatCard';
 import ProjectCard from '../components/ProjectCard';
+import BookCallButton from '../components/BookCallButton';
 import { useLanguage } from '../context/LanguageContext';
 import { api } from '../services/api';
 
@@ -40,6 +41,7 @@ export default function Home() {
                 <Button as={Link} to="/contact" variant="outline-light" size="lg">
                   {t('hero_cta_secondary')}
                 </Button>
+                <BookCallButton variant="outline-light" size="lg" />
               </div>
             </Col>
             <Col lg={6}>

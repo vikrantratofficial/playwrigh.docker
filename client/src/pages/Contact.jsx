@@ -1,8 +1,14 @@
 import { useRef, useState } from 'react';
 import { Container, Row, Col, Form, Button, Alert, Spinner } from 'react-bootstrap';
-import { FaEnvelope, FaLinkedin, FaMapMarkerAlt, FaCircle } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaMapMarkerAlt, FaCircle, FaWhatsapp } from 'react-icons/fa';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { api } from '../services/api';
+import BookCallButton from '../components/BookCallButton';
+
+const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
+const whatsappHref = WHATSAPP_NUMBER
+  ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi! I'd like to talk about a QA/testing project.")}`
+  : null;
 
 const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
@@ -67,6 +73,28 @@ export default function Contact() {
             </ul>
             <div className="availability-badge">
               <FaCircle className="me-2 available-dot" /> Available for new projects
+            </div>
+          </div>
+
+          <div className="sidebar-box mb-4">
+            <h5 className="sidebar-heading">Prefer a Quick Chat?</h5>
+            <p className="text-muted small mb-3">
+              Skip the email back-and-forth — grab a slot on my calendar or message me directly on WhatsApp.
+            </p>
+            <div className="d-flex flex-column gap-2">
+              <BookCallButton className="w-100" />
+              {whatsappHref && (
+                <Button
+                  as="a"
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  variant="outline-light"
+                  className="w-100 d-inline-flex align-items-center justify-content-center whatsapp-btn"
+                >
+                  <FaWhatsapp className="me-2" /> Chat on WhatsApp
+                </Button>
+              )}
             </div>
           </div>
         </Col>
@@ -138,8 +166,20 @@ export default function Contact() {
             {status.state === 'success' && <Alert variant="success">{status.message}</Alert>}
             {status.state === 'error' && <Alert variant="danger">{status.message}</Alert>}
 
-            <Button type="submit" variant="accent" size="lg" disabled={status.state === 'loading' || !captchaToken}>
-              {status.state === 'loading' ? <Spinner animation="border" size="sm" /> : 'Send Message'}
+            <Button
+              type="submit"
+              variant="accent"
+              size="lg"
+              className="d-inline-flex align-items-center justify-content-center"
+              disabled={status.state === 'loading' || !captchaToken}
+            >
+              {status.state === 'loading' ? (
+                <>
+                  <Spinner animation="border" size="sm" className="me-2" /> Sending...
+                </>
+              ) : (
+                'Send Message'
+              )}
             </Button>
           </Form>
         </Col>

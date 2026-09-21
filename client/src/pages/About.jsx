@@ -1,5 +1,5 @@
-import { Container, Row, Col, Badge } from 'react-bootstrap';
-import { FaCheckCircle } from 'react-icons/fa';
+import { Container, Row, Col, Badge, Button } from 'react-bootstrap';
+import { FaCheckCircle, FaDownload } from 'react-icons/fa';
 
 const SKILLS = {
   'Automation Frameworks': ['Playwright', 'Selenium WebDriver', 'Cypress', 'TestNG'],
@@ -39,6 +39,15 @@ export default function About() {
             means investing in stable selectors, proper test data isolation, and reporting that's readable by
             both engineers and stakeholders.
           </p>
+          <Button
+            variant="accent"
+            size="lg"
+            href="/resume.pdf"
+            download="Vikrant-Rathore-Resume.pdf"
+            className="d-inline-flex align-items-center mt-2"
+          >
+            <FaDownload className="me-2" /> Download Resume
+          </Button>
         </Col>
       </Row>
 
