@@ -1,0 +1,147 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: login\login.spec.js >> Login page >> can navigate to Customer Order Creation via the sidebar after login
+- Location: tests\login\login.spec.js:61:3
+
+# Error details
+
+```
+Error: expect(page).not.toHaveURL(expected) failed
+
+Expected pattern: not /\/login$/
+Received string: "http://74.225.253.78:8800/UCCDEV/login"
+Timeout: 5000ms
+
+Call log:
+  - Expect "not toHaveURL" with timeout 5000ms
+    11 × locator resolved to <html lang="en" data-topbar="light" data-sidebar="dark" data-layout="vertical" data-sidebar-size="lg" data-preloader="disable" data-sidebar-image="none">…</html>
+       - unexpected value "http://74.225.253.78:8800/UCCDEV/login"
+
+```
+
+```yaml
+- img
+- link "Logo":
+  - /url: /UCCDEV
+  - img "Logo"
+- heading "First Logistic Management System." [level=5]
+- text: Email
+- textbox "Email":
+  - /placeholder: Enter email
+  - text: admin@amzbizsol.in
+- link "Forgot password?":
+  - /url: /UCCDEV/forgot-password
+- text: Password
+- textbox "Password":
+  - /placeholder: Enter Password
+  - text: Amazin@123
+- button ""
+- text: Captcha
+- textbox "Captcha":
+  - /placeholder: Enter Captcha
+  - text: bn4rl7
+- text: bn4rl7
+- button ""
+- button "Sign In" [disabled]:
+  - status: Loading...
+  - text: Sign In
+- heading "Follow us on" [level=5]
+- link "":
+  - /url: https://www.facebook.com/AmazinAutomationSolution/
+- link "":
+  - /url: https://in.linkedin.com/company/amazin1453211
+- contentinfo:
+  - paragraph: © All Rights Reserved. FIRLO
+```
+
+# Test source
+
+```ts
+  1  | const { test, expect } = require('../../fixtures/test-fixtures');
+  2  | const { randomInvalidCredentials } = require('../../utils/test-data');
+  3  | 
+  4  | test.describe('Login page', () => {
+  5  |   test.beforeEach(async ({ loginPage }) => {
+  6  |     await loginPage.open();
+  7  |   });
+  8  | 
+  9  |   test(
+  10 |     'rejects a random, non-existent account',
+  11 |     { tag: ['@regression'] },
+  12 |     async ({ loginPage }) => {
+  13 |       const { email, password } = randomInvalidCredentials();
+  14 | 
+  15 |       await loginPage.login(email, password);
+  16 | 
+  17 |       await expect(loginPage.getAlert()).toBeVisible();
+  18 |       await expect(loginPage.getAlert()).toContainText(/user not found/i);
+  19 |     }
+  20 |   );
+  21 | 
+  22 |   test(
+  23 |     'rejects an incorrect captcha before hitting the API',
+  24 |     { tag: ['@regression'] },
+  25 |     async ({ loginPage }) => {
+  26 |       const { email, password } = randomInvalidCredentials();
+  27 | 
+  28 |       await loginPage.submitWithWrongCaptcha(email, password);
+  29 | 
+  30 |       await expect(loginPage.captchaValidationError).toBeVisible();
+  31 |     }
+  32 |   );
+  33 | 
+  34 |   test(
+  35 |     'captcha can be refreshed and changes value',
+  36 |     { tag: ['@regression'] },
+  37 |     async ({ loginPage }) => {
+  38 |       const before = await loginPage.readCaptcha();
+  39 |       await loginPage.refreshCaptcha();
+  40 |       await expect
+  41 |         .poll(() => loginPage.readCaptcha(), { timeout: 5000 })
+  42 |         .not.toBe(before);
+  43 |     }
+  44 |   );
+  45 | 
+  46 |   test(
+  47 |     'logs in successfully with valid credentials',
+  48 |     { tag: ['@smoke', '@regression'] },
+  49 |     async ({ loginPage, config, page }) => {
+  50 |       test.skip(
+  51 |         !config.credentials.email || !config.credentials.password,
+  52 |         'LOGIN_EMAIL / LOGIN_PASSWORD not configured for this environment'
+  53 |       );
+  54 | 
+  55 |       await loginPage.login(config.credentials.email, config.credentials.password);
+  56 | 
+  57 |       await expect(page).not.toHaveURL(/\/login$/);
+  58 |     }
+  59 |   );
+  60 | 
+  61 |   test(
+  62 |     'can navigate to Customer Order Creation via the sidebar after login',
+  63 |     { tag: ['@smoke', '@regression'] },
+  64 |     async ({ loginPage, sidebar, customerOrderCreationPage, config, page }) => {
+  65 |       test.skip(
+  66 |         !config.credentials.email || !config.credentials.password,
+  67 |         'LOGIN_EMAIL / LOGIN_PASSWORD not configured for this environment'
+  68 |       );
+  69 | 
+  70 |       await loginPage.login(config.credentials.email, config.credentials.password);
+> 71 |       await expect(page).not.toHaveURL(/\/login$/);
+     |                              ^ Error: expect(page).not.toHaveURL(expected) failed
+  72 | 
+  73 |       await sidebar.goToCustomerOrderCreation();
+  74 | 
+  75 |       await expect(page).toHaveURL(/\/customer-order-creation$/);
+  76 |       await expect(customerOrderCreationPage.heading).toBeVisible();
+  77 |     }
+  78 |   );
+  79 | });
+  80 | 
+```
