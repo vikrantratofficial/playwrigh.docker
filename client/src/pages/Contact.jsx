@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Container, Row, Col, Form, Button, Alert, Spinner } from 'react-bootstrap';
 import { FaEnvelope, FaLinkedin, FaMapMarkerAlt, FaCircle } from 'react-icons/fa';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { api } from '../services/api';
+
+const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 const PROJECT_TYPES = [
   'Test Automation Setup',
@@ -16,6 +19,8 @@ const INITIAL_FORM = { name: '', email: '', projectType: PROJECT_TYPES[4], messa
 export default function Contact() {
   const [form, setForm] = useState(INITIAL_FORM);
   const [status, setStatus] = useState({ state: 'idle', message: '' });
+  const [captchaToken, setCaptchaToken] = useState(null);
+  const recaptchaRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,13 +29,23 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!captchaToken) {
+      setStatus({ state: 'error', message: 'Please verify that you are not a robot.' });
+      return;
+    }
+
     setStatus({ state: 'loading', message: '' });
     try {
-      const res = await api.submitContact(form);
+      const res = await api.submitContact({ ...form, captchaToken });
       setStatus({ state: 'success', message: res.message });
       setForm(INITIAL_FORM);
+      recaptchaRef.current?.reset();
+      setCaptchaToken(null);
     } catch (err) {
       setStatus({ state: 'error', message: err.message || 'Something went wrong. Please try again.' });
+      recaptchaRef.current?.reset();
+      setCaptchaToken(null);
     }
   };
 
@@ -104,10 +119,26 @@ export default function Contact() {
               />
             </Form.Group>
 
+            <div className="mb-4">
+              {RECAPTCHA_SITE_KEY ? (
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={RECAPTCHA_SITE_KEY}
+                  theme="dark"
+                  onChange={(token) => setCaptchaToken(token)}
+                  onExpired={() => setCaptchaToken(null)}
+                />
+              ) : (
+                <Alert variant="warning" className="mb-0">
+                  reCAPTCHA is not configured — set VITE_RECAPTCHA_SITE_KEY in client/.env
+                </Alert>
+              )}
+            </div>
+
             {status.state === 'success' && <Alert variant="success">{status.message}</Alert>}
             {status.state === 'error' && <Alert variant="danger">{status.message}</Alert>}
 
-            <Button type="submit" variant="accent" size="lg" disabled={status.state === 'loading'}>
+            <Button type="submit" variant="accent" size="lg" disabled={status.state === 'loading' || !captchaToken}>
               {status.state === 'loading' ? <Spinner animation="border" size="sm" /> : 'Send Message'}
             </Button>
           </Form>

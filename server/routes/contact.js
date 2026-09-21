@@ -2,12 +2,13 @@ const express = require('express');
 const { readJson, writeJson } = require('../utils/jsonStore');
 const { requireAuth } = require('../middleware/auth');
 const { sendContactNotification } = require('../utils/mailer');
+const { verifyCaptcha } = require('../utils/recaptcha');
 
 const router = express.Router();
 const FILE = 'contacts.json';
 
 router.post('/', async (req, res) => {
-  const { name, email, projectType, message } = req.body;
+  const { name, email, projectType, message, captchaToken } = req.body;
 
   if (!name || !email || !message) {
     return res.status(400).json({ message: 'Name, email and message are required' });
@@ -16,6 +17,11 @@ router.post('/', async (req, res) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return res.status(400).json({ message: 'Please provide a valid email address' });
+  }
+
+  const captchaValid = await verifyCaptcha(captchaToken);
+  if (!captchaValid) {
+    return res.status(400).json({ message: 'Captcha verification failed. Please try again.' });
   }
 
   const submissions = readJson(FILE);
