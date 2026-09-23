@@ -6,6 +6,7 @@ import TerminalPreview from '../components/TerminalPreview';
 import StatCard from '../components/StatCard';
 import ProjectCard from '../components/ProjectCard';
 import BookCallButton from '../components/BookCallButton';
+import SampleReports from '../components/SampleReports';
 import { useLanguage } from '../context/LanguageContext';
 import { api } from '../services/api';
 
@@ -98,6 +99,8 @@ export default function Home() {
           </div>
         </Container>
       </section>
+
+      <SampleReports />
 
       <section className="cta-banner">
         <Container>

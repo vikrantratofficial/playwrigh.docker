@@ -649,6 +649,190 @@ a {
   }
 }
 
+/* ---------- Sample Reports ---------- */
+.sample-reports-section {
+  padding: clamp(2.5rem, 6vw, 4rem) 0;
+}
+.sample-reports-title {
+  font-size: clamp(1.6rem, 5vw, 2.3rem);
+  font-weight: 800;
+  margin: 0.75rem 0 0.75rem;
+}
+.sample-reports-subtitle {
+  max-width: 640px;
+}
+.sample-reports-footnote {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+}
+.sample-reports-dot {
+  font-size: 0.5rem;
+  color: var(--accent);
+}
+
+.report-card {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.report-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+.report-card-body {
+  padding: 1.25rem;
+}
+.report-card-title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.report-card-link {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+}
+
+.report-preview {
+  background-color: #0d1117;
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem;
+  min-height: 190px;
+}
+
+/* Playwright terminal preview */
+.report-preview-terminal {
+  padding: 0;
+}
+.report-preview-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 0.9rem;
+  background-color: #161b22;
+  border-bottom: 1px solid var(--border-color);
+}
+.report-preview-titlebar .dot {
+  font-size: 0.55rem;
+}
+.dot-red { color: #ff5f56; }
+.dot-yellow { color: #ffbd2e; }
+.dot-green { color: #27c93f; }
+.report-preview-title {
+  margin-left: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+}
+.report-preview-body {
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.9;
+}
+.report-line {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.report-line-pass { color: var(--accent); }
+.report-line-fail { color: var(--danger); }
+.report-line-summary { color: var(--text-muted); margin-top: 0.4rem; }
+
+/* Allure preview */
+.allure-stats {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1.1rem;
+}
+.allure-stat {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.6rem 0.7rem;
+  flex: 1;
+}
+.allure-stat-value {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+}
+.allure-stat-pass { color: var(--accent); }
+.allure-stat-flaky { color: var(--danger); }
+.allure-stat-label {
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  margin-top: 0.15rem;
+}
+.allure-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  height: 60px;
+}
+.allure-bar {
+  flex: 1;
+  background-color: rgba(57, 217, 138, 0.25);
+  border-radius: 3px 3px 0 0;
+}
+.allure-bar-high {
+  background-color: var(--accent);
+}
+
+/* Excel preview */
+.report-preview-excel {
+  padding: 0.75rem;
+  overflow-x: auto;
+}
+.excel-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+}
+.excel-table th {
+  text-align: left;
+  color: var(--text-muted);
+  font-weight: 600;
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  text-transform: uppercase;
+  font-size: 0.62rem;
+  letter-spacing: 0.03em;
+}
+.excel-table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+}
+.excel-status-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+}
+.excel-status-pass {
+  background-color: rgba(57, 217, 138, 0.15) !important;
+  color: var(--accent) !important;
+}
+.excel-status-fail {
+  background-color: rgba(255, 107, 107, 0.15) !important;
+  color: var(--danger) !important;
+}
+
+@media (max-width: 575.98px) {
+  .report-preview {
+    min-height: 160px;
+  }
+  .allure-stat-value {
+    font-size: 1rem;
+  }
+}
+
 /* ---------- FAQ ---------- */
 .faq-section {
   margin-bottom: clamp(2.5rem, 6vw, 4rem);
