@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { FaRobot, FaCogs, FaClipboardCheck, FaFileAlt } from 'react-icons/fa';
 import BookCallButton from '../components/BookCallButton';
+import Faq from '../components/Faq';
 
 const SERVICES = [
   {
@@ -72,6 +73,8 @@ export default function Services() {
           ))}
         </Row>
       </section>
+
+      <Faq />
 
       <div className="cta-banner-inline text-center">
         <h3 className="mb-3">Ready to start?</h3>

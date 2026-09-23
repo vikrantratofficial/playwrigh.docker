@@ -649,6 +649,38 @@ a {
   }
 }
 
+/* ---------- FAQ ---------- */
+.faq-section {
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+.custom-accordion .accordion-item {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  margin-bottom: 0.75rem;
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+.custom-accordion .accordion-header button {
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+  font-weight: 600;
+  box-shadow: none !important;
+  padding: 1rem 1.25rem;
+}
+.custom-accordion .accordion-header button:not(.collapsed) {
+  background-color: var(--bg-elevated);
+  color: var(--accent);
+}
+.custom-accordion .accordion-header button::after {
+  filter: invert(64%) sepia(46%) saturate(451%) hue-rotate(101deg) brightness(93%) contrast(87%);
+}
+.custom-accordion .accordion-body {
+  color: var(--text-muted);
+  background-color: var(--bg-secondary);
+  padding: 1.1rem 1.25rem;
+  line-height: 1.7;
+}
+
 /* ---------- Admin ---------- */
 .admin-tabs .nav-link {
   color: var(--text-muted);

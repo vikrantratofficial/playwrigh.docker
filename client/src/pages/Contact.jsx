@@ -4,6 +4,7 @@ import { FaEnvelope, FaLinkedin, FaMapMarkerAlt, FaCircle, FaWhatsapp } from 're
 import ReCAPTCHA from 'react-google-recaptcha';
 import { api } from '../services/api';
 import BookCallButton from '../components/BookCallButton';
+import Faq from '../components/Faq';
 
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
 const whatsappHref = WHATSAPP_NUMBER
@@ -184,6 +185,8 @@ export default function Contact() {
           </Form>
         </Col>
       </Row>
+
+      <Faq />
     </Container>
   );
 }
