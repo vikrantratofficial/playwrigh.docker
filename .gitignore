@@ -2,3 +2,19 @@ node_modules/
 dist/
 .env
 *.log
+
+to start server
+
+1. Naya terminal kholo → Backend start karo:
+
+
+cd C:\Users\Suraj\Desktop\web_site\server
+npm install
+npm run dev
+
+2. Ek aur naya terminal kholo (pehle wala band nahi karna) → Frontend start karo:
+
+
+cd C:\Users\Suraj\Desktop\web_site\client
+npm install
+npm run dev
