@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Badge, Spinner, Breadcrumb, Button } from 'react-bootstrap';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import Seo, { SITE_URL } from '../components/Seo';
 import { api } from '../services/api';
 
 export default function ProjectDetail() {
@@ -48,8 +49,25 @@ export default function ProjectDetail() {
   const prevProject = currentIndex > 0 ? allProjects[currentIndex - 1] : null;
   const nextProject = currentIndex >= 0 && currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null;
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Projects', item: `${SITE_URL}/projects` },
+      { '@type': 'ListItem', position: 3, name: project.title, item: `${SITE_URL}/projects/${project.id}` },
+    ],
+  };
+
   return (
     <Container className="page-section">
+      <Seo
+        title={`${project.title} — QA Automation Case Study`}
+        description={project.summary}
+        path={`/projects/${project.id}`}
+        image={project.cover}
+        jsonLd={breadcrumbJsonLd}
+      />
       <Breadcrumb className="custom-breadcrumb">
         <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/' }}>Home</Breadcrumb.Item>
         <Breadcrumb.Item linkAs={Link} linkProps={{ to: '/projects' }}>Projects</Breadcrumb.Item>

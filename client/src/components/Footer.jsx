@@ -26,6 +26,7 @@ export default function Footer() {
               <li><Link to="/services">{t('nav_services')}</Link></li>
               <li><Link to="/blog">{t('nav_blog')}</Link></li>
               <li><Link to="/contact">{t('nav_contact')}</Link></li>
+              <li><Link to="/privacy">Privacy Policy</Link></li>
             </ul>
           </Col>
           <Col md={4}>

@@ -665,6 +665,45 @@ a {
   color: #06110b !important;
 }
 
+/* ---------- Cookie Consent Banner ---------- */
+.cookie-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1050;
+  background-color: var(--bg-elevated);
+  border-top: 1px solid var(--border-color);
+  padding: 1rem clamp(1rem, 4vw, 2rem);
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.35);
+}
+.cookie-banner-text {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  max-width: 760px;
+  flex: 1 1 320px;
+}
+.cookie-banner-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+@media (max-width: 575.98px) {
+  .cookie-banner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .cookie-banner-actions {
+    justify-content: flex-end;
+  }
+}
+
 /* ---------- WhatsApp Floating Button ---------- */
 .whatsapp-fab {
   position: fixed;
@@ -914,6 +953,15 @@ a {
   background-color: var(--bg-secondary);
   padding: 1.1rem 1.25rem;
   line-height: 1.7;
+}
+
+.visitor-map-wrap {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.visitor-map-wrap .leaflet-container {
+  background-color: var(--bg-secondary);
 }
 
 /* ---------- Admin ---------- */

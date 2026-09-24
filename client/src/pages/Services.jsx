@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { FaRobot, FaCogs, FaClipboardCheck, FaFileAlt } from 'react-icons/fa';
+import { FaRobot, FaCogs, FaClipboardCheck, FaFileAlt, FaShieldAlt } from 'react-icons/fa';
 import BookCallButton from '../components/BookCallButton';
-import Faq from '../components/Faq';
+import Faq, { FAQ_ITEMS } from '../components/Faq';
+import Seo from '../components/Seo';
 
 const SERVICES = [
   {
@@ -29,6 +30,12 @@ const SERVICES = [
     scope: 'Test plans, test case repositories, and QA status reporting templates (including Excel/VBA dashboards) tailored to your team.',
     price: 'Starting at $350',
   },
+  {
+    icon: <FaShieldAlt />,
+    title: 'Security-Aware QA Testing',
+    scope: 'OWASP Top 10 checks, auth/session security testing, input validation and basic vulnerability scanning layered into your QA process.',
+    price: 'Starting at $450',
+  },
 ];
 
 const PROCESS_STEPS = [
@@ -38,9 +45,28 @@ const PROCESS_STEPS = [
   { step: '04', title: 'Handover & Support', desc: 'Documentation, knowledge transfer, and 2 weeks of post-delivery support.' },
 ];
 
+const FAQ_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ_ITEMS.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.plainAnswer || item.answer,
+    },
+  })),
+};
+
 export default function Services() {
   return (
     <Container className="page-section">
+      <Seo
+        title="QA Testing Services & Pricing — Automation, CI/CD, Manual QA & Security Testing"
+        description="Fixed-price and hourly QA services: test automation setup, CI/CD integration, manual QA, test documentation, and security-aware QA testing. NDA-friendly, remote, worldwide."
+        path="/services"
+        jsonLd={FAQ_JSON_LD}
+      />
       <div className="section-heading">
         <h1>Services</h1>
         <p className="text-muted">Focused QA engagements, scoped clearly so you know exactly what you're getting.</p>
@@ -77,11 +103,11 @@ export default function Services() {
       <Faq />
 
       <div className="cta-banner-inline text-center">
-        <h3 className="mb-3">Ready to start?</h3>
-        <p className="text-muted mb-4">Tell me about your project and let's figure out the right scope together.</p>
+        <h3 className="mb-3">Ready to ship with confidence?</h3>
+        <p className="text-muted mb-4">Get a free scope estimate — tell me about your project and let's figure out the right plan together.</p>
         <div className="d-flex flex-wrap justify-content-center gap-3">
           <Button as={Link} to="/contact" variant="accent" size="lg">
-            Get in Touch
+            Get My Free Quote
           </Button>
           <BookCallButton variant="outline-light" size="lg" />
         </div>

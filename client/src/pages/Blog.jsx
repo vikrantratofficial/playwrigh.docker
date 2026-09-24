@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Badge, Spinner } from 'react-bootstrap';
 import { FaArrowRight, FaRegCalendarAlt } from 'react-icons/fa';
+import Seo from '../components/Seo';
 import { api } from '../services/api';
 
 export default function Blog() {
@@ -19,9 +20,14 @@ export default function Blog() {
 
   return (
     <Container className="page-section">
+      <Seo
+        title="QA & Software Testing Blog — Automation, CI/CD, API Testing & Security Insights"
+        description="Practical articles on QA automation, Playwright vs Selenium, API contract testing, CI/CD pipelines, and security-aware testing — written from real project experience for QA engineers and clients worldwide."
+        path="/blog"
+      />
       <div className="section-heading">
         <h1>Blog</h1>
-        <p className="text-muted">Notes on QA automation, testing strategy, and CI/CD — from real project experience.</p>
+        <p className="text-muted">Notes on QA automation, testing strategy, CI/CD, and security-aware testing — from real project experience.</p>
       </div>
 
       {loading && (

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 import { useAuth } from '../../context/AuthContext';
+import Seo from '../../components/Seo';
 
 export default function AdminLogin() {
   const { login } = useAuth();
@@ -26,6 +27,7 @@ export default function AdminLogin() {
 
   return (
     <Container className="page-section" style={{ maxWidth: '420px' }}>
+      <Seo title="Admin Login" description="Admin login." path="/admin/login" noindex />
       <h1 className="mb-4 text-center">Admin Login</h1>
       <Form onSubmit={handleSubmit} className="contact-form">
         <Form.Group className="mb-3">

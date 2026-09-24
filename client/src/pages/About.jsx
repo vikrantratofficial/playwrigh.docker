@@ -1,11 +1,13 @@
 import { Container, Row, Col, Badge, Button } from 'react-bootstrap';
 import { FaCheckCircle, FaDownload } from 'react-icons/fa';
 import Certifications from '../components/Certifications';
+import Seo from '../components/Seo';
 
 const SKILLS = {
   'Automation Frameworks': ['Playwright', 'Selenium WebDriver', 'Cypress', 'TestNG'],
   'API Testing': ['Postman/Newman', 'REST Assured', 'Pact (Contract Testing)', 'k6 (Load Testing)'],
   'CI/CD & DevOps': ['GitHub Actions', 'Jenkins', 'GitLab CI', 'Docker'],
+  'Security & QA': ['OWASP Top 10 Awareness', 'Basic Penetration Testing', 'Auth/Session Security Testing', 'Secure API Testing'],
   'Languages': ['JavaScript/TypeScript', 'Python', 'Java', 'SQL'],
   'Reporting & Tools': ['Allure Report', 'Excel/VBA Automation', 'Jira', 'Grafana'],
 };
@@ -19,6 +21,11 @@ const QA_STATUS_CONVENTION = [
 export default function About() {
   return (
     <Container className="page-section">
+      <Seo
+        title="About Vikrant Singh Rathore — QA Automation & Security-Aware Testing Expert"
+        description="QA Automation Engineer with expertise in Playwright, Selenium, API testing, CI/CD, and security-aware QA (OWASP Top 10, basic penetration testing). Trusted by clients worldwide."
+        path="/about"
+      />
       <Row className="align-items-center gy-5 mb-5">
         <Col lg={4} className="text-center">
           <img

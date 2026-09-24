@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
 import ProjectCard from '../components/ProjectCard';
+import Seo from '../components/Seo';
 import { api } from '../services/api';
 
 const CATEGORIES = ['All', 'Playwright', 'API Testing', 'CI/CD', 'Excel Reporting'];
@@ -26,6 +27,11 @@ export default function Projects() {
 
   return (
     <Container className="page-section">
+      <Seo
+        title="QA Automation Projects — Playwright, API Testing, CI/CD & Excel Reporting Case Studies"
+        description="Real-world QA automation case studies: Playwright test suites, API contract testing, CI/CD quality gates, and Excel/VBA reporting dashboards delivered for clients worldwide."
+        path="/projects"
+      />
       <div className="section-heading">
         <h1>Projects</h1>
         <p className="text-muted">

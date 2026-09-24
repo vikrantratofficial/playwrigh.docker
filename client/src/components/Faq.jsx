@@ -1,11 +1,18 @@
 import { Accordion } from 'react-bootstrap';
 import { FaFileExcel } from 'react-icons/fa';
 
-const FAQ_ITEMS = [
+export const FAQ_ITEMS = [
   {
     question: 'How do you price a project?',
     answer:
       "Fixed-scope work (like a Test Automation Setup or CI/CD Integration) is quoted as a flat rate after a quick discovery call, so you know the total cost upfront — no surprise hours. Ongoing Manual QA is billed hourly. See the Services page for starting prices on each engagement type.",
+  },
+  {
+    question: 'Do you offer cybersecurity-aware QA testing?',
+    answer:
+      'Yes — every automation and manual QA engagement includes basic security-aware testing (OWASP Top 10 checks, auth/session handling, input validation) alongside functional testing, so vulnerabilities are caught early, not just after a release.',
+    plainAnswer:
+      'Yes — every automation and manual QA engagement includes basic security-aware testing (OWASP Top 10 checks, auth/session handling, input validation) alongside functional testing, so vulnerabilities are caught early, not just after a release.',
   },
   {
     question: 'Do you sign NDAs?',
@@ -36,6 +43,8 @@ const FAQ_ITEMS = [
         </a>
       </>
     ),
+    plainAnswer:
+      "Absolutely — an anonymized sample QA status report (the same format delivered to clients weekly) is available to download directly from the FAQ and Services pages.",
   },
 ];
 

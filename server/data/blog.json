@@ -1,5 +1,13 @@
 [
   {
+    "id": "security-testing-for-qa-engineers",
+    "title": "Security Testing for QA Engineers: OWASP Top 10 Checks You Can Add Today",
+    "excerpt": "You don't need to be a penetration tester to catch common vulnerabilities — here's how to fold basic security checks into your existing QA process.",
+    "date": "2026-09-05",
+    "tags": ["Cybersecurity", "QA", "OWASP"],
+    "content": "Most QA teams focus purely on functional correctness and leave security testing entirely to a separate security team — or skip it until an audit forces the issue. But several OWASP Top 10 risks (broken authentication, injection, sensitive data exposure, security misconfiguration) can be caught with the same tools QA engineers already use: Postman/Newman for auth and input-validation checks, Playwright for session and access-control testing, and basic header/TLS checks in CI. This post walks through five checks any QA automation suite can add this sprint, without needing a dedicated security engineer."
+  },
+  {
     "id": "playwright-vs-selenium-2026",
     "title": "Playwright vs Selenium in 2026: What I'd Choose for a New Project",
     "excerpt": "A practical comparison based on real client projects — speed, flakiness, auto-waiting, and ecosystem maturity.",

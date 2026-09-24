@@ -43,4 +43,8 @@ export const api = {
 
   login: (username, password) =>
     request('/auth/login', { method: 'POST', body: JSON.stringify({ username, password }) }),
+
+  getAnalyticsSummary: () => request('/analytics/summary'),
+  getPageviews: (limit = 500) => request(`/analytics/pageviews?limit=${limit}`),
+  getTrackedErrors: (limit = 500) => request(`/analytics/errors?limit=${limit}`),
 };

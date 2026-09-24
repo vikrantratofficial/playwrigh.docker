@@ -1,2 +1,5 @@
 node_modules
 .env
+data/analytics.json
+data/errors.json
+data/contacts.json

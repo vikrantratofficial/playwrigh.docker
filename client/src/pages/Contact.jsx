@@ -5,6 +5,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { api } from '../services/api';
 import BookCallButton from '../components/BookCallButton';
 import Faq from '../components/Faq';
+import Seo from '../components/Seo';
 
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
 const whatsappHref = WHATSAPP_NUMBER
@@ -18,10 +19,11 @@ const PROJECT_TYPES = [
   'CI/CD Integration',
   'Manual QA',
   'Test Documentation',
+  'Security-Aware QA Testing',
   'General Inquiry',
 ];
 
-const INITIAL_FORM = { name: '', email: '', projectType: PROJECT_TYPES[4], message: '' };
+const INITIAL_FORM = { name: '', email: '', projectType: PROJECT_TYPES[PROJECT_TYPES.length - 1], message: '' };
 
 export default function Contact() {
   const [form, setForm] = useState(INITIAL_FORM);
@@ -58,9 +60,14 @@ export default function Contact() {
 
   return (
     <Container className="page-section">
+      <Seo
+        title="Contact — Book a Free QA Consultation Call Today"
+        description="Get in touch for freelance QA automation, API testing, CI/CD, and security-aware QA services. Book a free call, WhatsApp, or send a message — replies within 24 hours, clients welcome worldwide."
+        path="/contact"
+      />
       <div className="section-heading">
         <h1>Contact</h1>
-        <p className="text-muted">Have a project in mind? Send a message and I'll get back within 24 hours.</p>
+        <p className="text-muted">Have a project in mind? Book a free call or send a message — I'll get back within 24 hours.</p>
       </div>
 
       <Row className="g-5">

@@ -7,8 +7,31 @@ import StatCard from '../components/StatCard';
 import ProjectCard from '../components/ProjectCard';
 import BookCallButton from '../components/BookCallButton';
 import SampleReports from '../components/SampleReports';
+import Seo, { SITE_URL } from '../components/Seo';
 import { useLanguage } from '../context/LanguageContext';
 import { api } from '../services/api';
+
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      name: 'QA.dev',
+      url: SITE_URL,
+    },
+    {
+      '@type': 'ProfessionalService',
+      name: 'QA.dev — Vikrant Singh Rathore, QA Automation Engineer',
+      description:
+        'Freelance QA automation, API testing, CI/CD quality gates and manual QA services for clients worldwide (US, UK, EU, UAE, Asia, and beyond).',
+      url: SITE_URL,
+      email: 'vikrant.rathore.career@gmail.com',
+      areaServed: 'Worldwide',
+      priceRange: '$$',
+      sameAs: ['https://www.linkedin.com/in/vikrantrathore/'],
+    },
+  ],
+};
 
 export default function Home() {
   const { t } = useLanguage();
@@ -26,6 +49,12 @@ export default function Home() {
 
   return (
     <>
+      <Seo
+        title="Freelance QA Automation Engineer — Playwright, API Testing & CI/CD Experts Worldwide"
+        description="Hire a freelance QA automation engineer for Playwright/Selenium test automation, API testing, CI/CD quality gates, and cybersecurity-aware QA — serving clients across the US, UK, EU, UAE, and Asia. Book a free call today."
+        path="/"
+        jsonLd={JSON_LD}
+      />
       <section className="hero-section">
         <Container>
           <Row className="align-items-center gy-5">
