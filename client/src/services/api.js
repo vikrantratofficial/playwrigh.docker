@@ -43,6 +43,8 @@ export const api = {
 
   login: (username, password) =>
     request('/auth/login', { method: 'POST', body: JSON.stringify({ username, password }) }),
+  getAdminProfile: () => request('/auth/me'),
+  updateAdminProfile: (data) => request('/auth/profile', { method: 'PUT', body: JSON.stringify(data) }),
 
   getAnalyticsSummary: () => request('/analytics/summary'),
   getPageviews: (limit = 500) => request(`/analytics/pageviews?limit=${limit}`),

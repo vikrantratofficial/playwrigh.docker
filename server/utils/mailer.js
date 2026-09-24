@@ -40,4 +40,30 @@ async function sendContactNotification(entry) {
   });
 }
 
-module.exports = { sendContactNotification };
+async function sendLoginLockoutAlert({ ip, attempts, username, lockedUntil }) {
+  const transporter = getTransporter();
+  if (!transporter) {
+    console.warn('Email not configured (EMAIL_USER/EMAIL_PASS missing) — skipping lockout alert.');
+    return;
+  }
+
+  const to = process.env.NOTIFY_EMAIL || process.env.EMAIL_USER;
+
+  await transporter.sendMail({
+    from: `"QA.dev Security" <${process.env.EMAIL_USER}>`,
+    to,
+    subject: `⚠️ Admin login blocked after ${attempts} failed attempts`,
+    text: `Someone failed to log in to your admin panel ${attempts} times in a row and has been temporarily blocked.\n\nIP address: ${ip}\nUsername tried: ${username}\nBlocked until: ${lockedUntil}\n\nIf this wasn't you, consider changing your admin password.`,
+    html: `
+      <h2>⚠️ Admin login blocked</h2>
+      <p>Someone failed to log in to your admin panel <strong>${attempts} times</strong> in a row and has been temporarily blocked.</p>
+      <p><strong>IP address:</strong> ${ip}</p>
+      <p><strong>Username tried:</strong> ${username}</p>
+      <p><strong>Blocked until:</strong> ${lockedUntil}</p>
+      <hr/>
+      <p style="color:#888;font-size:12px;">If this wasn't you, consider changing your admin password.</p>
+    `,
+  });
+}
+
+module.exports = { sendContactNotification, sendLoginLockoutAlert };

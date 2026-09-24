@@ -4,6 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { api } from '../../services/api';
 import Seo from '../../components/Seo';
 import VisitorMap from '../../components/VisitorMap';
+import AdminProfileForm from '../../components/admin/AdminProfileForm';
 
 export default function AdminDashboard() {
   const { logout } = useAuth();
@@ -204,6 +205,10 @@ export default function AdminDashboard() {
               ))}
             </tbody>
           </Table>
+        </Tab>
+
+        <Tab eventKey="profile" title="Profile">
+          <AdminProfileForm />
         </Tab>
       </Tabs>
       <p className="text-muted small">
