@@ -4,7 +4,11 @@
     "title": "Security Testing for QA Engineers: OWASP Top 10 Checks You Can Add Today",
     "excerpt": "You don't need to be a penetration tester to catch common vulnerabilities — here's how to fold basic security checks into your existing QA process.",
     "date": "2026-09-05",
-    "tags": ["Cybersecurity", "QA", "OWASP"],
+    "tags": [
+      "Cybersecurity",
+      "QA",
+      "OWASP"
+    ],
     "content": "Most QA teams focus purely on functional correctness and leave security testing entirely to a separate security team — or skip it until an audit forces the issue. But several OWASP Top 10 risks (broken authentication, injection, sensitive data exposure, security misconfiguration) can be caught with the same tools QA engineers already use: Postman/Newman for auth and input-validation checks, Playwright for session and access-control testing, and basic header/TLS checks in CI. This post walks through five checks any QA automation suite can add this sprint, without needing a dedicated security engineer."
   },
   {
@@ -12,7 +16,11 @@
     "title": "Playwright vs Selenium in 2026: What I'd Choose for a New Project",
     "excerpt": "A practical comparison based on real client projects — speed, flakiness, auto-waiting, and ecosystem maturity.",
     "date": "2026-08-12",
-    "tags": ["Playwright", "Selenium", "Automation"],
+    "tags": [
+      "Playwright",
+      "Selenium",
+      "Automation"
+    ],
     "content": "After running both frameworks across multiple client engagements, Playwright's auto-waiting and built-in tracing consistently cut down flaky test rates compared to Selenium-based suites. Selenium still wins on raw ecosystem maturity and browser support in legacy environments, but for any greenfield project in 2026, Playwright is the default recommendation unless there's a specific legacy constraint."
   },
   {
@@ -20,7 +28,10 @@
     "title": "Designing a Test Data Strategy That Doesn't Break Every Sprint",
     "excerpt": "How to structure fixtures, seed data and API mocks so your automation suite survives schema changes.",
     "date": "2026-07-03",
-    "tags": ["Test Data", "Best Practices"],
+    "tags": [
+      "Test Data",
+      "Best Practices"
+    ],
     "content": "One of the most common reasons automation suites rot is brittle, hardcoded test data. This post covers a layered approach: factory functions for entity creation, API-based seeding instead of UI-based seeding, and contract-aware mocks that fail loudly when the underlying schema changes."
   },
   {
@@ -28,7 +39,10 @@
     "title": "Killing Flaky Tests in CI/CD: A Root-Cause Checklist",
     "excerpt": "The five most common causes of flaky E2E tests in CI, and how to systematically eliminate each one.",
     "date": "2026-05-20",
-    "tags": ["CI/CD", "Flaky Tests"],
+    "tags": [
+      "CI/CD",
+      "Flaky Tests"
+    ],
     "content": "Flaky tests are rarely random — they usually trace back to one of five causes: unhandled async waits, shared test state, environment/network variance, timing-dependent assertions, or test order dependency. This checklist walks through diagnosing each with concrete examples from production pipelines."
   },
   {
@@ -36,7 +50,10 @@
     "title": "API Testing Beyond Status Codes: Schema, Contracts and Load",
     "excerpt": "Why checking for a 200 response isn't enough, and what a mature API test suite actually covers.",
     "date": "2026-03-15",
-    "tags": ["API Testing", "Contracts"],
+    "tags": [
+      "API Testing",
+      "Contracts"
+    ],
     "content": "A response code of 200 tells you almost nothing about correctness. This post breaks down the four layers a mature API test suite should cover: schema validation, contract testing between services, functional edge cases, and load/performance benchmarks — with examples using Postman, Pact and k6."
   }
 ]

@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { readJson, writeJson } = require('../utils/jsonStore');
+const db = require('../db');
 const { requireAuth, JWT_SECRET } = require('../middleware/auth');
 const { getDailyOtp } = require('../utils/dailyOtp');
 const { getClientIp } = require('../utils/getClientIp');
@@ -10,9 +10,13 @@ const { sendLoginLockoutAlert } = require('../utils/mailer');
 
 const router = express.Router();
 
+function getAdmin() {
+  return db.prepare('SELECT * FROM admin WHERE id = 1').get();
+}
+
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
-  const admin = readJson('admin.json');
+  const admin = getAdmin();
   const ip = getClientIp(req);
 
   if (isLocked(ip)) {
@@ -25,16 +29,14 @@ router.post('/login', async (req, res) => {
     return res.status(400).json({ message: 'Username and password are required' });
   }
 
-  if (username !== admin.username || !bcrypt.compareSync(password, admin.passwordHash)) {
+  if (!admin || username !== admin.username || !bcrypt.compareSync(password, admin.passwordHash)) {
     const { attempts, lockedUntil, justLocked } = registerFailure(ip);
 
     if (justLocked) {
       sendLoginLockoutAlert({ ip, attempts, username, lockedUntil }).catch((err) =>
         console.error('Failed to send login lockout alert:', err.message)
       );
-      return res.status(429).json({
-        message: `Too many failed attempts. Blocked for 15 minutes.`,
-      });
+      return res.status(429).json({ message: 'Too many failed attempts. Blocked for 15 minutes.' });
     }
 
     return res.status(401).json({
@@ -48,13 +50,13 @@ router.post('/login', async (req, res) => {
 });
 
 router.get('/me', requireAuth, (req, res) => {
-  const admin = readJson('admin.json');
+  const admin = getAdmin();
   res.json({ username: admin.username, email: admin.email || '' });
 });
 
 router.put('/profile', requireAuth, (req, res) => {
   const { currentPassword, otp, newEmail, newPassword } = req.body;
-  const admin = readJson('admin.json');
+  const admin = getAdmin();
 
   if (!currentPassword || !otp) {
     return res.status(400).json({ message: 'Current password and OTP are required' });
@@ -72,23 +74,26 @@ router.put('/profile', requireAuth, (req, res) => {
     return res.status(400).json({ message: 'Provide a new email and/or new password to update' });
   }
 
+  let email = admin.email;
+  let passwordHash = admin.passwordHash;
+
   if (newEmail) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(newEmail)) {
       return res.status(400).json({ message: 'Please provide a valid email address' });
     }
-    admin.email = newEmail;
+    email = newEmail;
   }
 
   if (newPassword) {
     if (newPassword.length < 8) {
       return res.status(400).json({ message: 'New password must be at least 8 characters' });
     }
-    admin.passwordHash = bcrypt.hashSync(newPassword, 10);
+    passwordHash = bcrypt.hashSync(newPassword, 10);
   }
 
-  writeJson('admin.json', admin);
-  res.json({ message: 'Profile updated successfully', email: admin.email });
+  db.prepare('UPDATE admin SET email = ?, passwordHash = ? WHERE id = 1').run(email, passwordHash);
+  res.json({ message: 'Profile updated successfully', email });
 });
 
 module.exports = router;

@@ -4,7 +4,11 @@
     "title": "E-Commerce Checkout Automation Suite",
     "summary": "End-to-end Playwright automation framework covering the full checkout journey across 3 payment gateways.",
     "category": "Playwright",
-    "tags": ["Playwright", "TypeScript", "CI/CD"],
+    "tags": [
+      "Playwright",
+      "TypeScript",
+      "CI/CD"
+    ],
     "role": "Lead QA Automation Engineer",
     "duration": "4 months",
     "client": "Retail SaaS Platform (NDA)",
@@ -21,11 +25,26 @@
       "Caught a currency rounding bug that under-charged EUR customers by up to 0.02 per order.",
       "Identified that coupon stacking silently failed when two percentage-based coupons were applied together."
     ],
-    "stack": ["Playwright", "TypeScript", "GitHub Actions", "Allure Report", "Docker"],
+    "stack": [
+      "Playwright",
+      "TypeScript",
+      "GitHub Actions",
+      "Allure Report",
+      "Docker"
+    ],
     "metrics": [
-      { "label": "Regression time", "value": "2 days → 35 min" },
-      { "label": "Test cases automated", "value": "180+" },
-      { "label": "Critical bugs caught pre-release", "value": "12" }
+      {
+        "label": "Regression time",
+        "value": "2 days → 35 min"
+      },
+      {
+        "label": "Test cases automated",
+        "value": "180+"
+      },
+      {
+        "label": "Critical bugs caught pre-release",
+        "value": "12"
+      }
     ]
   },
   {
@@ -33,7 +52,11 @@
     "title": "REST API Contract & Load Testing Framework",
     "summary": "API test suite with schema validation, contract testing and load benchmarks for a fintech microservices backend.",
     "category": "API Testing",
-    "tags": ["API Testing", "Postman", "CI/CD"],
+    "tags": [
+      "API Testing",
+      "Postman",
+      "CI/CD"
+    ],
     "role": "QA Automation Consultant",
     "duration": "3 months",
     "client": "Fintech Startup",
@@ -50,11 +73,26 @@
       "Found p95 latency spiked to 3.2s under load on the balance endpoint due to a missing DB index.",
       "Caught 3 breaking schema changes before they reached staging in the first month alone."
     ],
-    "stack": ["Postman", "Newman", "Pact", "k6", "GitLab CI"],
+    "stack": [
+      "Postman",
+      "Newman",
+      "Pact",
+      "k6",
+      "GitLab CI"
+    ],
     "metrics": [
-      { "label": "API endpoints covered", "value": "60+" },
-      { "label": "Pipeline runtime", "value": "4.5 min" },
-      { "label": "Breaking changes caught pre-merge", "value": "9" }
+      {
+        "label": "API endpoints covered",
+        "value": "60+"
+      },
+      {
+        "label": "Pipeline runtime",
+        "value": "4.5 min"
+      },
+      {
+        "label": "Breaking changes caught pre-merge",
+        "value": "9"
+      }
     ]
   },
   {
@@ -62,7 +100,11 @@
     "title": "CI/CD Quality Gates for Multi-Team Monorepo",
     "summary": "Designed automated quality gates (lint, unit, E2E, coverage thresholds) for a 30-engineer monorepo.",
     "category": "CI/CD",
-    "tags": ["CI/CD", "Playwright", "Jenkins"],
+    "tags": [
+      "CI/CD",
+      "Playwright",
+      "Jenkins"
+    ],
     "role": "QA/DevOps Engineer",
     "duration": "5 months",
     "client": "B2B Logistics Platform",
@@ -79,11 +121,26 @@
       "Reduced average PR pipeline time from 22 minutes to 9 minutes via parallelization and caching.",
       "Prevented 5 production incidents in the first quarter by blocking merges on failing smoke tests."
     ],
-    "stack": ["Jenkins", "Playwright", "Jest", "Docker", "Grafana"],
+    "stack": [
+      "Jenkins",
+      "Playwright",
+      "Jest",
+      "Docker",
+      "Grafana"
+    ],
     "metrics": [
-      { "label": "Pipeline time", "value": "22 min → 9 min" },
-      { "label": "Flaky tests fixed", "value": "14" },
-      { "label": "Incidents prevented", "value": "5+" }
+      {
+        "label": "Pipeline time",
+        "value": "22 min → 9 min"
+      },
+      {
+        "label": "Flaky tests fixed",
+        "value": "14"
+      },
+      {
+        "label": "Incidents prevented",
+        "value": "5+"
+      }
     ]
   },
   {
@@ -91,7 +148,11 @@
     "title": "Automated Excel Test Reporting Dashboard",
     "summary": "A VBA + Python powered reporting pipeline that turns raw test run logs into stakeholder-ready Excel dashboards.",
     "category": "Excel Reporting",
-    "tags": ["Excel Reporting", "Python", "Automation"],
+    "tags": [
+      "Excel Reporting",
+      "Python",
+      "Automation"
+    ],
     "role": "QA Analyst",
     "duration": "6 weeks",
     "client": "Insurance Claims Platform",
@@ -108,11 +169,26 @@
       "Surfaced a recurring module (claims-upload) with a consistently declining pass rate, prompting a focused test sprint.",
       "Standardized how 'release readiness' was communicated to non-technical stakeholders."
     ],
-    "stack": ["Python", "openpyxl", "Pandas", "VBA", "Task Scheduler"],
+    "stack": [
+      "Python",
+      "openpyxl",
+      "Pandas",
+      "VBA",
+      "Task Scheduler"
+    ],
     "metrics": [
-      { "label": "Manual effort saved", "value": "3+ hrs/week" },
-      { "label": "Reports automated", "value": "100%" },
-      { "label": "Stakeholders onboarded", "value": "12" }
+      {
+        "label": "Manual effort saved",
+        "value": "3+ hrs/week"
+      },
+      {
+        "label": "Reports automated",
+        "value": "100%"
+      },
+      {
+        "label": "Stakeholders onboarded",
+        "value": "12"
+      }
     ]
   }
 ]
