@@ -1,13 +1,12 @@
 const express = require('express');
 const geoip = require('geoip-lite');
-const { readJson, writeJson } = require('../utils/jsonStore');
+const Pageview = require('../models/Pageview');
+const ErrorLog = require('../models/ErrorLog');
 const { getClientIp } = require('../utils/getClientIp');
 const { requireAuth } = require('../middleware/auth');
 const { trackingLimiter } = require('../middleware/rateLimiter');
 
 const router = express.Router();
-const PAGEVIEWS_FILE = 'analytics.json';
-const ERRORS_FILE = 'errors.json';
 const MAX_ENTRIES = 5000;
 
 function truncate(value, max) {
@@ -15,14 +14,16 @@ function truncate(value, max) {
   return value.slice(0, max);
 }
 
-function appendCapped(file, entry) {
-  const list = readJson(file);
-  list.push(entry);
-  const capped = list.length > MAX_ENTRIES ? list.slice(list.length - MAX_ENTRIES) : list;
-  writeJson(file, capped);
+async function capEntries(Model) {
+  const count = await Model.countDocuments();
+  if (count > MAX_ENTRIES) {
+    const excess = count - MAX_ENTRIES;
+    const oldest = await Model.find().sort({ _id: 1 }).limit(excess).select('_id').lean();
+    await Model.deleteMany({ _id: { $in: oldest.map((d) => d._id) } });
+  }
 }
 
-router.post('/pageview', trackingLimiter, (req, res) => {
+router.post('/pageview', trackingLimiter, async (req, res) => {
   const ip = getClientIp(req);
   const geo = geoip.lookup(ip);
 
@@ -41,11 +42,12 @@ router.post('/pageview', trackingLimiter, (req, res) => {
     timestamp: new Date().toISOString(),
   };
 
-  appendCapped(PAGEVIEWS_FILE, entry);
+  await Pageview.create(entry);
+  capEntries(Pageview).catch((err) => console.error('Failed to cap pageviews:', err.message));
   res.status(204).send();
 });
 
-router.post('/error', trackingLimiter, (req, res) => {
+router.post('/error', trackingLimiter, async (req, res) => {
   const ip = getClientIp(req);
   const geo = geoip.lookup(ip);
 
@@ -61,25 +63,26 @@ router.post('/error', trackingLimiter, (req, res) => {
     timestamp: new Date().toISOString(),
   };
 
-  appendCapped(ERRORS_FILE, entry);
+  await ErrorLog.create(entry);
+  capEntries(ErrorLog).catch((err) => console.error('Failed to cap errors:', err.message));
   res.status(204).send();
 });
 
-router.get('/pageviews', requireAuth, (req, res) => {
+router.get('/pageviews', requireAuth, async (req, res) => {
   const limit = Math.min(parseInt(req.query.limit, 10) || 500, MAX_ENTRIES);
-  const list = readJson(PAGEVIEWS_FILE).slice(-limit).reverse();
+  const list = await Pageview.find().sort({ _id: -1 }).limit(limit).select('-_id').lean();
   res.json(list);
 });
 
-router.get('/errors', requireAuth, (req, res) => {
+router.get('/errors', requireAuth, async (req, res) => {
   const limit = Math.min(parseInt(req.query.limit, 10) || 500, MAX_ENTRIES);
-  const list = readJson(ERRORS_FILE).slice(-limit).reverse();
+  const list = await ErrorLog.find().sort({ _id: -1 }).limit(limit).select('-_id').lean();
   res.json(list);
 });
 
-router.get('/summary', requireAuth, (req, res) => {
-  const pageviews = readJson(PAGEVIEWS_FILE);
-  const errors = readJson(ERRORS_FILE);
+router.get('/summary', requireAuth, async (req, res) => {
+  const pageviews = await Pageview.find().select('-_id').lean();
+  const totalErrors = await ErrorLog.countDocuments();
 
   const uniqueIps = new Set(pageviews.map((p) => p.ip));
   const countryCounts = {};
@@ -103,7 +106,7 @@ router.get('/summary', requireAuth, (req, res) => {
   res.json({
     totalPageviews: pageviews.length,
     uniqueVisitors: uniqueIps.size,
-    totalErrors: errors.length,
+    totalErrors,
     topCountries,
     topPaths,
   });

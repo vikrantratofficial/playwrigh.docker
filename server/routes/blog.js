@@ -1,44 +1,40 @@
 const express = require('express');
-const { readJson, writeJson } = require('../utils/jsonStore');
+const BlogPost = require('../models/BlogPost');
 const { requireAuth } = require('../middleware/auth');
 
 const router = express.Router();
-const FILE = 'blog.json';
 
-router.get('/', (req, res) => {
-  const posts = readJson(FILE).sort((a, b) => new Date(b.date) - new Date(a.date));
+router.get('/', async (req, res) => {
+  const posts = await BlogPost.find().select('-_id').lean();
+  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
   res.json(posts);
 });
 
-router.get('/:id', (req, res) => {
-  const posts = readJson(FILE);
-  const post = posts.find((p) => p.id === req.params.id);
+router.get('/:id', async (req, res) => {
+  const post = await BlogPost.findOne({ id: req.params.id }).select('-_id').lean();
   if (!post) return res.status(404).json({ message: 'Post not found' });
   res.json(post);
 });
 
-router.post('/', requireAuth, (req, res) => {
-  const posts = readJson(FILE);
-  const newPost = { ...req.body, id: req.body.id || `post-${Date.now()}` };
-  posts.push(newPost);
-  writeJson(FILE, posts);
-  res.status(201).json(newPost);
+router.post('/', requireAuth, async (req, res) => {
+  const id = req.body.id || `post-${Date.now()}`;
+  const created = await BlogPost.create({ ...req.body, id });
+  res.status(201).json(created.toObject({ transform: (doc, ret) => { delete ret._id; return ret; } }));
 });
 
-router.put('/:id', requireAuth, (req, res) => {
-  const posts = readJson(FILE);
-  const index = posts.findIndex((p) => p.id === req.params.id);
-  if (index === -1) return res.status(404).json({ message: 'Post not found' });
-  posts[index] = { ...posts[index], ...req.body, id: req.params.id };
-  writeJson(FILE, posts);
-  res.json(posts[index]);
+router.put('/:id', requireAuth, async (req, res) => {
+  const updated = await BlogPost.findOneAndUpdate(
+    { id: req.params.id },
+    { ...req.body, id: req.params.id },
+    { new: true }
+  ).select('-_id').lean();
+  if (!updated) return res.status(404).json({ message: 'Post not found' });
+  res.json(updated);
 });
 
-router.delete('/:id', requireAuth, (req, res) => {
-  const posts = readJson(FILE);
-  const filtered = posts.filter((p) => p.id !== req.params.id);
-  if (filtered.length === posts.length) return res.status(404).json({ message: 'Post not found' });
-  writeJson(FILE, filtered);
+router.delete('/:id', requireAuth, async (req, res) => {
+  const deleted = await BlogPost.findOneAndDelete({ id: req.params.id });
+  if (!deleted) return res.status(404).json({ message: 'Post not found' });
   res.status(204).send();
 });
 

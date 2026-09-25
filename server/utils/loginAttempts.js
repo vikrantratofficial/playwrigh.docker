@@ -1,24 +1,25 @@
-const db = require('../db');
+const LoginAttempt = require('../models/LoginAttempt');
 
 const MAX_ATTEMPTS = 3;
 const LOCKOUT_MINUTES = 15;
 
-function getState(ip) {
-  return db.prepare('SELECT * FROM login_attempts WHERE ip = ?').get(ip) || { attempts: 0, lockedUntil: null };
+async function getState(ip) {
+  const doc = await LoginAttempt.findOne({ ip }).lean();
+  return doc || { attempts: 0, lockedUntil: null };
 }
 
-function isLocked(ip) {
-  const state = getState(ip);
+async function isLocked(ip) {
+  const state = await getState(ip);
   if (!state.lockedUntil) return false;
   return new Date(state.lockedUntil) > new Date();
 }
 
-function getLockedUntil(ip) {
-  return getState(ip).lockedUntil;
+async function getLockedUntil(ip) {
+  return (await getState(ip)).lockedUntil;
 }
 
-function registerFailure(ip) {
-  const state = getState(ip);
+async function registerFailure(ip) {
+  const state = await getState(ip);
   const attempts = state.attempts + 1;
   let lockedUntil = state.lockedUntil || null;
   let justLocked = false;
@@ -28,16 +29,17 @@ function registerFailure(ip) {
     justLocked = true;
   }
 
-  db.prepare(`
-    INSERT INTO login_attempts (ip, attempts, lockedUntil) VALUES (?, ?, ?)
-    ON CONFLICT(ip) DO UPDATE SET attempts = excluded.attempts, lockedUntil = excluded.lockedUntil
-  `).run(ip, attempts, lockedUntil);
+  await LoginAttempt.findOneAndUpdate(
+    { ip },
+    { ip, attempts, lockedUntil },
+    { upsert: true }
+  );
 
   return { attempts, lockedUntil, justLocked };
 }
 
-function resetAttempts(ip) {
-  db.prepare('DELETE FROM login_attempts WHERE ip = ?').run(ip);
+async function resetAttempts(ip) {
+  await LoginAttempt.deleteOne({ ip });
 }
 
 module.exports = { isLocked, getLockedUntil, registerFailure, resetAttempts, MAX_ATTEMPTS, LOCKOUT_MINUTES };

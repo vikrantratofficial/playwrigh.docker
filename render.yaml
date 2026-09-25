@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: qadev-api
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: JWT_SECRET
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: NOTIFY_EMAIL
+        sync: false
+      - key: RECAPTCHA_SECRET_KEY
+        sync: false

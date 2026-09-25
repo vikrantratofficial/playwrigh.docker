@@ -1,44 +1,39 @@
 const express = require('express');
-const { readJson, writeJson } = require('../utils/jsonStore');
+const Project = require('../models/Project');
 const { requireAuth } = require('../middleware/auth');
 
 const router = express.Router();
-const FILE = 'projects.json';
 
-router.get('/', (req, res) => {
-  const projects = readJson(FILE);
+router.get('/', async (req, res) => {
+  const projects = await Project.find().select('-_id').lean();
   res.json(projects);
 });
 
-router.get('/:id', (req, res) => {
-  const projects = readJson(FILE);
-  const project = projects.find((p) => p.id === req.params.id);
+router.get('/:id', async (req, res) => {
+  const project = await Project.findOne({ id: req.params.id }).select('-_id').lean();
   if (!project) return res.status(404).json({ message: 'Project not found' });
   res.json(project);
 });
 
-router.post('/', requireAuth, (req, res) => {
-  const projects = readJson(FILE);
-  const newProject = { ...req.body, id: req.body.id || `project-${Date.now()}` };
-  projects.push(newProject);
-  writeJson(FILE, projects);
-  res.status(201).json(newProject);
+router.post('/', requireAuth, async (req, res) => {
+  const id = req.body.id || `project-${Date.now()}`;
+  const created = await Project.create({ ...req.body, id });
+  res.status(201).json(created.toObject({ transform: (doc, ret) => { delete ret._id; return ret; } }));
 });
 
-router.put('/:id', requireAuth, (req, res) => {
-  const projects = readJson(FILE);
-  const index = projects.findIndex((p) => p.id === req.params.id);
-  if (index === -1) return res.status(404).json({ message: 'Project not found' });
-  projects[index] = { ...projects[index], ...req.body, id: req.params.id };
-  writeJson(FILE, projects);
-  res.json(projects[index]);
+router.put('/:id', requireAuth, async (req, res) => {
+  const updated = await Project.findOneAndUpdate(
+    { id: req.params.id },
+    { ...req.body, id: req.params.id },
+    { new: true }
+  ).select('-_id').lean();
+  if (!updated) return res.status(404).json({ message: 'Project not found' });
+  res.json(updated);
 });
 
-router.delete('/:id', requireAuth, (req, res) => {
-  const projects = readJson(FILE);
-  const filtered = projects.filter((p) => p.id !== req.params.id);
-  if (filtered.length === projects.length) return res.status(404).json({ message: 'Project not found' });
-  writeJson(FILE, filtered);
+router.delete('/:id', requireAuth, async (req, res) => {
+  const deleted = await Project.findOneAndDelete({ id: req.params.id });
+  if (!deleted) return res.status(404).json({ message: 'Project not found' });
   res.status(204).send();
 });
 

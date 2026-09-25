@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const db = require('../db');
+const Admin = require('../models/Admin');
 const { requireAuth, JWT_SECRET } = require('../middleware/auth');
 const { getDailyOtp } = require('../utils/dailyOtp');
 const { getClientIp } = require('../utils/getClientIp');
@@ -10,18 +10,14 @@ const { sendLoginLockoutAlert } = require('../utils/mailer');
 
 const router = express.Router();
 
-function getAdmin() {
-  return db.prepare('SELECT * FROM admin WHERE id = 1').get();
-}
-
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
-  const admin = getAdmin();
+  const admin = await Admin.findOne({ username: 'admin' });
   const ip = getClientIp(req);
 
-  if (isLocked(ip)) {
+  if (await isLocked(ip)) {
     return res.status(429).json({
-      message: `Too many failed attempts. Try again after ${new Date(getLockedUntil(ip)).toLocaleTimeString()}.`,
+      message: `Too many failed attempts. Try again after ${new Date(await getLockedUntil(ip)).toLocaleTimeString()}.`,
     });
   }
 
@@ -30,7 +26,7 @@ router.post('/login', async (req, res) => {
   }
 
   if (!admin || username !== admin.username || !bcrypt.compareSync(password, admin.passwordHash)) {
-    const { attempts, lockedUntil, justLocked } = registerFailure(ip);
+    const { attempts, lockedUntil, justLocked } = await registerFailure(ip);
 
     if (justLocked) {
       sendLoginLockoutAlert({ ip, attempts, username, lockedUntil }).catch((err) =>
@@ -44,19 +40,19 @@ router.post('/login', async (req, res) => {
     });
   }
 
-  resetAttempts(ip);
+  await resetAttempts(ip);
   const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: '8h' });
   res.json({ token });
 });
 
-router.get('/me', requireAuth, (req, res) => {
-  const admin = getAdmin();
+router.get('/me', requireAuth, async (req, res) => {
+  const admin = await Admin.findOne({ username: 'admin' });
   res.json({ username: admin.username, email: admin.email || '' });
 });
 
-router.put('/profile', requireAuth, (req, res) => {
+router.put('/profile', requireAuth, async (req, res) => {
   const { currentPassword, otp, newEmail, newPassword } = req.body;
-  const admin = getAdmin();
+  const admin = await Admin.findOne({ username: 'admin' });
 
   if (!currentPassword || !otp) {
     return res.status(400).json({ message: 'Current password and OTP are required' });
@@ -74,26 +70,23 @@ router.put('/profile', requireAuth, (req, res) => {
     return res.status(400).json({ message: 'Provide a new email and/or new password to update' });
   }
 
-  let email = admin.email;
-  let passwordHash = admin.passwordHash;
-
   if (newEmail) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(newEmail)) {
       return res.status(400).json({ message: 'Please provide a valid email address' });
     }
-    email = newEmail;
+    admin.email = newEmail;
   }
 
   if (newPassword) {
     if (newPassword.length < 8) {
       return res.status(400).json({ message: 'New password must be at least 8 characters' });
     }
-    passwordHash = bcrypt.hashSync(newPassword, 10);
+    admin.passwordHash = bcrypt.hashSync(newPassword, 10);
   }
 
-  db.prepare('UPDATE admin SET email = ?, passwordHash = ? WHERE id = 1').run(email, passwordHash);
-  res.json({ message: 'Profile updated successfully', email });
+  await admin.save();
+  res.json({ message: 'Profile updated successfully', email: admin.email });
 });
 
 module.exports = router;

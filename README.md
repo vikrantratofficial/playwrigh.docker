@@ -1,6 +1,6 @@
 # QA.dev — Freelance Portfolio Website
 
-React + Bootstrap frontend with an Express API backend. Content and enquiries are stored as plain JSON files; SQLite is used only for admin login (credentials + failed-attempt lockout).
+React + Bootstrap frontend with an Express API backend. All data (projects, blog, contact enquiries, visitor analytics, error logs, admin auth) is stored in MongoDB Atlas.
 
 ## Structure
 
@@ -46,9 +46,10 @@ Current credentials — **change these before going live**:
 
 ## Data storage
 
-- **Content & enquiries (plain JSON files in `server/data/`)**: `projects.json`, `blog.json`, `contacts.json`, `analytics.json`, `errors.json`. Edit `projects.json`/`blog.json` directly, or via the admin API: `POST/PUT/DELETE /api/projects` and `/api/blog` with an `Authorization: Bearer <token>` header from `/api/auth/login`.
-- **Admin auth only (`server/data/auth.db`, SQLite)**: admin username/email/password hash, and IP-based login lockout state. Nothing else lives here.
-- `contacts.json`, `analytics.json`, `errors.json`, and `auth.db` are **not committed to git** (they hold real visitor IPs and messages).
+- **MongoDB Atlas** (connection string in `server/.env` as `MONGODB_URI`) holds every collection: `projects`, `blogposts`, `contacts`, `pageviews`, `errorlogs`, `admins`, `loginattempts`.
+- Edit projects/blog directly in Atlas, or via the admin API: `POST/PUT/DELETE /api/projects` and `/api/blog` with an `Authorization: Bearer <token>` header from `/api/auth/login`.
+- The old `server/data/*.json` files are kept only as a one-time migration source (`node scripts/migrateToMongo.js`) and are no longer read at runtime.
+- `server/.env` (holds `MONGODB_URI`, JWT secret, email/reCAPTCHA keys) is **not committed to git**.
 
 ## Security features
 

@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const { connectMongo } = require('./mongo');
 
 const projectsRouter = require('./routes/projects');
 const blogRouter = require('./routes/blog');
@@ -27,6 +28,13 @@ app.use((req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
 
-app.listen(PORT, () => {
-  console.log(`API server running on http://localhost:${PORT}`);
-});
+connectMongo()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`API server running on http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('Failed to connect to MongoDB, server not started:', err.message);
+    process.exit(1);
+  });

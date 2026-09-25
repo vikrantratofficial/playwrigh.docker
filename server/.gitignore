@@ -1,8 +1,6 @@
 node_modules
 .env
-data/auth.db
-data/auth.db-shm
-data/auth.db-wal
 data/contacts.json
 data/analytics.json
 data/errors.json
+data/admin.json
