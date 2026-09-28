@@ -7,6 +7,16 @@
     <title>QA.dev | Freelance QA Automation Engineer</title>
     <meta name="description" content="Freelance QA Automation Engineer specializing in Playwright, API testing, CI/CD pipelines and test documentation." />
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('qadev-theme') || 'light';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

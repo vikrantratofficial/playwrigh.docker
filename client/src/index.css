@@ -14,6 +14,51 @@
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+/* ---------- Theme: Terminal Light ---------- */
+[data-theme='light'] {
+  --bg-primary: #f7f9fb;
+  --bg-secondary: #ffffff;
+  --bg-elevated: #eef1f5;
+  --border-color: #d7dde4;
+  --text-primary: #101820;
+  --text-muted: #566270;
+  --accent: #1fae6b;
+  --accent-dark: #178954;
+  --accent-soft: rgba(31, 174, 107, 0.12);
+  --danger: #d9363e;
+  --warning: #b8860b;
+}
+
+/* ---------- Theme: Midnight Blue ---------- */
+[data-theme='midnight'] {
+  --bg-primary: #0a0e1a;
+  --bg-secondary: #0f1524;
+  --bg-elevated: #151d30;
+  --border-color: #232f47;
+  --text-primary: #e7ecf5;
+  --text-muted: #8b96b0;
+  --accent: #4d8dff;
+  --accent-dark: #2f6fe0;
+  --accent-soft: rgba(77, 141, 255, 0.14);
+  --danger: #ff6b6b;
+  --warning: #ffc857;
+}
+
+/* ---------- Theme: High Contrast ---------- */
+[data-theme='contrast'] {
+  --bg-primary: #000000;
+  --bg-secondary: #000000;
+  --bg-elevated: #111111;
+  --border-color: #ffffff;
+  --text-primary: #ffffff;
+  --text-muted: #d0d0d0;
+  --accent: #ffee00;
+  --accent-dark: #d4c700;
+  --accent-soft: rgba(255, 238, 0, 0.16);
+  --danger: #ff5252;
+  --warning: #ffee00;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -89,7 +134,7 @@ a {
 
 /* ---------- Navbar ---------- */
 .site-navbar {
-  background-color: rgba(11, 15, 20, 0.9);
+  background-color: color-mix(in srgb, var(--bg-primary) 90%, transparent);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
   padding: 0.9rem 0;
@@ -122,6 +167,31 @@ a {
   font-family: var(--font-mono);
   border-color: var(--border-color);
   font-size: 0.8rem;
+}
+
+.theme-toggle-btn {
+  border-color: var(--border-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown-menu {
+  background-color: var(--bg-elevated);
+  border-color: var(--border-color);
+}
+.dropdown-menu .dropdown-item {
+  color: var(--text-primary);
+}
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+  background-color: var(--accent-soft);
+  color: var(--text-primary);
+}
+.dropdown-menu .dropdown-item.active,
+.dropdown-menu .dropdown-item:active {
+  background-color: var(--accent);
+  color: #06110b;
 }
 
 .hire-me-btn {
@@ -295,7 +365,7 @@ a {
   position: absolute;
   top: 0.8rem;
   left: 0.8rem;
-  background-color: rgba(11, 15, 20, 0.85) !important;
+  background-color: color-mix(in srgb, var(--bg-primary) 85%, transparent);
   color: var(--accent) !important;
   font-family: var(--font-mono);
   font-weight: 600;

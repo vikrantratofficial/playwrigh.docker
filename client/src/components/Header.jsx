@@ -1,12 +1,14 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Navbar, Nav, Container, Button } from 'react-bootstrap';
-import { FaDownload } from 'react-icons/fa';
+import { Navbar, Nav, Container, Button, Dropdown } from 'react-bootstrap';
+import { FaDownload, FaPalette } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Header() {
   const { t, lang, toggleLang } = useLanguage();
   const { isAuthenticated } = useAuth();
+  const { theme, setTheme, themes, isLight } = useTheme();
   const navigate = useNavigate();
 
   const navItems = [
@@ -19,7 +21,7 @@ export default function Header() {
   ];
 
   return (
-    <Navbar expand="lg" className="site-navbar" variant="dark" sticky="top">
+    <Navbar expand="lg" className="site-navbar" variant={isLight ? 'light' : 'dark'} sticky="top">
       <Container>
         <Navbar.Brand as={NavLink} to="/" className="brand-logo">
           <span className="brand-bracket">&lt;</span>
@@ -54,6 +56,28 @@ export default function Header() {
             </Nav.Link>
           </Nav>
           <div className="d-flex align-items-center gap-2">
+            <Dropdown align="end">
+              <Dropdown.Toggle
+                variant="outline-light"
+                size="sm"
+                className="theme-toggle-btn"
+                id="theme-dropdown"
+                aria-label="Choose theme"
+              >
+                <FaPalette />
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                {themes.map((opt) => (
+                  <Dropdown.Item
+                    key={opt.id}
+                    active={theme === opt.id}
+                    onClick={() => setTheme(opt.id)}
+                  >
+                    {opt.label}
+                  </Dropdown.Item>
+                ))}
+              </Dropdown.Menu>
+            </Dropdown>
             <Button
               variant="outline-light"
               size="sm"
