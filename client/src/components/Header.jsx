@@ -56,7 +56,7 @@ export default function Header() {
             </Nav.Link>
           </Nav>
           <div className="d-flex align-items-center gap-2">
-            <Dropdown align="end">
+            <Dropdown align="start">
               <Dropdown.Toggle
                 variant="outline-light"
                 size="sm"
