@@ -119,7 +119,7 @@ export default function ExperienceProjects() {
           Enterprise QA engagements from my full-time roles — client-facing platforms I've tested end to end.
         </p>
       </div>
-      <Row className="g-4">
+      <Row className="g-4 align-items-start">
         {EXPERIENCE_PROJECTS.map((project) => (
           <ExperienceCard key={project.id} project={project} />
         ))}

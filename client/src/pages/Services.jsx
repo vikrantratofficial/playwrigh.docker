@@ -7,6 +7,12 @@ import Seo from '../components/Seo';
 
 const SERVICES = [
   {
+    icon: <FaTachometerAlt />,
+    title: 'Performance & Load Testing',
+    scope: 'JMeter-based load, stress and performance testing to validate response times and stability under concurrent user load, with detailed bottleneck reports.',
+    price: 'Starting at $400',
+  },
+  {
     icon: <FaRobot />,
     title: 'Test Automation Setup',
     scope: 'Framework design (Playwright/Selenium), page objects, CI-ready config, and a starter suite of 20-30 tests covering critical flows.',
@@ -35,12 +41,6 @@ const SERVICES = [
     title: 'Security-Aware QA Testing',
     scope: 'OWASP Top 10 checks, auth/session security testing, input validation and basic vulnerability scanning layered into your QA process.',
     price: 'Starting at $450',
-  },
-  {
-    icon: <FaTachometerAlt />,
-    title: 'Performance & Load Testing',
-    scope: 'JMeter-based load, stress and performance testing to validate response times and stability under concurrent user load, with detailed bottleneck reports.',
-    price: 'Starting at $400',
   },
 ];
 
