@@ -1164,6 +1164,14 @@ a {
   }
 }
 
+/* Shrink oversized large buttons (hero CTAs etc.) on phone screens */
+@media (max-width: 575.98px) {
+  .btn-lg {
+    font-size: 1rem;
+    padding: 0.6rem 1.1rem;
+  }
+}
+
 /* Very small phones (iPhone SE and similar) */
 @media (max-width: 374.98px) {
   .hero-title {
