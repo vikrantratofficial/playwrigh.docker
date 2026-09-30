@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
 import ProjectCard from '../components/ProjectCard';
+import ExperienceProjects from '../components/ExperienceProjects';
 import Seo from '../components/Seo';
 import { api } from '../services/api';
 
@@ -75,6 +76,9 @@ export default function Projects() {
           )}
         </>
       )}
+
+      <div className="experience-projects-divider" />
+      <ExperienceProjects />
     </Container>
   );
 }

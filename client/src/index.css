@@ -410,6 +410,74 @@ a {
   font-size: 0.9rem;
 }
 
+/* ---------- Experience Projects ---------- */
+.experience-projects-divider {
+  border-top: 1px solid var(--border-color);
+  margin: clamp(2.5rem, 6vw, 4rem) 0 clamp(2rem, 5vw, 3rem);
+}
+.experience-projects-section .section-heading {
+  margin-bottom: clamp(1.5rem, 4vw, 2rem);
+}
+.experience-card {
+  background: linear-gradient(160deg, var(--bg-elevated), var(--bg-secondary));
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.experience-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px -15px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.experience-card-title {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  margin-bottom: 0.9rem;
+}
+.experience-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.experience-meta svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.experience-desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.experience-toggle {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.4rem 0;
+  cursor: pointer;
+}
+.experience-toggle-icon {
+  transition: transform 0.2s ease;
+}
+.experience-toggle-icon.open {
+  transform: rotate(180deg);
+}
+.experience-list {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+}
+.experience-list li {
+  font-size: 0.9rem;
+}
+
 /* ---------- Filter Chips ---------- */
 .filter-chips {
   display: flex;
@@ -706,6 +774,14 @@ a {
   border-color: var(--accent);
   color: var(--text-primary);
   box-shadow: 0 0 0 0.2rem var(--accent-soft);
+}
+.contact-form textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+.word-count-indicator {
+  font-size: clamp(0.75rem, 2.2vw, 0.85rem);
+  font-family: var(--font-mono);
 }
 
 .recaptcha-wrapper {

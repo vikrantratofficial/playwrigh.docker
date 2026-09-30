@@ -25,6 +25,8 @@ const PROJECT_TYPES = [
 
 const INITIAL_FORM = { name: '', email: '', projectType: PROJECT_TYPES[PROJECT_TYPES.length - 1], message: '' };
 
+const MAX_MESSAGE_CHARS = 150;
+
 export default function Contact() {
   const [form, setForm] = useState(INITIAL_FORM);
   const [status, setStatus] = useState({ state: 'idle', message: '' });
@@ -33,8 +35,16 @@ export default function Contact() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === 'message' && value.length > MAX_MESSAGE_CHARS) {
+      setForm((prev) => ({ ...prev, message: value.slice(0, MAX_MESSAGE_CHARS) }));
+      return;
+    }
+
     setForm((prev) => ({ ...prev, [name]: value }));
   };
+
+  const messageCharCount = form.message.length;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -151,8 +161,12 @@ export default function Contact() {
                 value={form.message}
                 onChange={handleChange}
                 placeholder="Tell me a bit about your project..."
+                maxLength={MAX_MESSAGE_CHARS}
                 required
               />
+              <Form.Text className={`word-count-indicator d-block text-end mt-1 ${messageCharCount >= MAX_MESSAGE_CHARS ? 'text-danger' : 'text-muted'}`}>
+                {messageCharCount}/{MAX_MESSAGE_CHARS} characters
+              </Form.Text>
             </Form.Group>
 
             <div className="mb-4 recaptcha-wrapper">

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { FaRobot, FaCogs, FaClipboardCheck, FaFileAlt, FaShieldAlt } from 'react-icons/fa';
+import { FaRobot, FaCogs, FaClipboardCheck, FaFileAlt, FaShieldAlt, FaTachometerAlt } from 'react-icons/fa';
 import BookCallButton from '../components/BookCallButton';
 import Faq, { FAQ_ITEMS } from '../components/Faq';
 import Seo from '../components/Seo';
@@ -35,6 +35,12 @@ const SERVICES = [
     title: 'Security-Aware QA Testing',
     scope: 'OWASP Top 10 checks, auth/session security testing, input validation and basic vulnerability scanning layered into your QA process.',
     price: 'Starting at $450',
+  },
+  {
+    icon: <FaTachometerAlt />,
+    title: 'Performance & Load Testing',
+    scope: 'JMeter-based load, stress and performance testing to validate response times and stability under concurrent user load, with detailed bottleneck reports.',
+    price: 'Starting at $400',
   },
 ];
 

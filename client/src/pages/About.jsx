@@ -4,12 +4,12 @@ import Certifications from '../components/Certifications';
 import Seo from '../components/Seo';
 
 const SKILLS = {
-  'Automation Frameworks': ['Playwright', 'Selenium WebDriver', 'Cypress', 'TestNG'],
-  'API Testing': ['Postman/Newman', 'REST Assured', 'Pact (Contract Testing)', 'k6 (Load Testing)'],
-  'CI/CD & DevOps': ['GitHub Actions', 'Jenkins', 'GitLab CI', 'Docker'],
-  'Security & QA': ['OWASP Top 10 Awareness', 'Basic Penetration Testing', 'Auth/Session Security Testing', 'Secure API Testing'],
-  'Languages': ['JavaScript/TypeScript', 'Python', 'Java', 'SQL'],
-  'Reporting & Tools': ['Allure Report', 'Excel/VBA Automation', 'Jira', 'Grafana'],
+  'Programming & Frameworks': ['Playwright', 'Selenium WebDriver', 'Java (OOPs, Collections, Exception Handling)', 'TestNG', 'REST Assured', 'JUnit', 'Maven', 'Git'],
+  'Automation Testing': ['Page Object Model (POM)', 'Hybrid Automation Framework', 'Data Driven Framework', 'Cross Browser Testing', 'Parallel Test Execution', 'Headless Execution', 'CI/CD Integration (Jenkins)'],
+  'Testing Expertise': ['Functional Testing', 'Integration Testing', 'Regression Testing', 'Smoke Testing', 'Sanity Testing', 'Exploratory Testing', 'End-to-End Testing', 'Mobile Testing (iOS, Android)'],
+  'API & Database': ['REST APIs', 'API Testing (Postman)', 'SQL', 'Swagger', 'MySQL'],
+  'Tools': ['JIRA', 'JMeter (Load Testing)', 'GitHub', 'LoadRunner', 'BrowserStack', 'IntelliJ IDEA', 'Eclipse', 'VS Code'],
+  'Methodologies': ['Agile Scrum', 'SDLC', 'STLC'],
 };
 
 const QA_STATUS_CONVENTION = [
