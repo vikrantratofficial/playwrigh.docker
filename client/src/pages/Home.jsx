@@ -64,8 +64,8 @@ export default function Home() {
               </div>
               <h1 className="hero-title">{t('hero_title')}</h1>
               <p className="hero-subtitle">{t('hero_subtitle')}</p>
-              <div className="d-flex flex-wrap gap-3">
-                <Button as={Link} to="/projects" variant="accent" size="lg" className="d-inline-flex align-items-center">
+              <div className="hero-cta-group">
+                <Button as={Link} to="/projects" variant="accent" size="lg" className="d-inline-flex align-items-center justify-content-center">
                   {t('hero_cta_primary')} <FaArrowRight className="ms-2" />
                 </Button>
                 <Button as={Link} to="/contact" variant="outline-light" size="lg">

@@ -124,16 +124,33 @@ a {
 }
 
 /* ---------- Buttons ---------- */
+.btn {
+  border-radius: 10px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+.btn:active {
+  transform: scale(0.97);
+}
+
 .btn-accent {
   background-color: var(--accent);
   border-color: var(--accent);
   color: #06110b;
   font-weight: 600;
+  box-shadow: 0 4px 16px -4px color-mix(in srgb, var(--accent) 55%, transparent);
 }
-.btn-accent:hover, .btn-accent:focus, .btn-accent:active {
+.btn-accent:hover, .btn-accent:focus {
   background-color: var(--accent-dark) !important;
   border-color: var(--accent-dark) !important;
   color: #06110b !important;
+  box-shadow: 0 6px 20px -4px color-mix(in srgb, var(--accent) 65%, transparent);
+  transform: translateY(-2px);
+}
+.btn-accent:active {
+  background-color: var(--accent-dark) !important;
+  border-color: var(--accent-dark) !important;
+  color: #06110b !important;
+  transform: scale(0.97);
 }
 
 .btn-outline-light {
@@ -142,8 +159,20 @@ a {
 }
 .btn-outline-light:hover {
   background-color: var(--bg-elevated);
-  border-color: var(--text-muted);
+  border-color: var(--accent);
   color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+/* Comfortable tap targets + spacing for stacked buttons on phones */
+@media (max-width: 575.98px) {
+  .btn {
+    min-height: 46px;
+  }
+  .d-flex.flex-wrap.justify-content-center.gap-3 > .btn,
+  .d-flex.flex-wrap.justify-content-center.gap-3 > a.btn {
+    width: 100%;
+  }
 }
 
 /* ---------- Navbar ---------- */
@@ -188,6 +217,41 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse .d-flex.align-items-center.gap-2 {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.6rem !important;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-color);
+  }
+  .navbar-collapse .d-flex.align-items-center.gap-2 .theme-toggle-btn,
+  .navbar-collapse .d-flex.align-items-center.gap-2 .lang-toggle-btn {
+    min-height: 40px;
+  }
+  .navbar-collapse .d-flex.align-items-center.gap-2 .hire-me-btn {
+    flex: 1 1 auto;
+    min-height: 44px;
+    font-size: 0.95rem;
+  }
+  .nav-link-custom.d-lg-none {
+    display: inline-flex !important;
+    align-items: center;
+    color: var(--text-primary) !important;
+    background-color: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 0.6rem 1rem;
+    margin: 0.75rem 0 0;
+    width: 100%;
+  }
+  .nav-link-custom.d-lg-none:hover {
+    border-color: var(--accent);
+    color: var(--accent) !important;
+  }
 }
 
 .dropdown-menu {
@@ -247,6 +311,31 @@ a {
   font-size: clamp(0.95rem, 2.2vw, 1.1rem);
   margin-bottom: 2rem;
   max-width: 540px;
+}
+
+.hero-cta-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  gap: 0.75rem;
+}
+.hero-cta-group > .btn {
+  width: 100%;
+  justify-content: center;
+}
+.hero-cta-group > :last-child {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+@media (max-width: 575.98px) {
+  .hero-cta-group {
+    grid-template-columns: 1fr;
+  }
+  .hero-cta-group > :last-child {
+    grid-column: auto;
+  }
+  .hero-cta-group > .btn {
+    width: 100%;
+  }
 }
 
 /* ---------- Terminal Preview ---------- */
@@ -1173,8 +1262,11 @@ a {
     margin-left: auto;
     margin-right: auto;
   }
-  .hero-section .d-flex.flex-wrap.gap-3 {
+  .hero-cta-group {
     justify-content: center;
+  }
+  .hero-cta-group > :last-child {
+    justify-self: center;
   }
 }
 
