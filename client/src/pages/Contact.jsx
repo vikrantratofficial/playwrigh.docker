@@ -70,7 +70,7 @@ export default function Contact() {
         <p className="text-muted">Have a project in mind? Book a free call or send a message — I'll get back within 24 hours.</p>
       </div>
 
-      <Row className="g-5">
+      <Row className="g-5 mb-5 pb-2">
         <Col lg={5}>
           <div className="sidebar-box mb-4">
             <h5 className="sidebar-heading">Get in Touch</h5>
@@ -155,7 +155,7 @@ export default function Contact() {
               />
             </Form.Group>
 
-            <div className="mb-4">
+            <div className="mb-4 recaptcha-wrapper">
               {RECAPTCHA_SITE_KEY ? (
                 <ReCAPTCHA
                   ref={recaptchaRef}

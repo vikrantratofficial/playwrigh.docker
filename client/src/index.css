@@ -101,6 +101,20 @@ a {
   overflow-x: hidden;
 }
 
+/* ---------- Scroll reveal (applied automatically to <section> and .page-section) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(36px) scale(0.985);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .text-accent {
   color: var(--accent) !important;
 }
@@ -692,6 +706,19 @@ a {
   border-color: var(--accent);
   color: var(--text-primary);
   box-shadow: 0 0 0 0.2rem var(--accent-soft);
+}
+
+.recaptcha-wrapper {
+  max-width: 100%;
+  overflow: hidden;
+}
+.recaptcha-wrapper > div {
+  transform-origin: 0 0;
+}
+@media (max-width: 340px) {
+  .recaptcha-wrapper > div {
+    transform: scale(0.9);
+  }
 }
 
 /* ---------- Footer ---------- */

@@ -4,6 +4,7 @@ import { Spinner } from 'react-bootstrap';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import ScrollReveal from './components/ScrollReveal';
 import ProtectedRoute from './components/ProtectedRoute';
 import WhatsAppButton from './components/WhatsAppButton';
 import PageTracker from './components/PageTracker';
@@ -35,6 +36,7 @@ export default function App() {
   return (
     <div className="app-shell d-flex flex-column min-vh-100">
       <ScrollToTop />
+      <ScrollReveal />
       <PageTracker />
       <Header />
       <main className="flex-grow-1">
