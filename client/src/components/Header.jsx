@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Navbar, Nav, Container, Button, Dropdown } from 'react-bootstrap';
 import { FaDownload, FaPalette } from 'react-icons/fa';
@@ -10,6 +11,8 @@ export default function Header() {
   const { isAuthenticated } = useAuth();
   const { theme, setTheme, themes, isLight } = useTheme();
   const navigate = useNavigate();
+  const [expanded, setExpanded] = useState(false);
+  const closeMenu = () => setExpanded(false);
 
   const navItems = [
     { to: '/', label: t('nav_home'), end: true },
@@ -21,9 +24,16 @@ export default function Header() {
   ];
 
   return (
-    <Navbar expand="lg" className="site-navbar" variant={isLight ? 'light' : 'dark'} sticky="top">
+    <Navbar
+      expand="lg"
+      className="site-navbar"
+      variant={isLight ? 'light' : 'dark'}
+      sticky="top"
+      expanded={expanded}
+      onToggle={setExpanded}
+    >
       <Container>
-        <Navbar.Brand as={NavLink} to="/" className="brand-logo">
+        <Navbar.Brand as={NavLink} to="/" className="brand-logo" onClick={closeMenu}>
           <span className="brand-bracket">&lt;</span>
           QA<span className="text-accent">.dev</span>
           <span className="brand-bracket">/&gt;</span>
@@ -38,12 +48,13 @@ export default function Header() {
                 to={item.to}
                 end={item.end}
                 className="nav-link-custom"
+                onClick={closeMenu}
               >
                 {item.label}
               </Nav.Link>
             ))}
             {isAuthenticated && (
-              <Nav.Link as={NavLink} to="/admin" className="nav-link-custom">
+              <Nav.Link as={NavLink} to="/admin" className="nav-link-custom" onClick={closeMenu}>
                 Admin
               </Nav.Link>
             )}
@@ -51,6 +62,7 @@ export default function Header() {
               href="/resume.pdf"
               download="Vikrant-Rathore-Resume.pdf"
               className="nav-link-custom d-lg-none"
+              onClick={closeMenu}
             >
               <FaDownload className="me-2" /> Resume
             </Nav.Link>
@@ -96,7 +108,15 @@ export default function Header() {
             >
               <FaDownload className="me-2" /> Resume
             </Button>
-            <Button variant="accent" size="sm" onClick={() => navigate('/contact')} className="hire-me-btn">
+            <Button
+              variant="accent"
+              size="sm"
+              onClick={() => {
+                closeMenu();
+                navigate('/contact');
+              }}
+              className="hire-me-btn"
+            >
               {t('hire_me')}
             </Button>
           </div>
