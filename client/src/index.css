@@ -1153,10 +1153,10 @@ a {
 }
 .excel-table th {
   text-align: left;
-  color: var(--text-muted);
+  color: #8b98a5;
   font-weight: 600;
   padding: 0.4rem 0.5rem;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   text-transform: uppercase;
   font-size: 0.62rem;
   letter-spacing: 0.03em;
@@ -1164,7 +1164,7 @@ a {
 .excel-table td {
   padding: 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  color: var(--text-primary);
+  color: #e6edf3;
 }
 .excel-status-badge {
   font-size: 0.62rem;
