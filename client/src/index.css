@@ -864,6 +864,18 @@ a {
   color: var(--text-primary);
   box-shadow: 0 0 0 0.2rem var(--accent-soft);
 }
+.contact-form .form-control.is-invalid,
+.contact-form .form-select.is-invalid {
+  border-color: var(--danger) !important;
+  background-color: var(--bg-elevated);
+}
+.contact-form .form-control.is-invalid:focus,
+.contact-form .form-select.is-invalid:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 107, 107, 0.18) !important;
+}
+.contact-form .invalid-feedback {
+  color: var(--danger);
+}
 .contact-form textarea.form-control {
   resize: vertical;
   min-height: 120px;

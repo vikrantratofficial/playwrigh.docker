@@ -31,6 +31,7 @@ export default function Contact() {
   const [form, setForm] = useState(INITIAL_FORM);
   const [status, setStatus] = useState({ state: 'idle', message: '' });
   const [captchaToken, setCaptchaToken] = useState(null);
+  const [validated, setValidated] = useState(false);
   const recaptchaRef = useRef(null);
 
   const handleChange = (e) => {
@@ -47,7 +48,16 @@ export default function Contact() {
   const messageCharCount = form.message.length;
 
   const handleSubmit = async (e) => {
+    const formEl = e.currentTarget;
     e.preventDefault();
+
+    if (formEl.checkValidity() === false || !form.name.trim() || !form.email.trim() || !form.projectType) {
+      e.stopPropagation();
+      setValidated(true);
+      setStatus({ state: 'error', message: 'Please fill in all required fields before sending.' });
+      return;
+    }
+    setValidated(true);
 
     if (!captchaToken) {
       setStatus({ state: 'error', message: 'Please verify that you are not a robot.' });
@@ -59,6 +69,7 @@ export default function Contact() {
       const res = await api.submitContact({ ...form, captchaToken });
       setStatus({ state: 'success', message: res.message });
       setForm(INITIAL_FORM);
+      setValidated(false);
       recaptchaRef.current?.reset();
       setCaptchaToken(null);
     } catch (err) {
@@ -119,9 +130,9 @@ export default function Contact() {
         </Col>
 
         <Col lg={7}>
-          <Form onSubmit={handleSubmit} className="contact-form">
+          <Form noValidate validated={validated} onSubmit={handleSubmit} className="contact-form">
             <Form.Group className="mb-3" controlId="contactName">
-              <Form.Label>Name</Form.Label>
+              <Form.Label>Name <span className="text-danger">*</span></Form.Label>
               <Form.Control
                 type="text"
                 name="name"
@@ -129,11 +140,15 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Your full name"
                 required
+                minLength={2}
               />
+              <Form.Control.Feedback type="invalid">
+                Please enter your name.
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="contactEmail">
-              <Form.Label>Email</Form.Label>
+              <Form.Label>Email <span className="text-danger">*</span></Form.Label>
               <Form.Control
                 type="email"
                 name="email"
@@ -142,19 +157,26 @@ export default function Contact() {
                 placeholder="you@example.com"
                 required
               />
+              <Form.Control.Feedback type="invalid">
+                Please enter a valid email address.
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="contactProjectType">
-              <Form.Label>Project Type</Form.Label>
-              <Form.Select name="projectType" value={form.projectType} onChange={handleChange}>
+              <Form.Label>Project Type <span className="text-danger">*</span></Form.Label>
+              <Form.Select name="projectType" value={form.projectType} onChange={handleChange} required>
+                <option value="">Select a project type…</option>
                 {PROJECT_TYPES.map((type) => (
                   <option key={type} value={type}>{type}</option>
                 ))}
               </Form.Select>
+              <Form.Control.Feedback type="invalid">
+                Please select a project type.
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-4" controlId="contactMessage">
-              <Form.Label>Message</Form.Label>
+              <Form.Label>Message <span className="text-danger">*</span></Form.Label>
               <Form.Control
                 as="textarea"
                 rows={5}
@@ -165,6 +187,9 @@ export default function Contact() {
                 maxLength={MAX_MESSAGE_CHARS}
                 required
               />
+              <Form.Control.Feedback type="invalid">
+                Please enter a message.
+              </Form.Control.Feedback>
               <Form.Text className={`word-count-indicator d-block text-end mt-1 ${messageCharCount >= MAX_MESSAGE_CHARS ? 'text-danger' : 'text-muted'}`}>
                 {messageCharCount}/{MAX_MESSAGE_CHARS} characters
               </Form.Text>
@@ -194,7 +219,7 @@ export default function Contact() {
               variant="accent"
               size="lg"
               className="d-inline-flex align-items-center justify-content-center"
-              disabled={status.state === 'loading' || !captchaToken}
+              disabled={status.state === 'loading'}
             >
               {status.state === 'loading' ? (
                 <>
