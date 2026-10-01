@@ -100,7 +100,7 @@ export default function Contact() {
               Skip the email back-and-forth — grab a slot on my calendar or message me directly on WhatsApp.
             </p>
             <div className="d-flex flex-column gap-2">
-              <BookCallButton className="w-100" />
+              <BookCallButton size="sm" className="w-100 justify-content-center book-call-btn" />
               {whatsappHref && (
                 <Button
                   as="a"
@@ -108,7 +108,8 @@ export default function Contact() {
                   target="_blank"
                   rel="noreferrer"
                   variant="outline-light"
-                  className="w-100 d-inline-flex align-items-center justify-content-center whatsapp-btn"
+                  size="sm"
+                  className="w-100 d-inline-flex align-items-center justify-content-center whatsapp-btn book-call-btn"
                 >
                   <FaWhatsapp className="me-2" /> Chat on WhatsApp
                 </Button>
