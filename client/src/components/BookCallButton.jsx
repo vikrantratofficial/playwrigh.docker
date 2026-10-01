@@ -18,7 +18,7 @@ export default function BookCallButton({ variant = 'accent', size, className = '
     <Button
       variant={variant}
       size={size}
-      className={`d-inline-flex align-items-center ${className}`}
+      className={`d-inline-flex align-items-center justify-content-center ${className}`}
       onClick={openCalendly}
     >
       <FaCalendarAlt className="me-2" /> {children || 'Book a Call'}
