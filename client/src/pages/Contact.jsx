@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Container, Row, Col, Form, Button, Alert, Spinner } from 'react-bootstrap';
-import { FaEnvelope, FaLinkedin, FaMapMarkerAlt, FaCircle, FaWhatsapp } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaMapMarkerAlt, FaCircle, FaWhatsapp, FaArrowRight } from 'react-icons/fa';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { api } from '../services/api';
 import BookCallButton from '../components/BookCallButton';
@@ -96,8 +96,18 @@ export default function Contact() {
           <div className="sidebar-box mb-4">
             <h5 className="sidebar-heading">Get in Touch</h5>
             <ul className="contact-info-list list-unstyled">
-              <li><FaEnvelope className="me-2 text-accent" /> <a href="mailto:vikrant.rathore.career@gmail.com">vikrant.rathore.career@gmail.com</a></li>
-              <li><FaLinkedin className="me-2 text-accent" /> <a href="https://www.linkedin.com/in/vikrantrathore/" target="_blank" rel="noreferrer">linkedin.com/in/vikrantrathore</a></li>
+              <li>
+                <FaEnvelope className="me-2 text-accent" />
+                <a href="mailto:vikrant.rathore.career@gmail.com" className="contact-link">
+                  vikrant.rathore.career@gmail.com <FaArrowRight className="contact-link-arrow" />
+                </a>
+              </li>
+              <li>
+                <FaLinkedin className="me-2 text-accent" />
+                <a href="https://www.linkedin.com/in/vikrantrathore/" target="_blank" rel="noreferrer" className="contact-link">
+                  linkedin.com/in/vikrantrathore <FaArrowRight className="contact-link-arrow" />
+                </a>
+              </li>
               <li><FaMapMarkerAlt className="me-2 text-accent" /> Remote — available worldwide</li>
             </ul>
             <div className="availability-badge">

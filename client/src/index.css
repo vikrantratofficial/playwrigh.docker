@@ -836,6 +836,29 @@ a {
 .contact-info-list li:last-child {
   border-bottom: none;
 }
+.contact-link {
+  color: var(--accent);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.contact-link:hover {
+  text-decoration: underline;
+}
+.contact-link-arrow {
+  font-size: 0.7em;
+  transition: transform 0.2s ease;
+}
+.contact-link:hover .contact-link-arrow {
+  transform: translateX(3px);
+}
+@media (max-width: 374.98px) {
+  .contact-link {
+    font-size: 0.9rem;
+  }
+}
 .availability-badge {
   display: inline-flex;
   align-items: center;
