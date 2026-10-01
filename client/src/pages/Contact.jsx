@@ -175,7 +175,7 @@ export default function Contact() {
               </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group className="mb-4" controlId="contactMessage">
+            <Form.Group className="message-field-group" controlId="contactMessage">
               <Form.Label>Message <span className="text-danger">*</span></Form.Label>
               <Form.Control
                 as="textarea"

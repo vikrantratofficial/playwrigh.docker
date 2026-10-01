@@ -884,6 +884,12 @@ a {
   font-size: clamp(0.75rem, 2.2vw, 0.85rem);
   font-family: var(--font-mono);
 }
+.message-field-group {
+  margin-bottom: clamp(0.85rem, 2.5vw, 1.25rem);
+}
+.recaptcha-wrapper {
+  margin-top: 0;
+}
 
 .recaptcha-wrapper {
   max-width: 100%;
