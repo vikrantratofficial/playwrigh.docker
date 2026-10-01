@@ -1009,6 +1009,9 @@ a {
 .sample-reports-section {
   padding: clamp(2.5rem, 6vw, 4rem) 0;
 }
+.section + .sample-reports-section {
+  padding-top: 0;
+}
 .sample-reports-title {
   font-size: clamp(1.6rem, 5vw, 2.3rem);
   font-weight: 800;
