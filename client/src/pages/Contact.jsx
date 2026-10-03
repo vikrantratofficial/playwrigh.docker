@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Container, Row, Col, Form, Button, Alert, Spinner } from 'react-bootstrap';
-import { FaEnvelope, FaLinkedin, FaMapMarkerAlt, FaCircle, FaWhatsapp, FaArrowRight } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaMapMarkerAlt, FaCircle, FaWhatsapp, FaExternalLinkAlt } from 'react-icons/fa';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { api } from '../services/api';
 import BookCallButton from '../components/BookCallButton';
@@ -99,13 +99,13 @@ export default function Contact() {
               <li>
                 <FaEnvelope className="me-2 text-accent" />
                 <a href="mailto:vikrant.rathore.career@gmail.com" className="contact-link">
-                  vikrant.rathore.career@gmail.com <FaArrowRight className="contact-link-arrow" />
+                  vikrant.rathore.career@gmail.com <FaExternalLinkAlt className="contact-link-arrow" />
                 </a>
               </li>
               <li>
                 <FaLinkedin className="me-2 text-accent" />
                 <a href="https://www.linkedin.com/in/vikrantrathore/" target="_blank" rel="noreferrer" className="contact-link">
-                  linkedin.com/in/vikrantrathore <FaArrowRight className="contact-link-arrow" />
+                  linkedin.com/in/vikrantrathore <FaExternalLinkAlt className="contact-link-arrow" />
                 </a>
               </li>
               <li><FaMapMarkerAlt className="me-2 text-accent" /> Remote — available worldwide</li>
