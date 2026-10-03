@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaTelegram } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function Footer() {
@@ -35,6 +35,7 @@ export default function Footer() {
               <a href="mailto:vikrant.rathore.career@gmail.com" aria-label="Email"><FaEnvelope /></a>
               <a href="https://www.linkedin.com/in/vikrantrathore/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
               <a href="https://github.com/vikrantratofficial" target="_blank" rel="noreferrer" aria-label="GitHub"><FaGithub /></a>
+              <a href="https://t.me/vikrantrathore07" target="_blank" rel="noreferrer" aria-label="Telegram"><FaTelegram /></a>
             </div>
           </Col>
         </Row>
