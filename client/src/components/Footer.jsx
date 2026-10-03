@@ -34,7 +34,7 @@ export default function Footer() {
             <div className="d-flex gap-3 footer-social">
               <a href="mailto:vikrant.rathore.career@gmail.com" aria-label="Email"><FaEnvelope /></a>
               <a href="https://www.linkedin.com/in/vikrantrathore/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
-              <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub"><FaGithub /></a>
+              <a href="https://github.com/vikrantratofficial" target="_blank" rel="noreferrer" aria-label="GitHub"><FaGithub /></a>
             </div>
           </Col>
         </Row>
