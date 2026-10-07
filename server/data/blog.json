@@ -1,0 +1,72 @@
+[
+  {
+    "id": "seo-in-2026-what-moves-rankings",
+    "title": "SEO in 2026: What Actually Moves Rankings Now",
+    "excerpt": "Keyword stuffing died years ago — here's what's actually driving organic growth for sites that rank today.",
+    "date": "2026-09-05",
+    "tags": [
+      "SEO",
+      "Content Strategy",
+      "Analytics"
+    ],
+    "content": "Most sites still chase outdated SEO tactics — thin content stuffed with exact-match keywords, link farms, and meta tag tricks — while wondering why rankings stall. In 2026, the sites that rank consistently are the ones that solve search intent completely on a single page, load fast on mobile, and build genuine topical authority through content clusters rather than isolated posts. This post walks through five checks any SEO audit should run this quarter: search intent alignment, Core Web Vitals, internal linking structure, E-E-A-T signals, and content freshness — the fundamentals that actually move the needle."
+  },
+  {
+    "id": "google-ads-vs-meta-ads-2026",
+    "title": "Google Ads vs Meta Ads: Where Should Your Budget Go in 2026?",
+    "excerpt": "A practical comparison based on real client campaigns — intent, creative fatigue, and which platform wins for which funnel stage.",
+    "date": "2026-08-12",
+    "tags": [
+      "Google Ads",
+      "Meta Ads",
+      "Paid Media"
+    ],
+    "content": "After running both platforms across multiple client accounts, the honest answer is 'it depends on funnel stage, not platform loyalty.' Google Ads consistently wins for high-intent, bottom-of-funnel traffic — people actively searching for a solution. Meta Ads wins for top-of-funnel awareness and retargeting, where visual storytelling and audience targeting outperform keyword matching. For most budgets, a 60/40 split favoring whichever platform matches your current funnel gap is the default recommendation, adjusted after the first month of real performance data."
+  },
+  {
+    "id": "email-marketing-flow-that-converts",
+    "title": "Building an Email Marketing Flow That Converts",
+    "excerpt": "How to structure welcome series, abandoned cart, and win-back flows so they actually drive revenue, not just opens.",
+    "date": "2026-07-03",
+    "tags": [
+      "Email Marketing",
+      "Automation",
+      "Best Practices"
+    ],
+    "content": "One of the most common reasons email programs underperform is treating every flow like a newsletter — generic, un-personalized, and poorly timed. This post covers a layered approach: behavior-triggered sends instead of calendar-based blasts, segmentation by purchase recency and engagement instead of one-size-fits-all lists, and a testing cadence that iterates on subject lines and send times based on real open-rate data rather than guesswork."
+  },
+  {
+    "id": "content-marketing-mistakes-killing-growth",
+    "title": "Content Marketing Mistakes That Kill Organic Growth",
+    "excerpt": "The five most common reasons company blogs generate traffic but no leads, and how to fix each one.",
+    "date": "2026-05-20",
+    "tags": [
+      "Content Marketing",
+      "SEO"
+    ],
+    "content": "Content marketing failures are rarely about writing quality — they usually trace back to one of five causes: publishing without keyword research, no clear call-to-action on high-traffic pages, content that answers the wrong search intent, zero internal linking strategy, or abandoning topics before building topical authority. This checklist walks through diagnosing each with concrete examples from real content audits."
+  },
+  {
+    "id": "practical-guide-to-cro",
+    "title": "A Practical Guide to Conversion Rate Optimization",
+    "excerpt": "How to design realistic A/B tests, read funnel data, and turn CRO experiments into actual revenue gains.",
+    "date": "2026-08-28",
+    "tags": [
+      "CRO",
+      "A/B Testing",
+      "Analytics"
+    ],
+    "content": "CRO often gets treated as a one-off project instead of an ongoing practice, which is why most teams never see compounding gains. This post covers a practical CRO workflow: identifying the highest-drop-off step in your funnel before testing anything else, running one meaningful variable per test instead of redesigning entire pages, and reading beyond conversion rate into statistical significance and sample size to avoid false positives. It also walks through using session recordings and heatmaps to generate test hypotheses instead of guessing, and reporting results in terms stakeholders actually care about: revenue impact, not just percentage lift."
+  },
+  {
+    "id": "ga4-setup-the-right-way",
+    "title": "Marketing Analytics: Setting Up GA4 the Right Way",
+    "excerpt": "Why checking pageviews isn't enough, and what a properly configured GA4 setup actually tracks.",
+    "date": "2026-03-15",
+    "tags": [
+      "GA4",
+      "Analytics"
+    ],
+    "content": "A pageview count tells you almost nothing about marketing performance. This post breaks down the four layers a properly configured GA4 setup should cover: event tracking for every meaningful user action, conversion tracking tied to actual revenue, attribution modeling across multiple touchpoints, and audience segments that feed back into ad platforms — with examples using Google Tag Manager, server-side tagging, and cross-domain tracking."
+  }
+]

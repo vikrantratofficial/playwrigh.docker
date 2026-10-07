@@ -1,0 +1,290 @@
+[
+  {
+    "id": "ecommerce-seo-growth",
+    "title": "E-Commerce SEO & Organic Growth Campaign",
+    "summary": "Technical SEO overhaul and content strategy that grew organic traffic for a multi-category online retailer.",
+    "category": "SEO",
+    "tags": [
+      "SEO",
+      "Content Strategy",
+      "Analytics"
+    ],
+    "role": "SEO Strategist",
+    "duration": "4 months",
+    "client": "Retail E-Commerce Brand (NDA)",
+    "cover": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
+    "overview": "The client's product pages ranked poorly against competitors despite a larger catalog. Site speed issues, thin category content, and a messy internal linking structure were quietly capping organic growth.",
+    "approach": [
+      "Ran a full technical SEO audit covering crawlability, Core Web Vitals, and duplicate content across 400+ product pages.",
+      "Rebuilt category page templates with unique, keyword-researched content and improved internal linking.",
+      "Fixed site speed issues (image compression, lazy loading) that were hurting mobile Core Web Vitals scores.",
+      "Built a content calendar targeting mid-funnel keywords to capture buyers earlier in the research phase."
+    ],
+    "findings": [
+      "Found 120+ product pages with duplicate meta descriptions, diluting ranking signals across the catalog.",
+      "Identified a crawl budget issue where bots were spending 40% of their time on filtered/faceted URLs.",
+      "Mobile page speed was costing an estimated 15% of potential organic conversions before fixes."
+    ],
+    "stack": [
+      "Google Search Console",
+      "SEMrush",
+      "Ahrefs",
+      "GA4",
+      "Screaming Frog"
+    ],
+    "metrics": [
+      {
+        "label": "Organic traffic",
+        "value": "+68% in 4 months"
+      },
+      {
+        "label": "Keywords in top 10",
+        "value": "14 → 52"
+      },
+      {
+        "label": "Page load time",
+        "value": "4.1s → 1.8s"
+      }
+    ]
+  },
+  {
+    "id": "google-meta-ads-saas",
+    "title": "Google & Meta Ads Management for SaaS Startup",
+    "summary": "Full-funnel paid acquisition strategy balancing Google Search, Display, and Meta retargeting for a B2B SaaS product.",
+    "category": "Paid Ads",
+    "tags": [
+      "Google Ads",
+      "Meta Ads",
+      "CRO"
+    ],
+    "role": "Paid Media Consultant",
+    "duration": "3 months",
+    "client": "B2B SaaS Startup",
+    "cover": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    "overview": "A fast-growing SaaS startup was spending heavily on broad-match Google Ads with no retargeting strategy, resulting in high CAC and low trial-to-paid conversion visibility.",
+    "approach": [
+      "Restructured Google Ads campaigns into tightly themed ad groups with negative keyword lists to cut wasted spend.",
+      "Launched Meta retargeting campaigns targeting site visitors and trial sign-ups who hadn't converted.",
+      "Built conversion tracking in GA4 and Google Ads to tie ad spend directly to trial-to-paid conversions.",
+      "Ran structured A/B tests on ad creative and landing pages to improve click-through and conversion rates."
+    ],
+    "findings": [
+      "Discovered 35% of ad spend was going to broad-match searches unrelated to the product's actual use case.",
+      "Found trial sign-ups from Meta retargeting converted to paid at 2.3x the rate of cold traffic.",
+      "Identified a landing page form with 6 fields causing a 40% drop-off versus a shorter 3-field version."
+    ],
+    "stack": [
+      "Google Ads",
+      "Meta Ads Manager",
+      "GA4",
+      "Google Tag Manager",
+      "Unbounce"
+    ],
+    "metrics": [
+      {
+        "label": "Cost per acquisition",
+        "value": "$142 → $68"
+      },
+      {
+        "label": "ROAS",
+        "value": "2.1x → 4.6x"
+      },
+      {
+        "label": "Trial-to-paid conversion",
+        "value": "+31%"
+      }
+    ]
+  },
+  {
+    "id": "social-media-d2c-growth",
+    "title": "Social Media Growth Strategy for D2C Brand",
+    "summary": "Organic content strategy and community management program that grew a direct-to-consumer brand's social following and engagement.",
+    "category": "Social Media",
+    "tags": [
+      "Social Media",
+      "Content Strategy",
+      "Community Management"
+    ],
+    "role": "Social Media Strategist",
+    "duration": "5 months",
+    "client": "D2C Lifestyle Brand",
+    "cover": "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=800&q=80",
+    "overview": "A growing D2C brand had inconsistent posting, no content pillars, and flat engagement despite steady follower growth — the account looked active but wasn't driving traffic or sales.",
+    "approach": [
+      "Developed content pillars aligned with brand voice and audience interests, replacing ad hoc posting.",
+      "Built a 90-day content calendar across Instagram, TikTok and Pinterest with a consistent posting cadence.",
+      "Introduced a community management workflow for responding to comments and DMs within set SLAs.",
+      "Ran monthly content audits using platform analytics to double down on top-performing formats."
+    ],
+    "findings": [
+      "Identified short-form video content outperformed static posts by 4x on engagement rate.",
+      "Found inconsistent posting times were suppressing reach during the brand's highest-traffic hours.",
+      "Surfaced that user-generated content drove higher save/share rates than branded product shots."
+    ],
+    "stack": [
+      "Meta Business Suite",
+      "Later",
+      "Canva",
+      "TikTok Ads Manager",
+      "GA4"
+    ],
+    "metrics": [
+      {
+        "label": "Engagement rate",
+        "value": "1.2% → 5.4%"
+      },
+      {
+        "label": "Follower growth",
+        "value": "+22K in 5 months"
+      },
+      {
+        "label": "Social-attributed sales",
+        "value": "+40%"
+      }
+    ]
+  },
+  {
+    "id": "email-marketing-automation-dashboard",
+    "title": "Email Marketing Automation & ROI Dashboard",
+    "summary": "A Klaviyo automation build-out paired with a reporting pipeline that turns campaign data into stakeholder-ready dashboards.",
+    "category": "Email Marketing",
+    "tags": [
+      "Email Marketing",
+      "Automation",
+      "Reporting"
+    ],
+    "role": "Email Marketing Specialist",
+    "duration": "6 weeks",
+    "client": "E-Commerce Subscription Brand",
+    "cover": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
+    "overview": "Stakeholders wanted a clear weekly view of email performance, but the team was manually pulling numbers from Klaviyo into spreadsheets every Friday — taking hours and prone to copy-paste errors.",
+    "approach": [
+      "Built core Klaviyo flows: welcome series, abandoned cart, post-purchase, and win-back campaigns.",
+      "Set up list segmentation based on purchase behavior and engagement recency for targeted sends.",
+      "Built a Looker Studio dashboard pulling Klaviyo and Shopify data automatically, replacing manual exports.",
+      "Added a 'campaign health' color legend (Green/Amber/Red) tied to open rate, click rate, and revenue per send."
+    ],
+    "findings": [
+      "Eliminated 3+ hours of manual reporting work per week for the marketing team.",
+      "Surfaced that the abandoned cart flow was driving 18% of total email revenue with minimal effort.",
+      "Standardized how 'campaign health' was communicated to non-technical stakeholders."
+    ],
+    "stack": [
+      "Klaviyo",
+      "Shopify",
+      "Looker Studio",
+      "Google Sheets",
+      "Zapier"
+    ],
+    "metrics": [
+      {
+        "label": "Manual effort saved",
+        "value": "3+ hrs/week"
+      },
+      {
+        "label": "Email-attributed revenue",
+        "value": "+27%"
+      },
+      {
+        "label": "Flows automated",
+        "value": "6"
+      }
+    ]
+  },
+  {
+    "id": "content-marketing-blog-strategy",
+    "title": "Content Marketing & SEO Blog Strategy",
+    "summary": "An editorial content system that turned a dormant company blog into a consistent lead-generation channel.",
+    "category": "Content Marketing",
+    "tags": [
+      "Content Marketing",
+      "SEO",
+      "Copywriting"
+    ],
+    "role": "Content Marketing Lead",
+    "duration": "6 months",
+    "client": "B2B Software Company",
+    "cover": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
+    "overview": "The client's blog had published sporadically for years with no keyword strategy, generating almost no organic traffic or leads despite a backlog of decent-quality articles.",
+    "approach": [
+      "Audited existing content and identified which posts to refresh, consolidate, or retire based on search intent and traffic potential.",
+      "Built a keyword-mapped content calendar targeting buyer-intent and informational search terms.",
+      "Produced long-form guides with embedded lead magnets (templates, checklists) to capture email sign-ups.",
+      "Set up internal linking and content clusters around pillar pages to strengthen topical authority."
+    ],
+    "findings": [
+      "Found 60% of existing posts had no target keyword at all, explaining the flat traffic.",
+      "Identified three high-intent topics competitors weren't covering well, creating a quick-win opportunity.",
+      "Refreshing five outdated posts recovered more traffic in month one than publishing five new ones."
+    ],
+    "stack": [
+      "Ahrefs",
+      "SurferSEO",
+      "WordPress",
+      "HubSpot",
+      "GA4"
+    ],
+    "metrics": [
+      {
+        "label": "Organic blog traffic",
+        "value": "+145% in 6 months"
+      },
+      {
+        "label": "Leads from content",
+        "value": "0 → 180/month"
+      },
+      {
+        "label": "Articles ranking top 10",
+        "value": "22"
+      }
+    ]
+  },
+  {
+    "id": "cro-analytics-funnel-optimization",
+    "title": "Analytics & Conversion Funnel Optimization",
+    "summary": "A GA4 and conversion-tracking overhaul paired with structured A/B testing to lift conversion rate across the purchase funnel.",
+    "category": "Analytics & CRO",
+    "tags": [
+      "GA4",
+      "CRO",
+      "A/B Testing"
+    ],
+    "role": "CRO & Analytics Consultant",
+    "duration": "8 weeks",
+    "client": "Online Marketplace Platform",
+    "cover": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    "overview": "The client had migrated to GA4 but tracking was incomplete, so the team was making funnel decisions on incomplete data and hadn't run a structured experiment in over a year.",
+    "approach": [
+      "Rebuilt GA4 event tracking and Google Tag Manager setup to capture the full purchase funnel accurately.",
+      "Used Hotjar session recordings and heatmaps to identify friction points in the checkout flow.",
+      "Ran a prioritized A/B testing roadmap targeting the highest-drop-off steps first.",
+      "Built a funnel dashboard giving stakeholders real-time visibility into conversion rate by step."
+    ],
+    "findings": [
+      "Found 30% of 'add to cart' events were never firing correctly, undercounting true funnel volume.",
+      "Identified the shipping cost reveal step as the single largest drop-off point in the funnel.",
+      "A single-page checkout variant outperformed the multi-step original by 23% in conversion rate."
+    ],
+    "stack": [
+      "GA4",
+      "Google Tag Manager",
+      "Hotjar",
+      "Google Optimize",
+      "Looker Studio"
+    ],
+    "metrics": [
+      {
+        "label": "Checkout conversion rate",
+        "value": "+23%"
+      },
+      {
+        "label": "Tracking accuracy",
+        "value": "70% → 99%"
+      },
+      {
+        "label": "A/B tests run",
+        "value": "9"
+      }
+    ]
+  }
+]

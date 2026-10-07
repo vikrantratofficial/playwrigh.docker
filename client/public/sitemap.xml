@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://yoursite.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://yoursite.com/projects</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://yoursite.com/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yoursite.com/services</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://yoursite.com/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://yoursite.com/contact</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <url><loc>https://yoursite.com/projects/ecommerce-checkout-automation</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://yoursite.com/projects/rest-api-contract-testing</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://yoursite.com/projects/ci-cd-quality-gates</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://yoursite.com/projects/excel-test-reporting-dashboard</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <url><loc>https://yoursite.com/blog/security-testing-for-qa-engineers</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://yoursite.com/blog/playwright-vs-selenium-2026</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://yoursite.com/blog/designing-test-data-strategy</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://yoursite.com/blog/ci-cd-flaky-tests</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://yoursite.com/blog/api-testing-beyond-status-codes</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+</urlset>
