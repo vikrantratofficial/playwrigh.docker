@@ -1,15 +1,78 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Button, Spinner } from 'react-bootstrap';
-import { FaArrowRight, FaCheckCircle, FaFolderOpen, FaChartLine, FaTools, FaUsers } from 'react-icons/fa';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import {
+  FaArrowRight,
+  FaCheckCircle,
+  FaFolderOpen,
+  FaChartLine,
+  FaTools,
+  FaUsers,
+  FaGoogle,
+  FaFacebook,
+  FaSearchDollar,
+  FaMailBulk,
+  FaHashtag,
+  FaChartBar,
+  FaSearch,
+  FaBullhorn,
+  FaPenNib,
+  FaEnvelopeOpenText,
+  FaQuoteLeft,
+  FaStar,
+} from 'react-icons/fa';
 import TerminalPreview from '../components/TerminalPreview';
 import StatCard from '../components/StatCard';
 import ProjectCard from '../components/ProjectCard';
 import BookCallButton from '../components/BookCallButton';
-import SampleReports from '../components/SampleReports';
 import Seo, { SITE_URL } from '../components/Seo';
+
+const ResultsCharts = lazy(() => import('../components/ResultsCharts'));
 import { useLanguage } from '../context/LanguageContext';
-import { api } from '../services/api';
+import { FEATURED_PROJECTS } from '../data/featuredProjects';
+
+const MARKETING_TOOLS = [
+  { icon: <FaGoogle />, name: 'Google Ads' },
+  { icon: <FaFacebook />, name: 'Meta Ads Manager' },
+  { icon: <FaSearchDollar />, name: 'SEMrush & Ahrefs' },
+  { icon: <FaChartBar />, name: 'Google Analytics 4' },
+  { icon: <FaMailBulk />, name: 'Klaviyo / Mailchimp' },
+  { icon: <FaHashtag />, name: 'Meta Business Suite' },
+];
+
+const CORE_SERVICES = [
+  { icon: <FaSearch />, title: 'SEO Optimization', scope: 'Technical audits, on-page fixes, and keyword strategy that grow organic traffic.' },
+  { icon: <FaBullhorn />, title: 'Paid Ads Management', scope: 'Google & Meta Ads campaigns built and optimized for ROAS, not just clicks.' },
+  { icon: <FaPenNib />, title: 'Content Marketing', scope: 'SEO-driven blog and landing page content that turns readers into leads.' },
+  { icon: <FaEnvelopeOpenText />, title: 'Email Automation', scope: 'Klaviyo/Mailchimp flows that keep selling after the campaign ends.' },
+];
+
+const TESTIMONIALS = [
+  {
+    quote: "Our organic traffic finally started compounding instead of flatlining. The technical fixes alone paid for the engagement in the first month.",
+    name: 'Marketing Lead',
+    company: 'E-Commerce Retailer (NDA)',
+  },
+  {
+    quote: "Cost per lead dropped by more than half within two months, and we finally had a dashboard the whole team actually trusted.",
+    name: 'Founder',
+    company: 'B2B SaaS Startup (NDA)',
+  },
+  {
+    quote: "Posting finally felt intentional instead of reactive. Engagement tripled and it started showing up in real sales conversations.",
+    name: 'Brand Manager',
+    company: 'D2C Lifestyle Brand (NDA)',
+  },
+];
+
+const INDUSTRIES = [
+  'E-Commerce & Retail',
+  'B2B SaaS',
+  'D2C & Lifestyle Brands',
+  'Subscription & Retention',
+  'Local Service Businesses',
+  'Online Marketplaces',
+];
 
 const JSON_LD = {
   '@context': 'https://schema.org',
@@ -35,17 +98,6 @@ const JSON_LD = {
 
 export default function Home() {
   const { t } = useLanguage();
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    api
-      .getProjects()
-      .then((data) => setProjects(data.slice(0, 3)))
-      .catch(() => setError('Could not load featured projects right now.'))
-      .finally(() => setLoading(false));
-  }, []);
 
   return (
     <>
@@ -100,27 +152,59 @@ export default function Home() {
         </Container>
       </section>
 
+      <Suspense fallback={<div className="chart-section-fallback" />}>
+        <ResultsCharts />
+      </Suspense>
+
+      <section className="section approach-section">
+        <Container>
+          <Row className="justify-content-center">
+            <Col lg={9}>
+              <div className="section-heading text-center">
+                <h2>A Different Kind of Marketing Partner</h2>
+              </div>
+              <p className="approach-paragraph">
+                Most marketing engagements start with a deck full of promises and end with a spreadsheet nobody
+                reads. I work differently — every campaign starts with a clear baseline, a documented hypothesis,
+                and one number we're trying to move, whether that's cost per lead, email-attributed revenue, or
+                organic sessions from a specific buyer segment.
+              </p>
+              <p className="approach-paragraph">
+                Whether you're a founder running your first paid campaign or a marketing lead tired of agencies
+                that disappear after the kickoff call, the work here is built to stay transparent: you'll always
+                know what's being tested, what it's costing, and what it's actually returning.
+              </p>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      <section className="section industries-marquee-section">
+        <Container>
+          <p className="industries-label">Trusted across industries</p>
+        </Container>
+        <div className="marquee">
+          <div className="marquee-track">
+            {[...INDUSTRIES, ...INDUSTRIES].map((industry, idx) => (
+              <span className="marquee-item" key={`${industry}-${idx}`}>{industry}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section">
         <Container>
           <div className="section-heading">
             <h2>Featured Projects</h2>
             <p className="text-muted">A snapshot of recent growth marketing engagements.</p>
           </div>
-          {loading && (
-            <div className="text-center py-5">
-              <Spinner animation="border" variant="light" />
-            </div>
-          )}
-          {error && <p className="text-danger text-center">{error}</p>}
-          {!loading && !error && (
-            <Row className="g-4">
-              {projects.map((project) => (
-                <Col md={6} lg={4} key={project.id}>
-                  <ProjectCard project={project} />
-                </Col>
-              ))}
-            </Row>
-          )}
+          <Row className="g-4">
+            {FEATURED_PROJECTS.map((project) => (
+              <Col md={6} lg={4} key={project.id}>
+                <ProjectCard project={project} />
+              </Col>
+            ))}
+          </Row>
           <div className="text-center mt-5">
             <Button as={Link} to="/projects" variant="outline-light">
               View All Projects <FaArrowRight className="ms-2" />
@@ -129,7 +213,75 @@ export default function Home() {
         </Container>
       </section>
 
-      <SampleReports />
+      <section className="section">
+        <Container>
+          <div className="section-heading">
+            <h2>What I Can Do for You</h2>
+            <p className="text-muted">Core services, scoped clearly so you know exactly what you're getting.</p>
+          </div>
+          <Row className="g-4">
+            {CORE_SERVICES.map((service) => (
+              <Col sm={6} lg={3} key={service.title}>
+                <div className="service-card h-100">
+                  <div className="service-icon">{service.icon}</div>
+                  <h5>{service.title}</h5>
+                  <p className="text-muted small mb-0">{service.scope}</p>
+                </div>
+              </Col>
+            ))}
+          </Row>
+          <div className="text-center mt-5">
+            <Button as={Link} to="/services" variant="outline-light">
+              See All Services & Pricing <FaArrowRight className="ms-2" />
+            </Button>
+          </div>
+        </Container>
+      </section>
+
+      <section className="section">
+        <Container>
+          <div className="section-heading">
+            <h2>Tools & Platforms I Work In</h2>
+            <p className="text-muted">The same stack real marketing teams use to plan, run, and report on campaigns.</p>
+          </div>
+          <Row className="g-4">
+            {MARKETING_TOOLS.map((tool) => (
+              <Col xs={6} md={4} lg={2} key={tool.name}>
+                <div className="tool-chip h-100">
+                  <div className="service-icon mb-2">{tool.icon}</div>
+                  <div className="tool-chip-name">{tool.name}</div>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </section>
+
+      <section className="section">
+        <Container>
+          <div className="section-heading">
+            <h2>What Clients Say</h2>
+            <p className="text-muted">Feedback from recent engagements — names withheld per NDA, impact isn't.</p>
+          </div>
+          <Row className="g-4">
+            {TESTIMONIALS.map((t) => (
+              <Col md={6} lg={4} key={t.name + t.company}>
+                <div className="testimonial-card h-100">
+                  <FaQuoteLeft className="testimonial-quote-icon" />
+                  <div className="testimonial-stars mb-2">
+                    {Array.from({ length: 5 }).map((_, i) => <FaStar key={i} />)}
+                  </div>
+                  <p className="testimonial-text">{t.quote}</p>
+                  <div className="testimonial-author">
+                    <strong>{t.name}</strong>
+                    <span className="text-muted d-block small">{t.company}</span>
+                  </div>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </section>
 
       <section className="cta-banner">
         <Container>

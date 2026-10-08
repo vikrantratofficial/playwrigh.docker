@@ -1,35 +1,14 @@
-import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Container, Badge, Spinner, Breadcrumb, Button } from 'react-bootstrap';
+import { Container, Badge, Breadcrumb, Button } from 'react-bootstrap';
 import { FaRegCalendarAlt } from 'react-icons/fa';
 import Seo, { SITE_URL } from '../components/Seo';
-import { api } from '../services/api';
+import POSTS from '../data/blog.json';
 
 export default function BlogPost() {
   const { id } = useParams();
-  const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const post = POSTS.find((p) => p.id === id);
 
-  useEffect(() => {
-    setLoading(true);
-    setError('');
-    api
-      .getBlogPost(id)
-      .then(setPost)
-      .catch(() => setError('Article not found.'))
-      .finally(() => setLoading(false));
-  }, [id]);
-
-  if (loading) {
-    return (
-      <Container className="page-section text-center">
-        <Spinner animation="border" variant="light" />
-      </Container>
-    );
-  }
-
-  if (error || !post) {
+  if (!post) {
     return (
       <Container className="page-section text-center">
         <h2>Article not found</h2>
@@ -40,13 +19,25 @@ export default function BlogPost() {
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.excerpt,
-    datePublished: post.date,
-    author: { '@type': 'Person', name: 'Vikrant Singh Rathore' },
-    url: `${SITE_URL}/blog/${post.id}`,
-    keywords: post.tags?.join(', '),
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.excerpt,
+        datePublished: post.date,
+        author: { '@type': 'Person', name: 'Vikrant Rathore' },
+        url: `${SITE_URL}/blog/${post.id}`,
+        keywords: post.tags?.join(', '),
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog` },
+          { '@type': 'ListItem', position: 3, name: post.title, item: `${SITE_URL}/blog/${post.id}` },
+        ],
+      },
+    ],
   };
 
   return (

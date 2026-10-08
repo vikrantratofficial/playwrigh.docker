@@ -1,7 +1,18 @@
 import { Container, Row, Col, Badge, Button } from 'react-bootstrap';
 import { FaCheckCircle, FaDownload } from 'react-icons/fa';
 import Certifications from '../components/Certifications';
-import Seo from '../components/Seo';
+import Seo, { SITE_URL } from '../components/Seo';
+
+const PERSON_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Vikrant Rathore',
+  jobTitle: 'Digital Marketing Strategist',
+  url: `${SITE_URL}/about`,
+  image: `${SITE_URL}/images/profile.jpg`,
+  sameAs: ['https://www.linkedin.com/in/vikrantrathore/'],
+  knowsAbout: ['SEO', 'Google Ads', 'Meta Ads', 'Email Marketing', 'Content Marketing', 'Conversion Rate Optimization'],
+};
 
 const SKILLS = {
   'SEO & Content': ['Technical SEO', 'On-Page SEO', 'Keyword Research', 'Content Strategy', 'Copywriting', 'Link Building'],
@@ -25,12 +36,13 @@ export default function About() {
         title="About Vikrant Rathore — Digital Marketing Strategist"
         description="Digital Marketing Strategist with expertise in SEO, Google & Meta Ads, email automation, and conversion rate optimization. Trusted by clients worldwide."
         path="/about"
+        jsonLd={PERSON_JSON_LD}
       />
       <Row className="align-items-center gy-5 mb-5">
         <Col lg={4} className="text-center">
           <img
             src="/images/profile.jpg?v=2"
-            alt="Profile"
+            alt="Vikrant Rathore — Digital Marketing Strategist"
             className="about-photo"
           />
         </Col>

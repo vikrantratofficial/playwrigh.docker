@@ -444,6 +444,158 @@ a {
   font-size: clamp(1.6rem, 5vw, 2.5rem);
 }
 
+/* ---------- Approach paragraphs (Home) ---------- */
+.approach-section {
+  padding-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+.approach-paragraph {
+  color: var(--text-muted);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.75;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.approach-paragraph:last-of-type {
+  margin-bottom: 0;
+}
+
+/* ---------- Industries marquee (Home) ---------- */
+.industries-marquee-section {
+  padding-top: clamp(1rem, 2vw, 1.5rem);
+  padding-bottom: 0.5rem;
+}
+.industries-label {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+.marquee {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  animation: marquee-scroll 28s linear infinite;
+}
+.marquee-item {
+  flex-shrink: 0;
+  white-space: nowrap;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ---------- Results charts (Home) ---------- */
+.chart-section-fallback {
+  min-height: 420px;
+}
+.chart-card {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: clamp(1.1rem, 3vw, 1.5rem);
+  transition: border-color 0.2s ease;
+}
+.chart-card:hover {
+  border-color: var(--accent);
+}
+.chart-card h5 {
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+.chart-card-sub {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-bottom: 0.75rem;
+}
+.chart-card-insight {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin: 0.75rem 0 0;
+  text-align: center;
+}
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 0.9rem;
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.chart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+.chart-legend-item strong {
+  color: var(--text-primary);
+}
+.chart-legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ---------- Testimonials (Home) ---------- */
+.testimonial-card {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease;
+}
+.testimonial-card:hover {
+  border-color: var(--accent);
+}
+.testimonial-quote-icon {
+  color: var(--accent);
+  opacity: 0.5;
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+.testimonial-stars {
+  color: var(--warning);
+  display: flex;
+  gap: 0.2rem;
+  font-size: 0.85rem;
+}
+.testimonial-text {
+  color: var(--text-primary);
+  font-style: italic;
+  flex-grow: 1;
+  margin-bottom: 1.25rem;
+}
+.testimonial-author strong {
+  color: var(--text-primary);
+}
+
 /* ---------- Project Cards ---------- */
 .project-card {
   background-color: var(--bg-elevated);
@@ -782,6 +934,27 @@ a {
   font-weight: 700;
   color: var(--accent);
   margin-top: 1rem;
+}
+.tool-chip {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem 0.75rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.tool-chip:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.tool-chip-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 .process-step {
   text-align: center;

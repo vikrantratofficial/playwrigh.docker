@@ -4,8 +4,10 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Growth.pro | Freelance Digital Marketing Strategist</title>
-    <meta name="description" content="Freelance Digital Marketing Strategist specializing in SEO, Google & Meta Ads, content marketing, and conversion rate optimization." />
+    <!-- Every route sets its own <title>/<meta description> via the Seo component (react-helmet-async).
+         react-helmet-async appends rather than replaces plain HTML tags, so a static title/description
+         here would render as a duplicate alongside it and confuse search engines — keep this head lean. -->
+    <meta name="theme-color" content="#10b981" />
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
     <script>
       (function () {

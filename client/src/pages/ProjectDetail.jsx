@@ -1,43 +1,18 @@
-import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Container, Row, Col, Badge, Spinner, Breadcrumb, Button } from 'react-bootstrap';
+import { Container, Row, Col, Badge, Breadcrumb, Button } from 'react-bootstrap';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Seo, { SITE_URL } from '../components/Seo';
-import { api } from '../services/api';
+import PROJECTS from '../data/projects.json';
 
 export default function ProjectDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [project, setProject] = useState(null);
-  const [allProjects, setAllProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const project = PROJECTS.find((p) => p.id === id);
 
-  useEffect(() => {
-    setLoading(true);
-    setError('');
-    Promise.all([api.getProject(id), api.getProjects()])
-      .then(([projectData, allData]) => {
-        setProject(projectData);
-        setAllProjects(allData);
-      })
-      .catch(() => setError('Project not found.'))
-      .finally(() => setLoading(false));
-  }, [id]);
-
-  if (loading) {
-    return (
-      <Container className="page-section text-center">
-        <Spinner animation="border" variant="light" />
-      </Container>
-    );
-  }
-
-  if (error || !project) {
+  if (!project) {
     return (
       <Container className="page-section text-center">
         <h2>Project not found</h2>
-        <p className="text-muted">{error}</p>
         <Button variant="accent" onClick={() => navigate('/projects')}>
           Back to Projects
         </Button>
@@ -45,9 +20,9 @@ export default function ProjectDetail() {
     );
   }
 
-  const currentIndex = allProjects.findIndex((p) => p.id === id);
-  const prevProject = currentIndex > 0 ? allProjects[currentIndex - 1] : null;
-  const nextProject = currentIndex >= 0 && currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null;
+  const currentIndex = PROJECTS.findIndex((p) => p.id === id);
+  const prevProject = currentIndex > 0 ? PROJECTS[currentIndex - 1] : null;
+  const nextProject = currentIndex >= 0 && currentIndex < PROJECTS.length - 1 ? PROJECTS[currentIndex + 1] : null;
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',

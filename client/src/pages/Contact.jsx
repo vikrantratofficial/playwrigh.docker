@@ -5,7 +5,14 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { api } from '../services/api';
 import BookCallButton from '../components/BookCallButton';
 import Faq from '../components/Faq';
-import Seo from '../components/Seo';
+import Seo, { SITE_URL } from '../components/Seo';
+
+const CONTACT_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  url: `${SITE_URL}/contact`,
+  about: { '@type': 'Person', name: 'Vikrant Rathore', jobTitle: 'Digital Marketing Strategist' },
+};
 
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
 const whatsappHref = WHATSAPP_NUMBER
@@ -85,6 +92,7 @@ export default function Contact() {
         title="Contact — Book a Free Digital Marketing Consultation Call Today"
         description="Get in touch for freelance SEO, paid ads, content marketing, and email automation services. Book a free call, WhatsApp, or send a message — replies within 24 hours, clients welcome worldwide."
         path="/contact"
+        jsonLd={CONTACT_JSON_LD}
       />
       <div className="section-heading">
         <h1>Contact</h1>

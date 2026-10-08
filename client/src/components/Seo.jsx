@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 
 const SITE_NAME = 'Growth.pro';
-const SITE_URL = 'https://yoursite.com'; // TODO: replace with your real production domain
+// TODO: once deployed, replace with your real Vercel/custom domain (used in canonical URLs, sitemap.xml and robots.txt)
+const SITE_URL = 'https://growthpro-portfolio.vercel.app';
 const DEFAULT_IMAGE = `${SITE_URL}/images/profile.jpg`;
 
 export default function Seo({

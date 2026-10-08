@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://yoursite.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://yoursite.com/projects</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://yoursite.com/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://yoursite.com/services</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://yoursite.com/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://yoursite.com/contact</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/services</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/projects</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/contact</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
 
-  <url><loc>https://yoursite.com/projects/ecommerce-checkout-automation</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://yoursite.com/projects/rest-api-contract-testing</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://yoursite.com/projects/ci-cd-quality-gates</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://yoursite.com/projects/excel-test-reporting-dashboard</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/projects/ecommerce-seo-growth</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/projects/google-meta-ads-saas</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/projects/social-media-d2c-growth</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/projects/email-marketing-automation-dashboard</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/projects/content-marketing-blog-strategy</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/projects/cro-analytics-funnel-optimization</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
-  <url><loc>https://yoursite.com/blog/security-testing-for-qa-engineers</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://yoursite.com/blog/playwright-vs-selenium-2026</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://yoursite.com/blog/designing-test-data-strategy</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://yoursite.com/blog/ci-cd-flaky-tests</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://yoursite.com/blog/api-testing-beyond-status-codes</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/blog/seo-in-2026-what-moves-rankings</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/blog/google-ads-vs-meta-ads-2026</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/blog/email-marketing-flow-that-converts</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/blog/content-marketing-mistakes-killing-growth</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/blog/practical-guide-to-cro</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://growthpro-portfolio.vercel.app/blog/ga4-setup-the-right-way</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>
