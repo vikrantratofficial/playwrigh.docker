@@ -1,6 +1,5 @@
 import { Container, Row, Col, Badge, Button } from 'react-bootstrap';
 import { FaCheckCircle, FaDownload } from 'react-icons/fa';
-import Certifications from '../components/Certifications';
 import Seo, { SITE_URL } from '../components/Seo';
 
 const PERSON_JSON_LD = {
@@ -88,8 +87,6 @@ export default function About() {
           ))}
         </Row>
       </section>
-
-      <Certifications />
 
       <section>
         <h2 className="mb-4">Campaign Health Convention</h2>
