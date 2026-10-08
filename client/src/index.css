@@ -82,7 +82,10 @@ html, body {
   color: var(--text-primary);
   font-family: var(--font-sans);
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  /* overflow-x: hidden here forces overflow-y to compute to "auto" per the CSS
+     overflow spec, which turns body into its own scroll container and breaks
+     `position: sticky` on the navbar. "clip" avoids that auto-promotion. */
+  overflow-x: clip;
   width: 100%;
 }
 
@@ -93,7 +96,6 @@ body {
 
 #root {
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
 img {
@@ -107,7 +109,10 @@ a {
 }
 
 .app-shell {
-  overflow-x: hidden;
+  /* Deliberately no overflow-x here: it would make this div (an ancestor of the
+     sticky header) its own scroll container per the CSS overflow spec, which
+     breaks `position: sticky` for the navbar. Horizontal clipping is already
+     handled by html/body below — that's the root scroller, so it's safe there. */
 }
 
 /* ---------- Scroll reveal (applied automatically to <section> and .page-section) ---------- */
@@ -510,6 +515,12 @@ a {
 .section {
   padding: clamp(3rem, 7vw, 5rem) 0;
 }
+/* Consecutive <section class="section"> blocks (Home page) would otherwise stack
+   one section's bottom padding on top of the next one's top padding, doubling the
+   gap between them. Collapse to a single section's worth of vertical rhythm. */
+.section + .section {
+  padding-top: 0;
+}
 .page-section {
   padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(3rem, 7vw, 5rem);
 }
@@ -551,8 +562,10 @@ a {
 
 /* ---------- Industries marquee (Home) ---------- */
 .industries-marquee-section {
-  padding-top: clamp(1rem, 2vw, 1.5rem);
-  padding-bottom: 0.5rem;
+  /* This is the full gap down to the next section now (its own top padding
+     collapses to 0 via ".section + .section"), so it needs real breathing
+     room here, not just a sliver under the marquee strip. */
+  padding-bottom: clamp(2.5rem, 6vw, 4rem);
 }
 .industries-label {
   text-align: center;
@@ -659,14 +672,16 @@ a {
   opacity: 0.6;
 }
 
-/* ---------- Shared gradient hover accent (cards across Home) ---------- */
+/* ---------- Shared gradient hover accent (cards sitewide) ---------- */
 .service-card,
 .chart-card,
 .testimonial-card,
 .differentiator-item,
 .project-card,
 .fit-card,
-.tool-chip {
+.tool-chip,
+.blog-card,
+.sidebar-box {
   position: relative;
   overflow: hidden;
 }
@@ -676,7 +691,9 @@ a {
 .differentiator-item::before,
 .project-card::before,
 .fit-card::before,
-.tool-chip::before {
+.tool-chip::before,
+.blog-card::before,
+.sidebar-box::before {
   content: '';
   position: absolute;
   top: 0;
@@ -694,7 +711,9 @@ a {
 .differentiator-item:hover::before,
 .project-card:hover::before,
 .fit-card:hover::before,
-.tool-chip:hover::before {
+.tool-chip:hover::before,
+.blog-card:hover::before,
+.sidebar-box:hover::before {
   transform: scaleX(1);
 }
 
@@ -990,10 +1009,20 @@ a {
   border: 1px solid var(--border-color);
 }
 .detail-heading {
+  position: relative;
   font-weight: 700;
-  border-left: 3px solid var(--accent);
   padding-left: 0.8rem;
   margin-bottom: 1rem;
+}
+.detail-heading::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  bottom: 0.15em;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--brand-gradient);
 }
 .detail-list {
   color: var(--text-muted);

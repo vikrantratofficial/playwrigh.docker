@@ -101,7 +101,7 @@ export default function ResultsCharts() {
                     tickFormatter={(v) => (v >= 1000 ? `${(v / 1000).toFixed(1).replace('.0', '')}k` : v)}
                   />
                   <Tooltip content={<ChartTooltip colors={colors} />} />
-                  <Area type="monotone" dataKey="sessions" stroke={colors.accent} strokeWidth={2.5} fill="url(#trafficFill)" />
+                  <Area type="monotone" dataKey="sessions" stroke={colors.accent} strokeWidth={2.5} fill="url(#trafficFill)" isAnimationActive={false} />
                 </AreaChart>
               </ResponsiveContainer>
               <p className="chart-card-insight">+367% sessions in 6 months</p>
@@ -125,7 +125,7 @@ export default function ResultsCharts() {
                     tickFormatter={(v) => `${v}x`}
                   />
                   <Tooltip content={<ChartTooltip colors={colors} suffix="x" />} />
-                  <Bar dataKey="roas" fill={colors.accent} radius={[6, 6, 0, 0]} />
+                  <Bar dataKey="roas" fill={colors.accent} radius={[6, 6, 0, 0]} isAnimationActive={false} />
                 </BarChart>
               </ResponsiveContainer>
               <p className="chart-card-insight">Email &amp; organic consistently outperform paid</p>
@@ -147,6 +147,7 @@ export default function ResultsCharts() {
                     innerRadius={42}
                     outerRadius={68}
                     paddingAngle={3}
+                    isAnimationActive={false}
                   >
                     {LEAD_SOURCE_DATA.map((entry, idx) => (
                       <Cell
