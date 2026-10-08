@@ -1,0 +1,6 @@
+node_modules
+.env
+data/contacts.json
+data/analytics.json
+data/errors.json
+data/admin.json

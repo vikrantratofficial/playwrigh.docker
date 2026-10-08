@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sample Playwright Test Report</title>
+<style>
+  :root {
+    --bg: #0b0f14;
+    --bg-elev: #151c24;
+    --border: #232c37;
+    --text: #e6edf3;
+    --muted: #8b98a5;
+    --accent: #39d98a;
+    --danger: #ff6b6b;
+    --warning: #ffc857;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+    padding: 2rem 1.25rem 4rem;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; }
+  .banner {
+    background: rgba(57,217,138,0.1);
+    border: 1px solid rgba(57,217,138,0.3);
+    color: var(--accent);
+    font-size: 0.8rem;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-family: monospace;
+  }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  .sub { color: var(--muted); margin-bottom: 2rem; font-size: 0.95rem; }
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .stat {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.1rem;
+  }
+  .stat .val { font-size: 1.6rem; font-weight: 800; font-family: monospace; }
+  .stat .lbl { color: var(--muted); font-size: 0.8rem; margin-top: 0.2rem; }
+  .val.pass { color: var(--accent); }
+  .val.fail { color: var(--danger); }
+  .val.flaky { color: var(--warning); }
+  .spec {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  .spec-header {
+    padding: 0.9rem 1.1rem;
+    font-family: monospace;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    display: flex;
+    justify-content: space-between;
+  }
+  .spec-header .dur { color: var(--muted); font-size: 0.8rem; }
+  .case {
+    padding: 0.65rem 1.1rem;
+    font-family: monospace;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+  .case:last-child { border-bottom: none; }
+  .icon-pass { color: var(--accent); }
+  .icon-fail { color: var(--danger); }
+  .case .name { flex: 1; color: var(--text); }
+  .case .time { color: var(--muted); font-size: 0.78rem; }
+  .trace {
+    color: var(--muted);
+    font-size: 0.78rem;
+    background: rgba(255,255,255,0.03);
+    padding: 0.6rem 1.1rem 0.9rem 2.3rem;
+    font-family: monospace;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+  footer { color: var(--muted); font-size: 0.78rem; text-align: center; margin-top: 3rem; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="banner">SAMPLE REPORT — anonymized data, not a real client project</div>
+    <h1>Playwright Test Report</h1>
+    <div class="sub">Project: checkout-automation-suite · Run: 2026-09-14 · Browser: chromium, firefox, webkit</div>
+
+    <div class="summary">
+      <div class="stat"><div class="val pass">183</div><div class="lbl">Passed</div></div>
+      <div class="stat"><div class="val fail">4</div><div class="lbl">Failed</div></div>
+      <div class="stat"><div class="val flaky">3</div><div class="lbl">Flaky (retried)</div></div>
+      <div class="stat"><div class="val">4m 52s</div><div class="lbl">Total duration</div></div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-header"><span>checkout.spec.ts</span><span class="dur">12 tests · 38.2s</span></div>
+      <div class="case"><span class="icon-pass">✓</span><span class="name">guest checkout with single-use coupon</span><span class="time">1.2s</span></div>
+      <div class="case"><span class="icon-pass">✓</span><span class="name">saved card checkout re-uses default address</span><span class="time">0.9s</span></div>
+      <div class="case"><span class="icon-fail">✘</span><span class="name">duplicate charge on rapid double-click retry</span><span class="time">2.1s</span></div>
+      <div class="trace">Expected 1 charge request, received 2 → payment-gateway-mock.ts:44 → trace: checkout-retry.zip</div>
+      <div class="case"><span class="icon-pass">✓</span><span class="name">currency switches correctly on locale change</span><span class="time">1.0s</span></div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-header"><span>api.spec.ts</span><span class="dur">21 tests · 46.7s</span></div>
+      <div class="case"><span class="icon-pass">✓</span><span class="name">POST /orders returns 201 with valid payload</span><span class="time">340ms</span></div>
+      <div class="case"><span class="icon-pass">✓</span><span class="name">GET /orders/:id returns 404 for unknown id</span><span class="time">210ms</span></div>
+      <div class="case"><span class="icon-fail">✘</span><span class="name">idempotency-key header is not honored on retry</span><span class="time">410ms</span></div>
+      <div class="trace">Expected duplicate request to be ignored, received new order id → api-idempotency.spec.ts:58</div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-header"><span>auth.spec.ts</span><span class="dur">9 tests · 22.4s</span></div>
+      <div class="case"><span class="icon-pass">✓</span><span class="name">login redirects to dashboard on valid credentials</span><span class="time">0.8s</span></div>
+      <div class="case"><span class="icon-pass">✓</span><span class="name">password reset link expires after 30 minutes</span><span class="time">1.1s</span></div>
+      <div class="case"><span class="icon-pass">✓</span><span class="name">session persists across page reload</span><span class="time">0.7s</span></div>
+    </div>
+
+    <footer>Generated with Playwright HTML Reporter · Sample data for portfolio purposes only</footer>
+  </div>
+</body>
+</html>
