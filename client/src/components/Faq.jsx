@@ -30,6 +30,16 @@ export const FAQ_ITEMS = [
       "Yes — all engagements are fully remote. I keep flexible hours to overlap with US, UK and EU business hours, and communicate async via email/Slack/WhatsApp so time zones don't slow things down.",
   },
   {
+    question: 'How long does it take to see results?',
+    answer:
+      "It depends on the channel. Paid ads (Google/Meta) usually show directional data within 2-3 weeks and stabilize by month two. SEO is slower but more durable — expect early movement in 6-8 weeks and compounding gains from month 3 onward. Email automation and CRO fixes often show impact within the first full send/testing cycle.",
+  },
+  {
+    question: 'How do you measure and report on success?',
+    answer:
+      "Every engagement starts with one or two numbers we're explicitly trying to move — cost per lead, ROAS, organic sessions, email-attributed revenue, etc. — tracked in GA4/ad platform dashboards and summarized in a weekly report, not a vague end-of-month recap. See the sample report below for the exact format.",
+  },
+  {
     question: 'Can I see a sample of your reporting before hiring?',
     answer: (
       <>

@@ -26,10 +26,15 @@ export default function ScrollReveal() {
       const targets = root.querySelectorAll('section:not(.in-view), .page-section:not(.in-view)');
       targets.forEach((el, i) => {
         el.classList.add('reveal');
-        el.style.transitionDelay = `${Math.min(i, 5) * 90}ms`;
-        if (prefersReduced || !io) {
+        // On a hard refresh (or back/forward nav) the browser can restore scroll
+        // position before this effect runs, landing the user mid-page. Anything
+        // already at or above the fold at that moment should just be there —
+        // fading it in from blank looks like the page failed to load properly.
+        const alreadyInOrPastView = el.getBoundingClientRect().top < window.innerHeight;
+        if (alreadyInOrPastView || prefersReduced || !io) {
           el.classList.add('in-view');
         } else {
+          el.style.transitionDelay = `${Math.min(i, 5) * 90}ms`;
           io.observe(el);
         }
       });

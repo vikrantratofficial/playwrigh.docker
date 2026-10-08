@@ -6,6 +6,7 @@ import { api } from '../services/api';
 import BookCallButton from '../components/BookCallButton';
 import Faq from '../components/Faq';
 import Seo, { SITE_URL } from '../components/Seo';
+import { useTheme } from '../context/ThemeContext';
 
 const CONTACT_JSON_LD = {
   '@context': 'https://schema.org',
@@ -35,6 +36,8 @@ const INITIAL_FORM = { name: '', email: '', projectType: PROJECT_TYPES[PROJECT_T
 const MAX_MESSAGE_CHARS = 150;
 
 export default function Contact() {
+  const { theme } = useTheme();
+  const recaptchaTheme = theme === 'light' ? 'light' : 'dark';
   const [form, setForm] = useState(INITIAL_FORM);
   const [status, setStatus] = useState({ state: 'idle', message: '' });
   const [captchaToken, setCaptchaToken] = useState(null);
@@ -216,9 +219,10 @@ export default function Contact() {
             <div className="mb-4 recaptcha-wrapper">
               {RECAPTCHA_SITE_KEY ? (
                 <ReCAPTCHA
+                  key={recaptchaTheme}
                   ref={recaptchaRef}
                   sitekey={RECAPTCHA_SITE_KEY}
-                  theme="dark"
+                  theme={recaptchaTheme}
                   onChange={(token) => setCaptchaToken(token)}
                   onExpired={() => setCaptchaToken(null)}
                 />

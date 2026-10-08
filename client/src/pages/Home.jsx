@@ -20,6 +20,12 @@ import {
   FaEnvelopeOpenText,
   FaQuoteLeft,
   FaStar,
+  FaUserCheck,
+  FaFileInvoiceDollar,
+  FaKey,
+  FaClock,
+  FaDatabase,
+  FaTimesCircle,
 } from 'react-icons/fa';
 import TerminalPreview from '../components/TerminalPreview';
 import StatCard from '../components/StatCard';
@@ -45,6 +51,27 @@ const CORE_SERVICES = [
   { icon: <FaBullhorn />, title: 'Paid Ads Management', scope: 'Google & Meta Ads campaigns built and optimized for ROAS, not just clicks.' },
   { icon: <FaPenNib />, title: 'Content Marketing', scope: 'SEO-driven blog and landing page content that turns readers into leads.' },
   { icon: <FaEnvelopeOpenText />, title: 'Email Automation', scope: 'Klaviyo/Mailchimp flows that keep selling after the campaign ends.' },
+];
+
+const DIFFERENTIATORS = [
+  { icon: <FaUserCheck />, title: 'Direct Access, No Middlemen', desc: "You work with me directly — not an account manager who hands your campaign to a junior." },
+  { icon: <FaDatabase />, title: 'Data-First Decisions', desc: 'Every recommendation is tied to a number from GA4, ad platforms or your CRM — not a hunch.' },
+  { icon: <FaFileInvoiceDollar />, title: 'Fixed-Scope Pricing', desc: 'You know the total cost before work starts. No surprise hours, no scope creep invoices.' },
+  { icon: <FaKey />, title: 'You Own Everything', desc: 'Every ad account, GA4 property and asset stays in your name — portable if we ever part ways.' },
+  { icon: <FaClock />, title: 'Fast, Async Communication', desc: "Replies within 24 hours across US/UK/EU time zones — no week-long agency silence." },
+  { icon: <FaChartBar />, title: 'Weekly, Not Monthly, Reporting', desc: "You see what's working in real time, not in a vague recap three weeks after the fact." },
+];
+
+const GOOD_FIT = [
+  "You have a live website/product and a monthly budget for ads, content, or both.",
+  "You want a specialist who tests and iterates on real data, not a generic retainer.",
+  "You value weekly visibility into what's working over a black-box agency relationship.",
+];
+
+const NOT_A_FIT = [
+  "You need a full in-house team replacement across many channels starting tomorrow.",
+  "You're looking for guaranteed rankings or overnight results.",
+  "You don't have a live website, product or offer to market yet.",
 ];
 
 const TESTIMONIALS = [
@@ -241,6 +268,28 @@ export default function Home() {
       <section className="section">
         <Container>
           <div className="section-heading">
+            <h2>Why Work With Me</h2>
+            <p className="text-muted">What makes a freelance specialist a better bet than another faceless retainer.</p>
+          </div>
+          <Row className="g-4">
+            {DIFFERENTIATORS.map((item) => (
+              <Col sm={6} lg={4} key={item.title}>
+                <div className="differentiator-item">
+                  <div className="service-icon">{item.icon}</div>
+                  <div>
+                    <h5 className="mb-1">{item.title}</h5>
+                    <p className="text-muted small mb-0">{item.desc}</p>
+                  </div>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </section>
+
+      <section className="section">
+        <Container>
+          <div className="section-heading">
             <h2>Tools & Platforms I Work In</h2>
             <p className="text-muted">The same stack real marketing teams use to plan, run, and report on campaigns.</p>
           </div>
@@ -253,6 +302,37 @@ export default function Home() {
                 </div>
               </Col>
             ))}
+          </Row>
+        </Container>
+      </section>
+
+      <section className="section">
+        <Container>
+          <div className="section-heading">
+            <h2>Is This the Right Fit?</h2>
+            <p className="text-muted">A quick, honest check before you reach out — saves both of us time.</p>
+          </div>
+          <Row className="g-4">
+            <Col md={6}>
+              <div className="fit-card fit-card-good">
+                <h5>Good fit if...</h5>
+                <ul className="fit-list">
+                  {GOOD_FIT.map((item) => (
+                    <li key={item}><FaCheckCircle className="fit-icon fit-icon-good" />{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </Col>
+            <Col md={6}>
+              <div className="fit-card fit-card-bad">
+                <h5>Probably not a fit if...</h5>
+                <ul className="fit-list">
+                  {NOT_A_FIT.map((item) => (
+                    <li key={item}><FaTimesCircle className="fit-icon fit-icon-bad" />{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </Col>
           </Row>
         </Container>
       </section>

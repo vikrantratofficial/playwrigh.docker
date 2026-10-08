@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import ProjectCard from '../components/ProjectCard';
-import ExperienceProjects from '../components/ExperienceProjects';
 import Seo, { SITE_URL } from '../components/Seo';
 import PROJECTS from '../data/projects.json';
 
@@ -70,9 +69,6 @@ export default function Projects() {
           ))}
         </Row>
       )}
-
-      <div className="experience-projects-divider" />
-      <ExperienceProjects />
     </Container>
   );
 }

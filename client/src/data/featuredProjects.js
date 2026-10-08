@@ -16,7 +16,7 @@ export const FEATURED_PROJECTS = [
     summary: "Technical SEO overhaul and content strategy that grew organic traffic for a multi-category online retailer.",
     category: 'SEO',
     tags: ['SEO', 'Content Strategy', 'Analytics'],
-    cover: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80',
+    cover: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
   },
   {
     id: 'social-media-d2c-growth',
@@ -24,6 +24,6 @@ export const FEATURED_PROJECTS = [
     summary: "Organic content strategy and community management program that grew a direct-to-consumer brand's social following and engagement.",
     category: 'Social Media',
     tags: ['Social Media', 'Content Strategy', 'Community Management'],
-    cover: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=800&q=80',
+    cover: 'https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&q=80',
   },
 ];
