@@ -2301,3 +2301,49 @@ a {
   padding-top: 0.75rem;
   overflow-wrap: anywhere;
 }
+
+/* ---------- Mobile polish: hero subtitle + reCAPTCHA size ---------- */
+.hero-subtitle-lead {
+  display: block;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.hero-subtitle-rest {
+  display: block;
+}
+@media (max-width: 991.98px) {
+  .hero-subtitle {
+    max-width: 34rem;
+    text-wrap: balance;
+    line-height: 1.6;
+  }
+  .hero-subtitle-lead {
+    font-size: 1.02em;
+    margin-bottom: 0.6rem;
+  }
+}
+@media (max-width: 575.98px) {
+  .hero-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-skills {
+    margin-bottom: 1.25rem;
+  }
+  /* The widget is a fixed 304x78; scale it down on phones and reserve the scaled height */
+  .recaptcha-wrapper {
+    height: 64px;
+  }
+  .recaptcha-wrapper > div {
+    transform: scale(0.82);
+  }
+}
+@media (max-width: 340px) {
+  .recaptcha-wrapper {
+    height: 57px;
+  }
+  .recaptcha-wrapper > div {
+    transform: scale(0.72);
+  }
+}

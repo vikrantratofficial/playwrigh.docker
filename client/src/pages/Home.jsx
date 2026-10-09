@@ -45,6 +45,18 @@ const JSON_LD = {
   ],
 };
 
+// First sentence (the credibility line, e.g. "4+ years ...") is set apart from the rest so it reads well when centred on phones.
+function HeroSubtitle({ text }) {
+  const i = text.indexOf('. ');
+  if (i < 0) return text;
+  return (
+    <>
+      <strong className="hero-subtitle-lead">{text.slice(0, i + 1)}</strong>
+      <span className="hero-subtitle-rest">{text.slice(i + 2)}</span>
+    </>
+  );
+}
+
 const HERO_SKILLS = ['Playwright', 'Selenium', 'API Testing', 'JMeter', 'CI/CD', 'SQL', 'Postman', 'Appium'];
 
 const HERO_TRUST = [
@@ -114,7 +126,9 @@ export default function Home() {
                 <FaCheckCircle className="me-2" /> {t('hero_eyebrow')}
               </div>
               <h1 className="hero-title">{t('hero_title')}</h1>
-              <p className="hero-subtitle">{t('hero_subtitle')}</p>
+              <p className="hero-subtitle">
+                <HeroSubtitle text={t('hero_subtitle')} />
+              </p>
               <ul className="hero-skills" aria-label="Core skills">
                 {HERO_SKILLS.map((skill) => (
                   <li key={skill}>{skill}</li>
