@@ -38,7 +38,6 @@ const JSON_LD = {
       description:
         'Freelance QA automation, API testing, CI/CD quality gates and manual QA services for clients worldwide (US, UK, EU, UAE, Asia, and beyond).',
       url: SITE_URL,
-      email: 'vikrant.rathore.career@gmail.com',
       areaServed: 'Worldwide',
       priceRange: '$$',
       sameAs: ['https://www.linkedin.com/in/vikrantrathore/'],

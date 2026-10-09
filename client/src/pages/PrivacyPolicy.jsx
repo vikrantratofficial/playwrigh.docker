@@ -1,5 +1,6 @@
 import { Container } from 'react-bootstrap';
 import Seo from '../components/Seo';
+import ProtectedEmail from '../components/ProtectedEmail';
 
 export default function PrivacyPolicy() {
   return (
@@ -53,14 +54,14 @@ export default function PrivacyPolicy() {
       <h2 className="detail-heading">Your rights</h2>
       <p className="text-muted">
         If you'd like to know what data has been logged about your visits, or want it deleted, email{' '}
-        <a href="mailto:vikrant.rathore.career@gmail.com" className="text-accent">vikrant.rathore.career@gmail.com</a>{' '}
+        <ProtectedEmail className="text-accent" />{' '}
         and it will be handled promptly. This applies to visitors anywhere, including under GDPR (EU/UK) and
         similar regional privacy laws.
       </p>
 
       <h2 className="detail-heading">Contact</h2>
       <p className="text-muted">
-        Questions about this policy: <a href="mailto:vikrant.rathore.career@gmail.com" className="text-accent">vikrant.rathore.career@gmail.com</a>
+        Questions about this policy: <ProtectedEmail className="text-accent" />
       </p>
     </Container>
   );

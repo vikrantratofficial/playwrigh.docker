@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaGithub, FaLinkedin, FaEnvelope, FaTelegram } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext';
+import ProtectedEmail from './ProtectedEmail';
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -32,7 +33,7 @@ export default function Footer() {
           <Col md={4}>
             <h6 className="footer-heading">Connect</h6>
             <div className="d-flex gap-3 footer-social">
-              <a href="mailto:vikrant.rathore.career@gmail.com" aria-label="Email"><FaEnvelope /></a>
+              <ProtectedEmail className="footer-email-btn"><FaEnvelope /></ProtectedEmail>
               <a href="https://www.linkedin.com/in/vikrantrathore/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
               <a href="https://github.com/vikrantratofficial" target="_blank" rel="noreferrer" aria-label="GitHub"><FaGithub /></a>
               <a href="https://t.me/vikrantrathore07" target="_blank" rel="noreferrer" aria-label="Telegram"><FaTelegram /></a>

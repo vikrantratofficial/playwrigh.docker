@@ -2149,3 +2149,46 @@ a {
     line-height: 1.45;
   }
 }
+
+/* ---------- Protected email (address drawn by CSS from data-* attributes, not present as text) ---------- */
+.protected-email {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.protected-email-text {
+  display: inline-block;
+  gap: 0;
+}
+.protected-email-text::before {
+  content: attr(data-u);
+}
+.protected-email-text::after {
+  content: "@" attr(data-d);
+}
+.protected-email-text:hover {
+  text-decoration: underline;
+}
+.footer-email-btn {
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+.footer-email-btn:hover {
+  color: var(--accent);
+}
+
+.protected-email-wrap {
+  cursor: pointer;
+}
+.protected-email-wrap .protected-email {
+  color: inherit;
+  font-weight: inherit;
+}
+.protected-email-wrap:hover .protected-email-text {
+  text-decoration: underline;
+}

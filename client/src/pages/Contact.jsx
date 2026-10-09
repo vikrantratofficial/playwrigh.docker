@@ -8,10 +8,8 @@ import Faq from '../components/Faq';
 import Seo from '../components/Seo';
 import { useTheme } from '../context/ThemeContext';
 
-const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
-const whatsappHref = WHATSAPP_NUMBER
-  ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi! I'd like to talk about a QA/testing project.")}`
-  : null;
+import { whatsappHref } from '../utils/whatsapp';
+import ProtectedEmail from '../components/ProtectedEmail';
 
 const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
@@ -106,9 +104,7 @@ export default function Contact() {
             <ul className="contact-info-list list-unstyled">
               <li>
                 <FaEnvelope className="me-2 text-accent" />
-                <a href="mailto:vikrant.rathore.career@gmail.com" className="contact-link">
-                  vikrant.rathore.career@gmail.com <FaExternalLinkAlt className="contact-link-arrow" />
-                </a>
+                <ProtectedEmail className="contact-link" icon={<FaExternalLinkAlt className="contact-link-arrow" />} />
               </li>
               <li>
                 <FaLinkedin className="me-2 text-accent" />
