@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Container, Row, Col, Form, Button, Alert, Spinner } from 'react-bootstrap';
 import { FaEnvelope, FaLinkedin, FaMapMarkerAlt, FaCircle, FaWhatsapp, FaExternalLinkAlt } from 'react-icons/fa';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -6,6 +6,7 @@ import { api } from '../services/api';
 import BookCallButton from '../components/BookCallButton';
 import Faq from '../components/Faq';
 import Seo from '../components/Seo';
+import { useTheme } from '../context/ThemeContext';
 
 const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
 const whatsappHref = WHATSAPP_NUMBER
@@ -33,6 +34,13 @@ export default function Contact() {
   const [captchaToken, setCaptchaToken] = useState(null);
   const [validated, setValidated] = useState(false);
   const recaptchaRef = useRef(null);
+  const { isLight } = useTheme();
+  const captchaTheme = isLight ? 'light' : 'dark';
+
+  // The widget bakes its theme in at mount, so it is remounted (with a fresh token) when the site theme flips.
+  useEffect(() => {
+    setCaptchaToken(null);
+  }, [captchaTheme]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -208,9 +216,10 @@ export default function Contact() {
             <div className="mb-4 recaptcha-wrapper">
               {RECAPTCHA_SITE_KEY ? (
                 <ReCAPTCHA
+                  key={captchaTheme}
                   ref={recaptchaRef}
                   sitekey={RECAPTCHA_SITE_KEY}
-                  theme="dark"
+                  theme={captchaTheme}
                   onChange={(token) => setCaptchaToken(token)}
                   onExpired={() => setCaptchaToken(null)}
                 />

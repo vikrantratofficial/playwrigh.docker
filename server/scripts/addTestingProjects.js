@@ -12,7 +12,7 @@ const projects = [
     role: 'QA Performance Engineer',
     duration: '6 weeks',
     client: 'B2B SaaS Platform',
-    cover: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+    cover: '/images/projects/jmeter-performance-load-testing.svg',
     overview:
       'Ahead of a major release, the client had no visibility into how the platform behaved under real-world concurrent load, risking downtime during peak traffic. The team needed repeatable load tests integrated into the release process, not one-off manual checks.',
     approach: [
@@ -42,7 +42,7 @@ const projects = [
     role: 'QA Automation Engineer',
     duration: '2 months',
     client: 'Field Inspection Platform',
-    cover: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80',
+    cover: '/images/projects/mobile-app-test-automation.svg',
     overview:
       'A field-operations app used by inspectors on Android and iOS had no automated coverage, so every release relied on slow, inconsistent manual regression across both platforms and multiple device models.',
     approach: [

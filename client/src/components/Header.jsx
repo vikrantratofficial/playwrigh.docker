@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 
 export default function Header() {
-  const { t, lang, toggleLang } = useLanguage();
+  const { t } = useLanguage();
   const { isAuthenticated } = useAuth();
   const { theme, setTheme, themes, isLight } = useTheme();
   const navigate = useNavigate();
@@ -90,15 +90,6 @@ export default function Header() {
                 ))}
               </Dropdown.Menu>
             </Dropdown>
-            <Button
-              variant="outline-light"
-              size="sm"
-              className="lang-toggle-btn"
-              onClick={toggleLang}
-              aria-label="Toggle language"
-            >
-              {lang === 'en' ? 'DE' : 'EN'}
-            </Button>
             <Button
               variant="outline-light"
               size="sm"

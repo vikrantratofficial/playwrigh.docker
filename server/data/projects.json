@@ -12,7 +12,7 @@
     "role": "Lead QA Automation Engineer",
     "duration": "4 months",
     "client": "Retail SaaS Platform (NDA)",
-    "cover": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
+    "cover": "/images/projects/ecommerce-checkout-automation.svg",
     "overview": "The client's checkout flow spanned guest checkout, saved cards, wallets and 3 payment gateways. Manual regression before every release took 2 full QA days and still missed edge cases in coupon stacking and currency conversion.",
     "approach": [
       "Built a Page Object Model framework in Playwright + TypeScript with fixtures for auth, cart seeding and mock payment responses.",
@@ -60,7 +60,7 @@
     "role": "QA Automation Consultant",
     "duration": "3 months",
     "client": "Fintech Startup",
-    "cover": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    "cover": "/images/projects/rest-api-contract-testing.svg",
     "overview": "A fintech client's 14 microservices had no contract tests, causing breaking changes to slip into staging repeatedly. Needed a suite that could run in under 5 minutes as part of the deploy pipeline.",
     "approach": [
       "Authored 200+ Postman/Newman collections with JSON schema validation for every response.",
@@ -108,7 +108,7 @@
     "role": "QA/DevOps Engineer",
     "duration": "5 months",
     "client": "B2B Logistics Platform",
-    "cover": "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=800&q=80",
+    "cover": "/images/projects/ci-cd-quality-gates.svg",
     "overview": "With 30 engineers pushing to a single monorepo, release quality was inconsistent — some PRs merged with failing tests silently ignored. The team needed enforced quality gates without slowing everyone down.",
     "approach": [
       "Set up Jenkins multibranch pipelines with staged gates: lint → unit → integration → E2E smoke.",
@@ -156,7 +156,7 @@
     "role": "QA Analyst",
     "duration": "6 weeks",
     "client": "Insurance Claims Platform",
-    "cover": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
+    "cover": "/images/projects/excel-test-reporting-dashboard.svg",
     "overview": "Stakeholders wanted a readable weekly QA status report, but the team was manually copy-pasting test results into Excel every Friday — taking 3+ hours and prone to errors.",
     "approach": [
       "Wrote a Python script to parse JUnit/Allure XML output and normalize results into a structured dataset.",
@@ -196,11 +196,15 @@
     "title": "JMeter Performance & Load Testing Suite",
     "summary": "Load, stress and performance testing framework validating API response times and system stability under concurrent user load.",
     "category": "Performance Testing",
-    "tags": ["JMeter", "Performance", "Load Testing"],
+    "tags": [
+      "JMeter",
+      "Performance",
+      "Load Testing"
+    ],
     "role": "QA Performance Engineer",
     "duration": "6 weeks",
     "client": "B2B SaaS Platform",
-    "cover": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    "cover": "/images/projects/jmeter-performance-load-testing.svg",
     "overview": "Ahead of a major release, the client had no visibility into how the platform behaved under real-world concurrent load, risking downtime during peak traffic. The team needed repeatable load tests integrated into the release process, not one-off manual checks.",
     "approach": [
       "Modeled realistic user journeys with JMeter Thread Groups, driven by CSV test data for login, search and checkout flows.",
@@ -213,11 +217,25 @@
       "Found the session store became a bottleneck above 600 concurrent users, informing a caching layer decision.",
       "Established a baseline performance budget the team now checks before every major release."
     ],
-    "stack": ["JMeter", "Jenkins", "Grafana", "MySQL"],
+    "stack": [
+      "JMeter",
+      "Jenkins",
+      "Grafana",
+      "MySQL"
+    ],
     "metrics": [
-      { "label": "Max concurrent users validated", "value": "1000" },
-      { "label": "P95 latency after fix", "value": "4.1s → 820ms" },
-      { "label": "Load test scenarios automated", "value": "18" }
+      {
+        "label": "Max concurrent users validated",
+        "value": "1000"
+      },
+      {
+        "label": "P95 latency after fix",
+        "value": "4.1s → 820ms"
+      },
+      {
+        "label": "Load test scenarios automated",
+        "value": "18"
+      }
     ]
   },
   {
@@ -225,11 +243,15 @@
     "title": "Mobile App Test Automation (iOS & Android)",
     "summary": "Cross-platform mobile test automation framework covering critical user flows on real devices and emulators for a field-operations app.",
     "category": "Mobile Testing",
-    "tags": ["Mobile Testing", "Appium", "Automation"],
+    "tags": [
+      "Mobile Testing",
+      "Appium",
+      "Automation"
+    ],
     "role": "QA Automation Engineer",
     "duration": "2 months",
     "client": "Field Inspection Platform",
-    "cover": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
+    "cover": "/images/projects/mobile-app-test-automation.svg",
     "overview": "A field-operations app used by inspectors on Android and iOS had no automated coverage, so every release relied on slow, inconsistent manual regression across both platforms and multiple device models.",
     "approach": [
       "Built a cross-platform Appium framework with a shared Page Object layer for Android and iOS to avoid duplicating test logic.",
@@ -242,11 +264,261 @@
       "Found GPS coordinates were occasionally truncated on specific Android OEM devices, affecting inspection accuracy.",
       "Reduced manual regression time per release from 2 days to under 3 hours."
     ],
-    "stack": ["Appium", "Java", "TestNG", "BrowserStack", "Jenkins"],
+    "stack": [
+      "Appium",
+      "Java",
+      "TestNG",
+      "BrowserStack",
+      "Jenkins"
+    ],
     "metrics": [
-      { "label": "Regression time", "value": "2 days → 3 hrs" },
-      { "label": "Devices covered", "value": "12+" },
-      { "label": "Critical bugs caught pre-release", "value": "7" }
+      {
+        "label": "Regression time",
+        "value": "2 days → 3 hrs"
+      },
+      {
+        "label": "Devices covered",
+        "value": "12+"
+      },
+      {
+        "label": "Critical bugs caught pre-release",
+        "value": "7"
+      }
+    ]
+  },
+  {
+    "id": "sql-data-integrity-reconciliation",
+    "title": "SQL Data Integrity & Loan Reconciliation Testing",
+    "summary": "Database validation suite verifying EMI calculations, repayment schedules and transaction history against expected business rules for a loan platform.",
+    "category": "Database Testing",
+    "tags": [
+      "SQL",
+      "Database Testing",
+      "Data Validation"
+    ],
+    "role": "QA Engineer",
+    "duration": "6 months",
+    "client": "NBFC Loan Platform",
+    "cover": "/images/projects/sql-data-integrity-reconciliation.svg",
+    "overview": "In a loan origination and management system, a wrong EMI, repayment schedule or foreclosure amount is a financial and compliance problem, not just a UI bug. UI-level checks could not prove that the values stored in the backend were correct.",
+    "approach": [
+      "Wrote SQL validation queries that recompute EMI, interest and outstanding principal independently and compare them with the values stored by the application.",
+      "Verified repayment schedules, customer details and transaction history across the loan lifecycle, from lead creation to loan closure.",
+      "Checked data consistency between modules after each workflow stage, including approval, sanction, repayment and foreclosure.",
+      "Packaged the queries as a reusable regression set that was re-run for every release and after data-affecting fixes."
+    ],
+    "findings": [
+      "Compared stored values with independently calculated ones to catch calculation mismatches that were invisible on the UI.",
+      "Surfaced inconsistent records between modules when a workflow stage was skipped or reversed.",
+      "Gave developers exact record-level evidence in defect reports, which shortened the fix cycle."
+    ],
+    "stack": [
+      "SQL",
+      "Postman",
+      "Jira"
+    ],
+    "metrics": [
+      {
+        "label": "Loan lifecycle stages validated",
+        "value": "10"
+      },
+      {
+        "label": "Validation approach",
+        "value": "Recompute & compare"
+      },
+      {
+        "label": "Re-run cadence",
+        "value": "Every release"
+      }
+    ]
+  },
+  {
+    "id": "owasp-security-aware-qa",
+    "title": "OWASP-Aware Security Testing in the QA Cycle",
+    "summary": "Security-focused checks layered into functional testing: authentication, session handling, access control and input validation.",
+    "category": "Security Testing",
+    "tags": [
+      "OWASP",
+      "Security Testing",
+      "Auth & Sessions"
+    ],
+    "role": "QA Engineer",
+    "duration": "Ongoing",
+    "client": "Enterprise Web Platform",
+    "cover": "/images/projects/owasp-security-aware-qa.svg",
+    "overview": "Security issues were usually found late, after release. The goal was to catch the common, high-impact classes of vulnerability during normal QA, without waiting for a separate penetration test.",
+    "approach": [
+      "Mapped test cases to the OWASP Top 10 risks that are realistic for a QA-level pass: broken access control, injection, and authentication failures.",
+      "Tested role-based access control by trying privileged actions and URLs with lower-privileged accounts.",
+      "Exercised session handling: expiry, logout, concurrent sessions and re-use of old tokens.",
+      "Fuzzed inputs with special characters, oversized values and script payloads, and checked API responses for leaked details."
+    ],
+    "findings": [
+      "Checked that restricted pages and API endpoints reject users who lack the required role.",
+      "Verified that sessions end correctly on logout and expiry.",
+      "Confirmed that error messages and API responses do not expose stack traces or internal details."
+    ],
+    "stack": [
+      "OWASP Top 10",
+      "Postman",
+      "Browser DevTools"
+    ],
+    "metrics": [
+      {
+        "label": "Focus areas",
+        "value": "Auth, access, input"
+      },
+      {
+        "label": "Scope",
+        "value": "QA-level, not a pentest"
+      },
+      {
+        "label": "Delivered as",
+        "value": "Checklist + findings"
+      }
+    ]
+  },
+  {
+    "id": "selenium-cross-browser-regression",
+    "title": "Selenium + TestNG Cross-Browser Regression Suite",
+    "summary": "Java-based Selenium WebDriver framework with TestNG, run in Jenkins across Chrome, Firefox and Edge.",
+    "category": "Selenium",
+    "tags": [
+      "Selenium",
+      "Java",
+      "TestNG"
+    ],
+    "role": "QA Automation Engineer",
+    "duration": "2.5+ years",
+    "client": "NBFC Loan Platform",
+    "cover": "/images/projects/selenium-cross-browser-regression.svg",
+    "overview": "The loan platform had long, repetitive regression flows that were slow to verify by hand before every release and had to behave the same in Chrome, Firefox and Edge.",
+    "approach": [
+      "Built a Selenium WebDriver framework in Java using the Page Object Model with TestNG for grouping, priorities and data providers.",
+      "Automated the high-value regression flows end to end, from lead creation to loan closure.",
+      "Ran the suite on Chrome, Firefox and Edge to catch browser-specific rendering and behaviour differences.",
+      "Integrated the suite with Maven and Jenkins for scheduled and on-demand executions with HTML reports."
+    ],
+    "findings": [
+      "Cross-browser runs exposed layout and interaction differences that single-browser manual testing missed.",
+      "Scheduled Jenkins runs gave the team a regression result before each release candidate.",
+      "Stable page objects kept maintenance low when the UI changed."
+    ],
+    "stack": [
+      "Selenium WebDriver",
+      "Java",
+      "TestNG",
+      "Maven",
+      "Jenkins"
+    ],
+    "metrics": [
+      {
+        "label": "Browsers covered",
+        "value": "Chrome, Firefox, Edge"
+      },
+      {
+        "label": "Execution",
+        "value": "Jenkins, scheduled"
+      },
+      {
+        "label": "Design pattern",
+        "value": "Page Object Model"
+      }
+    ]
+  },
+  {
+    "id": "gis-geolocation-functional-testing",
+    "title": "GIS & Geo-Location Functional Testing",
+    "summary": "Functional, integration and UAT testing of map-based project monitoring and field inspection workflows on web and mobile.",
+    "category": "Functional Testing",
+    "tags": [
+      "Functional Testing",
+      "GIS",
+      "UAT"
+    ],
+    "role": "QA Engineer",
+    "duration": "Jan 2025 - Present",
+    "client": "Government Infrastructure Platform",
+    "cover": "/images/projects/gis-geolocation-functional-testing.svg",
+    "overview": "A national infrastructure platform tracks projects, contracts and inspections on maps, with field teams using a mobile app. Map data, locations and role-based access all had to be right before each release.",
+    "approach": [
+      "Designed test scenarios and test cases from the BRD and FRS, covering project, contract and inspection modules.",
+      "Verified map visualisation, location-based project tracking and inspection modules on web and mobile.",
+      "Validated field inspection workflows on Android and iOS devices, including location capture.",
+      "Ran functional, regression, smoke, sanity, integration and end-to-end cycles, finishing with UAT and post-release smoke testing."
+    ],
+    "findings": [
+      "Location and map behaviour was checked against inspection records, not only visually.",
+      "Role-based access was verified for each stakeholder type across modules.",
+      "Defects were logged in Jira with reproduction steps and device details to speed up fixes."
+    ],
+    "stack": [
+      "Postman",
+      "SQL",
+      "JMeter",
+      "Jira",
+      "Android & iOS devices"
+    ],
+    "metrics": [
+      {
+        "label": "Platforms",
+        "value": "Web, Android, iOS"
+      },
+      {
+        "label": "Test levels",
+        "value": "Smoke to UAT"
+      },
+      {
+        "label": "Methodology",
+        "value": "Agile Scrum"
+      }
+    ]
+  },
+  {
+    "id": "manual-qa-uat-test-management",
+    "title": "Test Design, RTM & UAT Management",
+    "summary": "Structured manual testing: test plans, traceability matrix, defect lifecycle in Jira and UAT sign-off support.",
+    "category": "Manual Testing",
+    "tags": [
+      "Manual Testing",
+      "RTM",
+      "UAT"
+    ],
+    "role": "QA Engineer",
+    "duration": "3+ years",
+    "client": "Enterprise Projects",
+    "cover": "/images/projects/manual-qa-uat-test-management.svg",
+    "overview": "Enterprise releases need proof that every requirement is covered and that business users have signed off. This work covers the planning and documentation side of QA that makes releases auditable.",
+    "approach": [
+      "Prepared test plans, test scenarios and test cases from business requirements, with test data for each scenario.",
+      "Maintained a Requirement Traceability Matrix to show that every requirement had test coverage.",
+      "Ran the defect lifecycle in Jira: log, triage, retest and close, with clear reproduction steps.",
+      "Supported UAT with business users and release validation, including production deployment and post-release smoke testing."
+    ],
+    "findings": [
+      "Traceability exposed requirements without any test coverage before execution began.",
+      "Consistent defect reports reduced back-and-forth between QA and developers.",
+      "UAT sign-off was easier to obtain because coverage and results were documented."
+    ],
+    "stack": [
+      "Jira",
+      "Excel",
+      "RTM",
+      "Agile Scrum"
+    ],
+    "metrics": [
+      {
+        "label": "Deliverables",
+        "value": "Plan, cases, RTM"
+      },
+      {
+        "label": "Defect tracking",
+        "value": "Jira lifecycle"
+      },
+      {
+        "label": "Release support",
+        "value": "UAT & post-release smoke"
+      }
     ]
   }
 ]

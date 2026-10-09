@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { FaRobot, FaCogs, FaClipboardCheck, FaFileAlt, FaShieldAlt, FaTachometerAlt } from 'react-icons/fa';
+import { FaArrowRight, FaRobot, FaCogs, FaClipboardCheck, FaFileAlt, FaShieldAlt, FaTachometerAlt, FaPlug, FaDatabase, FaMobileAlt, FaWindowRestore } from 'react-icons/fa';
 import BookCallButton from '../components/BookCallButton';
 import Faq, { FAQ_ITEMS } from '../components/Faq';
 import Seo from '../components/Seo';
@@ -11,36 +11,70 @@ const SERVICES = [
     title: 'Performance & Load Testing',
     scope: 'JMeter-based load, stress and performance testing to validate response times and stability under concurrent user load, with detailed bottleneck reports.',
     price: 'Starting at $400',
+    project: 'jmeter-performance-load-testing',
   },
   {
     icon: <FaRobot />,
     title: 'Test Automation Setup',
     scope: 'Framework design (Playwright/Selenium), page objects, CI-ready config, and a starter suite of 20-30 tests covering critical flows.',
     price: 'Starting at $800',
+    project: 'ecommerce-checkout-automation',
   },
   {
     icon: <FaCogs />,
     title: 'CI/CD Integration',
     scope: 'Pipeline setup (GitHub Actions/Jenkins/GitLab CI) with quality gates, parallel execution, and automated reporting on every PR.',
     price: 'Starting at $500',
+    project: 'ci-cd-quality-gates',
   },
   {
     icon: <FaClipboardCheck />,
     title: 'Manual QA',
     scope: 'Exploratory and structured manual testing, bug triage, and detailed reproduction steps for a release cycle or sprint.',
     price: 'Starting at $30/hr',
+    project: 'manual-qa-uat-test-management',
   },
   {
     icon: <FaFileAlt />,
     title: 'Test Documentation',
     scope: 'Test plans, test case repositories, and QA status reporting templates (including Excel/VBA dashboards) tailored to your team.',
     price: 'Starting at $350',
+    project: 'excel-test-reporting-dashboard',
   },
   {
     icon: <FaShieldAlt />,
     title: 'Security-Aware QA Testing',
     scope: 'OWASP Top 10 checks, auth/session security testing, input validation and basic vulnerability scanning layered into your QA process.',
     price: 'Starting at $450',
+    project: 'owasp-security-aware-qa',
+  },
+  {
+    icon: <FaPlug />,
+    title: 'API Testing',
+    scope: 'Postman/Newman collections with schema validation, auth and error-handling checks, and contract tests between services, run automatically in your pipeline.',
+    price: 'Starting at $400',
+    project: 'rest-api-contract-testing',
+  },
+  {
+    icon: <FaDatabase />,
+    title: 'Database & Data Validation',
+    scope: 'SQL-based checks that recompute business values (EMIs, balances, totals) and compare them with what your application stored, plus cross-module data consistency.',
+    price: 'Starting at $350',
+    project: 'sql-data-integrity-reconciliation',
+  },
+  {
+    icon: <FaMobileAlt />,
+    title: 'Mobile App Testing',
+    scope: 'Functional and automated testing of Android and iOS apps on real devices and emulators: critical flows, offline/sync behavior, and device/OS coverage.',
+    price: 'Starting at $600',
+    project: 'mobile-app-test-automation',
+  },
+  {
+    icon: <FaWindowRestore />,
+    title: 'Cross-Browser Regression (Selenium)',
+    scope: 'Java + Selenium WebDriver + TestNG regression suite using the Page Object Model, executed on Chrome, Firefox and Edge from Jenkins.',
+    price: 'Starting at $700',
+    project: 'selenium-cross-browser-regression',
   },
 ];
 
@@ -69,7 +103,7 @@ export default function Services() {
     <Container className="page-section">
       <Seo
         title="QA Testing Services & Pricing — Automation, CI/CD, Manual QA & Security Testing"
-        description="Fixed-price and hourly QA services: test automation setup, CI/CD integration, manual QA, test documentation, and security-aware QA testing. NDA-friendly, remote, worldwide."
+        description="Fixed-price and hourly QA services: test automation, API testing, database validation, mobile testing, performance testing, CI/CD integration, manual QA and security-aware testing. NDA-friendly, remote, worldwide."
         path="/services"
         jsonLd={FAQ_JSON_LD}
       />
@@ -86,6 +120,11 @@ export default function Services() {
               <h4>{service.title}</h4>
               <p className="text-muted">{service.scope}</p>
               <div className="service-price">{service.price}</div>
+              {service.project && (
+                <Link to={`/projects/${service.project}`} className="service-case-link">
+                  See related case study <FaArrowRight className="ms-1" />
+                </Link>
+              )}
             </div>
           </Col>
         ))}

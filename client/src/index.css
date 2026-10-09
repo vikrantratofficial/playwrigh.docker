@@ -389,14 +389,15 @@ a {
 
 .hero-cta-group {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, max-content));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 520px;
   gap: 0.75rem;
 }
 .hero-cta-group > .btn {
   width: 100%;
   justify-content: center;
 }
-.hero-cta-group > :last-child {
+.hero-cta-group > :last-child:nth-child(odd) {
   grid-column: 1 / -1;
   justify-self: start;
 }
@@ -821,7 +822,7 @@ a {
 }
 .project-card-img-wrap {
   position: relative;
-  height: clamp(150px, 30vw, 180px);
+  aspect-ratio: 16 / 9;
   overflow: hidden;
 }
 .project-card-img-wrap img {
@@ -1363,6 +1364,16 @@ a {
   color: var(--accent);
   margin-top: 1rem;
 }
+.service-case-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.service-case-link:hover {
+  text-decoration: underline;
+}
 .tool-chip {
   background-color: var(--bg-elevated);
   border: 1px solid var(--border-color);
@@ -1705,7 +1716,7 @@ a {
 }
 
 .report-preview {
-  background-color: #0d1117;
+  background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color);
   padding: 1rem;
   min-height: 190px;
@@ -1720,7 +1731,7 @@ a {
   align-items: center;
   gap: 0.4rem;
   padding: 0.6rem 0.9rem;
-  background-color: #161b22;
+  background-color: var(--bg-elevated);
   border-bottom: 1px solid var(--border-color);
 }
 .report-preview-titlebar .dot {
@@ -1783,7 +1794,7 @@ a {
 }
 .allure-bar {
   flex: 1;
-  background-color: rgba(57, 217, 138, 0.25);
+  background-color: color-mix(in srgb, var(--accent) 28%, transparent);
   border-radius: 3px 3px 0 0;
 }
 .allure-bar-high {
@@ -1803,18 +1814,18 @@ a {
 }
 .excel-table th {
   text-align: left;
-  color: #8b98a5;
+  color: var(--text-muted);
   font-weight: 600;
   padding: 0.4rem 0.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-color);
   text-transform: uppercase;
   font-size: 0.62rem;
   letter-spacing: 0.03em;
 }
 .excel-table td {
   padding: 0.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  color: #e6edf3;
+  border-bottom: 1px solid color-mix(in srgb, var(--border-color) 55%, transparent);
+  color: var(--text-primary);
 }
 .excel-status-badge {
   font-size: 0.62rem;
@@ -1822,11 +1833,11 @@ a {
   padding: 0.2rem 0.5rem;
 }
 .excel-status-pass {
-  background-color: rgba(57, 217, 138, 0.15) !important;
+  background-color: color-mix(in srgb, var(--accent) 16%, transparent) !important;
   color: var(--accent) !important;
 }
 .excel-status-fail {
-  background-color: rgba(255, 107, 107, 0.15) !important;
+  background-color: color-mix(in srgb, var(--danger) 14%, transparent) !important;
   color: var(--danger) !important;
 }
 
@@ -2008,5 +2019,133 @@ a {
   .hero-section {
     padding-top: 2rem;
     padding-bottom: 2rem;
+  }
+}
+
+/* ---------- Home hero: skills, trust line, offers ---------- */
+.hero-skills {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+.hero-skills li {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+}
+.hero-trust {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.25rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.hero-trust li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.hero-trust svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+@media (max-width: 991.98px) {
+  .hero-skills,
+  .hero-trust {
+    justify-content: center;
+  }
+}
+
+.offer-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.offer-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+.offer-title {
+  font-size: clamp(1.15rem, 3vw, 1.4rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.offer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex-grow: 1;
+}
+.offer-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+.offer-list svg {
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 0.22rem;
+}
+.offer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+}
+.offer-link {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.offer-link:hover {
+  text-decoration: underline;
+}
+@media (max-width: 575.98px) {
+  .offer-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .hero-cta-group {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Cookie banner: in column layout flex-basis becomes height, which left a big empty block on phones */
+@media (max-width: 575.98px) {
+  .cookie-banner {
+    gap: 0.75rem;
+    padding-top: 0.85rem;
+    max-height: 45vh;
+    overflow-y: auto;
+  }
+  .cookie-banner-text {
+    flex: 0 0 auto;
+    font-size: 0.8rem;
+    line-height: 1.45;
   }
 }

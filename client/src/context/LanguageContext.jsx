@@ -9,10 +9,14 @@ const translations = {
     nav_blog: 'Blog',
     nav_contact: 'Contact',
     hire_me: 'Hire Me',
-    hero_title: 'QA Automation Engineer, turning fragile releases into confident ones — worldwide.',
+    hero_eyebrow: 'Open to freelance & remote QA roles',
+    hero_title: 'Freelance QA Automation Engineer — ship faster, with fewer bugs in production.',
     hero_subtitle:
-      'I design and build test automation frameworks, CI/CD quality gates, API test suites, and security-aware QA processes that catch bugs before your customers do — trusted by clients across the US, UK, EU, UAE, and Asia.',
-    hero_cta_primary: 'See Real Results',
+      '4+ years testing enterprise fintech and government platforms. I build Playwright and Selenium automation, API and performance test suites, and CI/CD quality gates that catch defects before your customers do — available for freelance projects and remote QA / SDET roles across the US, UK, EU, UAE and Asia.',
+    hero_cta_primary: 'Hire Me for a Project',
+    hero_cta_projects: 'View Case Studies',
+    hero_cta_call: 'Book a Free Call',
+    hero_cta_resume: 'Download Resume',
     hero_cta_secondary: 'Book Your Free Call Now',
     footer_rights: 'All rights reserved.',
     footer_tagline: 'Building reliable software, one test at a time.',
@@ -25,10 +29,14 @@ const translations = {
     nav_blog: 'Blog',
     nav_contact: 'Kontakt',
     hire_me: 'Kontaktieren',
-    hero_title: 'QA-Automatisierungsingenieur — weltweit zuverlässige Releases.',
+    hero_eyebrow: 'Offen für Freelance-Projekte & Remote-QA-Rollen',
+    hero_title: 'Freelance QA-Automatisierungsingenieur — schneller releasen, weniger Fehler in Produktion.',
     hero_subtitle:
       'Ich entwickle Testautomatisierungs-Frameworks, CI/CD-Qualitäts-Gates, API-Testsuiten und sicherheitsbewusste QA-Prozesse für Kunden in den USA, UK, EU, VAE und Asien.',
-    hero_cta_primary: 'Ergebnisse ansehen',
+    hero_cta_primary: 'Projekt anfragen',
+    hero_cta_projects: 'Fallstudien ansehen',
+    hero_cta_call: 'Kostenloses Gespräch',
+    hero_cta_resume: 'Lebenslauf herunterladen',
     hero_cta_secondary: 'Kostenloses Gespräch buchen',
     footer_rights: 'Alle Rechte vorbehalten.',
     footer_tagline: 'Zuverlässige Software entwickeln, ein Test nach dem anderen.',
@@ -38,7 +46,9 @@ const translations = {
 const LanguageContext = createContext(null);
 
 export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState(() => localStorage.getItem('site_lang') || 'en');
+  // The language switcher is hidden in the header, so always start in English — a stale
+  // 'de' saved from before would otherwise leave visitors stuck in German with no way back.
+  const [lang, setLang] = useState('en');
 
   const value = useMemo(() => {
     const toggleLang = () => {

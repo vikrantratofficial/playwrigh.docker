@@ -5,7 +5,20 @@ import ExperienceProjects from '../components/ExperienceProjects';
 import Seo from '../components/Seo';
 import { api } from '../services/api';
 
-const CATEGORIES = ['All', 'Playwright', 'API Testing', 'CI/CD', 'Excel Reporting', 'Performance Testing', 'Mobile Testing'];
+const CATEGORIES = [
+  'All',
+  'Playwright',
+  'Selenium',
+  'API Testing',
+  'CI/CD',
+  'Performance Testing',
+  'Mobile Testing',
+  'Database Testing',
+  'Security Testing',
+  'Functional Testing',
+  'Manual Testing',
+  'Excel Reporting',
+];
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
