@@ -2192,3 +2192,112 @@ a {
 .protected-email-wrap:hover .protected-email-text {
   text-decoration: underline;
 }
+
+/* ---------- About: in-demand skills + RAG status ---------- */
+.trend-card {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: clamp(1.1rem, 3vw, 1.5rem);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.trend-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+.trend-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.trend-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--brand-gradient, var(--accent));
+  color: #06110b;
+  font-size: 1.1rem;
+}
+.trend-title {
+  font-weight: 700;
+  margin: 0;
+}
+.trend-why {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.rag-intro {
+  margin-bottom: 0;
+}
+.rag-intro p {
+  margin-top: 0.4rem;
+  line-height: 1.6;
+}
+.rag-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-top: 4px solid var(--rag-color, var(--accent));
+  border-radius: 12px;
+  padding: clamp(1.1rem, 3vw, 1.5rem);
+}
+.rag-green { --rag-color: var(--accent); }
+.rag-amber { --rag-color: var(--warning); }
+.rag-red { --rag-color: var(--danger); }
+.rag-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+.rag-card-head .status-dot {
+  margin-top: 0;
+  width: 16px;
+  height: 16px;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--rag-color) 22%, transparent);
+}
+.rag-label {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rag-color);
+}
+.rag-headline {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.rag-action {
+  background: color-mix(in srgb, var(--rag-color) 9%, transparent);
+  border-radius: 8px;
+  padding: 0.7rem 0.85rem;
+  margin-bottom: 0.9rem;
+}
+.rag-action-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+.rag-example {
+  margin-top: auto;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  border-top: 1px dashed var(--border-color);
+  padding-top: 0.75rem;
+  overflow-wrap: anywhere;
+}

@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/
 
-Sitemap: https://yoursite.com/sitemap.xml
+Sitemap: https://vikrantsdet.com/sitemap.xml

@@ -16,6 +16,8 @@ const ALLOWED_ORIGINS = [
   'http://localhost:5173',
   'http://localhost:5174',
   'https://playwrigh-docker.vercel.app',
+  'https://vikrantsdet.com',
+  'https://www.vikrantsdet.com',
 ];
 
 app.set('trust proxy', 1);

@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 
 const SITE_NAME = 'QA.dev';
-const SITE_URL = 'https://yoursite.com'; // TODO: replace with your real production domain
+// Production domain. Override per environment with VITE_SITE_URL (no trailing slash).
+const SITE_URL = import.meta.env.VITE_SITE_URL || 'https://vikrantsdet.com';
 const DEFAULT_IMAGE = `${SITE_URL}/images/profile.jpg`;
 
 export default function Seo({
