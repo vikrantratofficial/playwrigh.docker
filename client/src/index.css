@@ -2347,3 +2347,34 @@ a {
     transform: scale(0.72);
   }
 }
+
+/* ---------- "Desktop site" mode on phones / small tablets (~980px layout viewport) ---------- */
+/* Bootstrap caps .container at 720px from 768-991px, which leaves wide empty gutters when a phone renders the
+   desktop layout at ~980px. Use the room, and keep hero buttons on one line so they never wrap awkwardly. */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .container {
+    max-width: 900px;
+  }
+  .hero-cta-group {
+    max-width: 600px;
+  }
+}
+.hero-cta-group > .btn.btn-lg {
+  white-space: nowrap;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  font-size: clamp(0.95rem, 0.4rem + 1.5vw, 1.15rem);
+}
+
+/* Service cards: pin price + link to the bottom so they line up across a row */
+.service-card {
+  display: flex;
+  flex-direction: column;
+}
+.service-card .service-price {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+.service-card .service-case-link {
+  align-self: flex-start;
+}

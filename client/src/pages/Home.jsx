@@ -164,16 +164,16 @@ export default function Home() {
       <section className="stats-section">
         <Container>
           <Row className="g-4">
-            <Col sm={6} lg={3}>
+            <Col sm={6} md={3}>
               <StatCard icon={<FaFolderOpen />} value={30} suffix="+" label="Projects Delivered" />
             </Col>
-            <Col sm={6} lg={3}>
+            <Col sm={6} md={3}>
               <StatCard icon={<FaVial />} value={1200} suffix="+" label="Test Cases Automated" />
             </Col>
-            <Col sm={6} lg={3}>
+            <Col sm={6} md={3}>
               <StatCard icon={<FaTools />} value={15} suffix="+" label="Tools & Frameworks" />
             </Col>
-            <Col sm={6} lg={3}>
+            <Col sm={6} md={3}>
               <StatCard icon={<FaUsers />} value={10} suffix="+" label="Clients & Teams" />
             </Col>
           </Row>
